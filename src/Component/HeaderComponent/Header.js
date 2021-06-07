@@ -36,13 +36,15 @@ class Header extends React.Component {
             </ul>
           </div>
         </div>
+        <h1 className="logo">로고 주세요</h1>
         <div className="search-container">
           <form action="#" className="search-box">
             <input type="text" placeholder="바른 먹거리를 찾으세요?" />
-            <button className="search-button">🔍</button>
+            <button className="search-button">
+              <i className="fas fa-search fa-lg"></i>
+            </button>
           </form>
         </div>
-        <h1 className="logo">로고 주세요</h1>
       </header>
     );
   }
