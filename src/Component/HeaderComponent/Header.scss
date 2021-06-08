@@ -10,8 +10,8 @@
     display: flex;
     justify-content: space-between;
     width: 80%;
-    margin-top: 10px;
-    margin-bottom: 40px;
+    min-width: 791px;
+    margin: 10px 0px 40px 0px;
 
     .header-sub__menu {
       display: flex;
@@ -75,7 +75,9 @@
       position: relative;
       input {
         padding: 8px;
-        padding-right: 450px;
+        padding-bottom: 12px;
+        width: 726px;
+        min-width: 526px;
         font-size: 22px;
         border: none;
         outline: none;
@@ -99,10 +101,5 @@
         transition: 0.5s ease-in-out color;
       }
     }
-  }
-  .logo {
-    position: absolute;
-    left: 48%;
-    top: 45px;
   }
 }
