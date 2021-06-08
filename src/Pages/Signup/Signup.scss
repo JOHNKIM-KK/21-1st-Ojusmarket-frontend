@@ -1,0 +1,157 @@
+* {
+  box-sizing: border-box;
+}
+@mixin border-style {
+  border: 1px solid #6ca437;
+}
+@mixin btn-style {
+  color: white;
+  background-color: #6ca437;
+}
+
+.contentsAll {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+
+  .img {
+    font-size: 230px;
+    background-color: skyblue;
+  }
+  article {
+    width: 700px;
+    height: 1200px;
+    .head {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 50px 0;
+      header {
+        font-size: 22px;
+        font-weight: bold;
+        color: #6ca437;
+
+        padding-bottom: 10px;
+      }
+      .descrip {
+        font-size: 12px;
+        color: #6ca437;
+
+        text-align: center;
+        border-top: 1px solid #6ca437;
+        padding-top: 15px;
+        margin-top: 5px;
+      }
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      justify-self: center;
+      align-items: center;
+      width: 100%;
+      height: 80%;
+      .inputBoxId {
+        width: 500px;
+        height: 60px;
+        margin-bottom: 10px;
+        #identity {
+          width: 80%;
+          height: 80%;
+          @include border-style;
+        }
+        .btnId {
+          width: 20%;
+          height: 80%;
+          @include btn-style;
+          @include border-style;
+        }
+      }
+      .inputBoxPw {
+        display: flex;
+        flex-direction: column;
+        width: 500px;
+        height: 100px;
+        #password {
+          height: 100%;
+          @include border-style;
+        }
+        #rePassword {
+          margin-bottom: 10px;
+          height: 100%;
+          @include border-style;
+        }
+      }
+      .memberInfo {
+        display: flex;
+        flex-direction: column;
+        width: 500px;
+        height: 180px;
+        .name {
+          margin-bottom: 10px;
+          height: 100%;
+          @include border-style;
+        }
+        .phone {
+          margin-bottom: 10px;
+          height: 100%;
+          @include border-style;
+        }
+        .email {
+          margin-bottom: 10px;
+          height: 100%;
+          @include border-style;
+        }
+      }
+      .address {
+        display: flex;
+        flex-direction: column;
+        width: 500px;
+        height: 80px;
+        .btnAddress {
+          width: 100%;
+          height: 100%;
+          .basicAddress {
+            width: 80%;
+            height: 100%;
+            @include border-style;
+          }
+          .btnSerch {
+            width: 20%;
+            height: 100%;
+            @include btn-style;
+            @include border-style;
+          }
+        }
+        .detailedAddress {
+          height: 100%;
+          outline-color: #6ca437;
+        }
+      }
+      .finish {
+        width: 500px;
+        height: 50px;
+
+        margin-top: 20px;
+        .summit {
+          width: 100%;
+          height: 100%;
+          @include btn-style;
+          @include border-style;
+        }
+      }
+      .rule {
+        width: 370px;
+        font-size: 12px;
+        text-align: center;
+        line-height: 1.2;
+        margin-top: 7px;
+        .look {
+          color: #6ca437;
+        }
+      }
+    }
+  }
+}

@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+
 import './Login.scss';
 
 class Login extends Component {
+  goToSignUp = () => {
+    this.props.history.push('/signup');
+  };
   render() {
     return (
       <body>
@@ -21,7 +26,7 @@ class Login extends Component {
                 </button>
               </div>
 
-              <button>가입하기 </button>
+              <button onClick={this.goToSignUp}>가입하기</button>
             </form>
           </article>
         </div>
@@ -29,4 +34,4 @@ class Login extends Component {
     );
   }
 }
-export default Login;
+export default withRouter(Login);
