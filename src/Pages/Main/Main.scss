@@ -1,0 +1,128 @@
+.main {
+  overflow: hidden;
+
+  .image-slider {
+    height: 360px;
+    width: 500vw;
+    transform: translate(-100vw);
+
+    ul {
+      display: flex;
+
+      li {
+        img {
+          width: 100vw;
+        }
+      }
+    }
+  }
+
+  .product-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & div {
+      width: 1025px;
+    }
+    .product-selection {
+      display: flex;
+      justify-content: space-around;
+      height: 94px;
+
+      div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 200px;
+        border: 3px solid white;
+        background-color: #fff;
+        color: black;
+
+        &:hover {
+          color: #6ca437;
+        }
+
+        button {
+          height: 60px;
+          width: 180px;
+          padding-bottom: 5px;
+          border: none;
+          background-color: inherit;
+          font-size: 40px;
+          color: inherit;
+
+          &:hover {
+            cursor: pointer;
+            border-bottom: 2px solid #6ca437;
+          }
+        }
+      }
+    }
+    .food-category {
+      display: flex;
+      justify-content: space-around;
+      width: 100vw;
+      background-color: #fff;
+      border-bottom: 2px solid rgb(235, 230, 230);
+
+      ul {
+        width: 910px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 54px;
+
+        li {
+          button {
+            padding-bottom: 5px;
+            border: none;
+            background-color: #fff;
+            font-size: 15px;
+
+            &:hover {
+              cursor: pointer;
+              font-weight: 700;
+              color: #6ca437;
+              border-bottom: 2px solid #6ca437;
+            }
+          }
+        }
+      }
+    }
+    .food-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      width: 1150px;
+      background-color: #fff;
+
+      .food {
+        width: 245px;
+        margin: 20px;
+        background-color: white;
+
+        img {
+          height: 245px;
+          width: 245px;
+          border-radius: 15px;
+        }
+
+        .food-info {
+          height: 105px;
+          width: 245px;
+          margin-top: 30px;
+          font-size: 18px;
+
+          p {
+            margin-top: 10px;
+
+            span {
+              margin-right: 10px;
+              color: #6ca437;
+            }
+          }
+        }
+      }
+    }
+  }
+}
