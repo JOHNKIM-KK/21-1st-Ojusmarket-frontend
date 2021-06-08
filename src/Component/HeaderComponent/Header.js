@@ -36,7 +36,7 @@ class Header extends React.Component {
             </ul>
           </div>
         </div>
-        <h1 className="logo">로고 주세요</h1>
+        <img src="/images/logo.png" alt="ojus-market logo" />
         <div className="search-container">
           <form action="#" className="search-box">
             <input type="text" placeholder="바른 먹거리를 찾으세요?" />
