@@ -3,11 +3,7 @@ import Header from '../../Component/HeaderComponent/Header';
 
 class Main extends React.Component {
   render() {
-    return (
-      <>
-        <Header />
-      </>
-    );
+    return <Header />;
   }
 }
 
