@@ -166,6 +166,7 @@ class Main extends React.Component {
             <div>{tab[this.state.isChangeTap]}</div>
           </div>
         </div>
+        <Footer />
       </>
     );
   }
