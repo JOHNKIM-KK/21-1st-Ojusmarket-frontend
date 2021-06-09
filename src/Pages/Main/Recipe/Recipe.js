@@ -1,4 +1,5 @@
 import React from 'react';
+import RecipeContent from './RecipeContent';
 import './Recipe.scss';
 
 class Recipe extends React.Component {
@@ -41,60 +42,12 @@ class Recipe extends React.Component {
             <p>요리도 하고, 주문도 하고</p>
             <span>오져스 제품으로 즐길 수 있는 레시피</span>
           </div>
-          <div className="recipe">
-            <img
-              alt="요리사진"
-              src="https://www.oasis.co.kr:48580/content/d30c4f41-1040-472c-b2f3-2d9938a7a6af.jpg"
-            />
-            <div className="recipe-name">
-              <span>애플시나몬 와플</span>
-            </div>
-          </div>
-          <div className="recipe">
-            <img
-              alt="요리사진"
-              src="https://www.oasis.co.kr:48580/content/d30c4f41-1040-472c-b2f3-2d9938a7a6af.jpg"
-            />
-            <div className="recipe-name">
-              <span>애플시나몬 와플</span>
-            </div>
-          </div>
-          <div className="recipe">
-            <img
-              alt="요리사진"
-              src="https://www.oasis.co.kr:48580/content/d30c4f41-1040-472c-b2f3-2d9938a7a6af.jpg"
-            />
-            <div className="recipe-name">
-              <span>애플시나몬 와플</span>
-            </div>
-          </div>
-          <div className="recipe">
-            <img
-              alt="요리사진"
-              src="https://www.oasis.co.kr:48580/content/d30c4f41-1040-472c-b2f3-2d9938a7a6af.jpg"
-            />
-            <div className="recipe-name">
-              <span>애플시나몬 와플</span>
-            </div>
-          </div>
-          <div className="recipe">
-            <img
-              alt="요리사진"
-              src="https://www.oasis.co.kr:48580/content/d30c4f41-1040-472c-b2f3-2d9938a7a6af.jpg"
-            />
-            <div className="recipe-name">
-              <span>애플시나몬 와플</span>
-            </div>
-          </div>
-          <div className="recipe">
-            <img
-              alt="요리사진"
-              src="https://www.oasis.co.kr:48580/content/d30c4f41-1040-472c-b2f3-2d9938a7a6af.jpg"
-            />
-            <div className="recipe-name">
-              <span>애플시나몬 와플</span>
-            </div>
-          </div>
+          <RecipeContent />
+          <RecipeContent />
+          <RecipeContent />
+          <RecipeContent />
+          <RecipeContent />
+          <RecipeContent />
         </div>
       </div>
     );

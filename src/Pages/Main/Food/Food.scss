@@ -65,6 +65,7 @@
     background-color: #fff;
 
     .food {
+      position: relative;
       width: 245px;
       margin: 20px;
       background-color: white;
@@ -72,6 +73,39 @@
       &:hover {
         img {
           filter: brightness(40%);
+        }
+
+        .hover-btn {
+          button {
+            visibility: visible;
+          }
+        }
+      }
+
+      .hover-btn {
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        top: 26%;
+        left: 30%;
+        width: 110px;
+        button {
+          visibility: hidden;
+          width: 40px;
+          height: 40px;
+          border: none;
+          border-radius: 50%;
+          background-color: rgba(14, 13, 13, 0.7);
+
+          i {
+            margin-top: 2px;
+            color: white;
+            font-size: 20px;
+          }
+
+          &:hover {
+            background-color: #6ca437;
+          }
         }
       }
 

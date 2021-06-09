@@ -42,8 +42,6 @@ class Main extends React.Component {
     }
   };
 
-  handleBtn = e => {};
-
   handleTap = () => {
     this.setState({
       isChangeTap: !this.state.isChangeTap,
@@ -57,13 +55,13 @@ class Main extends React.Component {
           isTransform: this.state.isTransform - 100,
           isTransition: '1s ease-in-out',
         });
-      } else if (this.state.isTransform === -500) {
+      } else {
         this.setState({
           isTransform: 0,
           isTransition: '0s',
         });
       }
-    }, 3000);
+    }, 4000);
   }
 
   render() {
@@ -132,7 +130,7 @@ class Main extends React.Component {
                 <i class="fas fa-chevron-right"></i>
               </button>
             </div>
-            <div className="nav-dot">
+            {/* <div className="nav-dot">
               <div>
                 <button className="btn01" onCLick={this.handleBtn}></button>
               </div>
@@ -148,7 +146,7 @@ class Main extends React.Component {
               <div>
                 <button className="btn05" onCLick={this.handleBtn}></button>
               </div>
-            </div>
+            </div> */}
           </div>
           <div>
             <div className="product-container">
