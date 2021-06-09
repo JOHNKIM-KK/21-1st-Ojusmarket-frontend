@@ -27,10 +27,9 @@ class ProductDetail extends React.Component {
         <div className="detail-tab">
           <div>
             <button
+              name="info"
               id="0"
-              className={
-                this.state.activeID === 0 ? `${this.state.isClicked}` : ''
-              }
+              className={!this.state.activeID ? `${this.state.isClicked}` : ''}
               onClick={this.clickHandleTab}
             >
               상품정보
@@ -38,10 +37,9 @@ class ProductDetail extends React.Component {
           </div>
           <div>
             <button
+              name="reviews"
               id="1"
-              className={
-                this.state.activeID === 1 ? `${this.state.isClicked}` : ''
-              }
+              className={this.state.activeID ? `${this.state.isClicked}` : ''}
               onClick={this.clickHandleTab}
             >
               구매후기
