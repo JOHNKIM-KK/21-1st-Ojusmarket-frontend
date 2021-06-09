@@ -1,8 +1,6 @@
 import React from 'react';
 import Header from '../../Component/HeaderComponent/Header';
-import Food from './Food/Food';
-import Recipe from './Recipe/Recipe';
-import './Main.scss';
+import ProductDetail from '../../Component/ProductDetail/productDetail';
 
 class Main extends React.Component {
   constructor() {
@@ -71,8 +69,9 @@ class Main extends React.Component {
     console.log(this.state.isTransition);
     return (
       <>
-        <Header />
-        <div className="main">
+        {/* <Header /> */}
+        <ProductDetail />
+        {/* <div className="main">
           <div className="image-slider">
             <ul
               className="image-box"
@@ -161,9 +160,8 @@ class Main extends React.Component {
                 </div>
               </div>
             </div>
-            {this.state.isChangeTap ? <Food /> : <Recipe />}
           </div>
-        </div>
+        </div> */}
       </>
     );
   }
