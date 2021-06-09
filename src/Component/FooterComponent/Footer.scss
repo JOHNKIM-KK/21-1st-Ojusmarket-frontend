@@ -30,6 +30,11 @@ a {
         a {
           color: black;
           font-weight: 600;
+
+          &:hover {
+            color: #6ca437;
+            transition: 0.5s ease-in-out;
+          }
         }
       }
     }
@@ -61,15 +66,42 @@ a {
 
       &:first-child {
         margin-left: 20px;
+
+        &:hover {
+          color: #d7436f;
+          transition: 0.3s ease-in-out;
+        }
+      }
+
+      &:nth-child(2) {
+        &:hover {
+          color: #3e5b99;
+          transition: 0.3s ease-in-out;
+        }
+      }
+
+      &:nth-child(3) {
+        &:hover {
+          color: #34b44a;
+          transition: 0.3s ease-in-out;
+        }
+      }
+
+      &:last-child {
+        &:hover {
+          color: #e7211c;
+          transition: 0.3s ease-in-out;
+        }
       }
     }
   }
 }
 
 .footer-info {
-  margin-top: 30px;
+  margin-top: 20px;
   line-height: 25px;
   font-size: 14px;
+  color: rgba($color: #000000, $alpha: 0.7);
 
   span {
     line-height: 60px;
