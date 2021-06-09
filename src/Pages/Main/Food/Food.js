@@ -41,7 +41,7 @@ class Food extends React.Component {
           </ul>
         </div>
         <div className="food-header">
-          <p>시간은 없고 마트 가야할 때?</p>
+          <p>식품</p>
           <span>원하는 시간에 우리집에 쏙~</span>
         </div>
         <div className="food-wrap">

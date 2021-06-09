@@ -2,13 +2,14 @@ import React from 'react';
 import Header from '../../Component/HeaderComponent/Header';
 import Food from './Food/Food';
 import Recipe from './Recipe/Recipe';
+import Footer from '../../Component/FooterComponent/Footer';
 import './Main.scss';
 
 class Main extends React.Component {
   constructor() {
     super();
     this.state = {
-      isChangeTap: true,
+      isChangeTap: 0,
       isTransform: 0,
       isTransition: '1s ease-in-out',
     };
@@ -42,9 +43,9 @@ class Main extends React.Component {
     }
   };
 
-  handleTap = () => {
+  handleTap = id => {
     this.setState({
-      isChangeTap: !this.state.isChangeTap,
+      isChangeTap: id,
     });
   };
 
@@ -66,7 +67,10 @@ class Main extends React.Component {
 
   render() {
     const count = this.state.isTransform;
-    console.log(this.state.isTransition);
+    const tab = {
+      0: <Food />,
+      1: <Recipe />,
+    };
     return (
       <>
         <Header />
@@ -152,14 +156,14 @@ class Main extends React.Component {
             <div className="product-container">
               <div className="product-selection">
                 <div>
-                  <button onClick={this.handleTap}>식품</button>
+                  <button onClick={() => this.handleTap(0)}>주문도하고</button>
                 </div>
                 <div>
-                  <button onClick={this.handleTap}>레시피</button>
+                  <button onClick={() => this.handleTap(1)}>요리도 하고</button>
                 </div>
               </div>
             </div>
-            {this.state.isChangeTap ? <Food /> : <Recipe />}
+            <div>{tab[this.state.isChangeTap]}</div>
           </div>
         </div>
       </>
