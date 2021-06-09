@@ -69,6 +69,12 @@
       margin: 20px;
       background-color: white;
 
+      &:hover {
+        img {
+          filter: brightness(40%);
+        }
+      }
+
       img {
         height: 245px;
         width: 245px;
