@@ -9,28 +9,46 @@ class Login extends Component {
   };
   render() {
     return (
-      <body>
-        <div className="login">
-          <article>
-            <form className="loginBox">
-              <header>오아이스 로그인</header>
-              <div className="inputBox">
-                <input id="id" type="text" placeholder="아이디" />
-              </div>
-              <div className="inputBox">
-                <input id="password" type="password" placeholder="비밀번호" />
-              </div>
-              <div className="buttonBox">
-                <button className="btnLogin" type="button">
-                  <span>로그인</span>
-                </button>
-              </div>
+      <div className="backgroundImg">
+        <body>
+          <div className="Login">
+            <div className="container">
+              <div className="inner">
+                <header className="header">
+                  <h1>오아시스 로그인</h1>
+                </header>
 
-              <button onClick={this.goToSignUp}>가입하기</button>
-            </form>
-          </article>
-        </div>
-      </body>
+                <form className="form">
+                  <div className="input_box">
+                    <input id="id" type="text" placeholder="아이디" />
+                  </div>
+                  <div className="input_box">
+                    <input
+                      id="password"
+                      type="password"
+                      placeholder="비밀번호"
+                    />
+                  </div>
+                  <div className="button_box">
+                    <button type="button" className="btn">
+                      <span>로그인</span>
+                    </button>
+                  </div>
+                  <div className="sign_up">
+                    <button
+                      type="button"
+                      className="btn_sign"
+                      onClick={this.goToSignUp}
+                    >
+                      <span>가입하기</span>
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </body>
+      </div>
     );
   }
 }
