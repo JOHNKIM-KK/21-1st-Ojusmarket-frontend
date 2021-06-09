@@ -8,8 +8,8 @@ class Routes extends React.Component {
     return (
       <Router>
         <Switch>
-          {/* <Route exact path="/main" component={Main} />
-          <Route exact path="/login" component={Login} /> */}
+          <Route exact path="/main" component={Main} />
+          {/* <Route exact path="/login" component={Login} /> */}
         </Switch>
       </Router>
     );
