@@ -1,3 +1,4 @@
+@import '../../../Styles/Common.scss';
 .food-component {
   display: flex;
   flex-direction: column;
@@ -142,9 +143,14 @@
         p {
           margin-top: 10px;
 
-          span {
+          .discount {
             margin-right: 10px;
+            font-weight: 700;
             color: #6ca437;
+          }
+
+          span {
+            font-weight: 700;
           }
         }
       }

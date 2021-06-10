@@ -24,12 +24,12 @@ class Main extends React.Component {
   };
 
   componentDidMount() {
-    fetch('http://10.58.6.155:8000/ingredient')
+    fetch('./data/mainData.json')
       .then(res => res.json())
       .then(data => {
         this.setState({
-          isProductList: data.result,
-          // isRecipeList: data.result.recipe,
+          isProductList: data.ingredients,
+          isRecipeList: data.recipe,
         });
       });
   }

@@ -33,8 +33,8 @@ class FoodContent extends React.Component {
         <div className="food-info">
           <h2>{ingredients.name}</h2>
           <p>
-            <span>43%</span>
-            {ingredients.price}원
+            <span className="discount">43%</span>
+            <span>{ingredients.price}원</span>
           </p>
         </div>
       </div>
