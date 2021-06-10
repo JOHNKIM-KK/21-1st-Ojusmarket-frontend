@@ -5,7 +5,7 @@
   border: 1px solid #6ca437;
 }
 @mixin btn-style {
-  color: white;
+  color: #ffff;
   background-color: #6ca437;
 }
 
@@ -17,6 +17,7 @@
   background-color: white;
   .a_Img {
     width: 100%;
+    height: 280px;
   }
   article {
     width: 700px;
@@ -39,7 +40,7 @@
         color: #6ca437;
         line-height: 1.5;
         text-align: center;
-        border-top: 1px solid #6ca437;
+        border-top: 2px solid #6ca437;
         padding-top: 15px;
         margin-top: 5px;
       }
@@ -107,42 +108,36 @@
           @include border-style;
         }
       }
-      .address {
+      .cellFirst {
         display: flex;
-        flex-direction: column;
         width: 500px;
-        height: 100px;
-        .btn_Address {
-          width: 100%;
+        height: 47px;
+        .btn-serch {
+          width: 30%;
           height: 100%;
-          .basic_Address {
-            width: 80%;
-            height: 100%;
-            @include border-style;
-          }
-          .btn_Serch {
-            width: 20%;
-            height: 100%;
-            @include btn-style;
-            @include border-style;
-          }
-        }
-        .detailed_Address {
-          height: 100%;
-
+          justify-content: space-between;
+          @include btn-style;
           @include border-style;
         }
+        .main_Address {
+          display: flex;
+          width: 70%;
+          height: 100%;
+          @include border-style;
+        }
+      }
+
+      .basic_Address {
+        position: relative;
+        width: 500px;
+        height: 40px;
+        @include border-style;
       }
       .recommend {
         display: flex;
         flex-direction: column;
         width: 500px;
-        .recom_Id {
-          width: 100%;
-          height: 50px;
-          margin-top: 10px;
-          @include border-style;
-        }
+
         .recom_Img {
           margin-top: 10px;
         }
