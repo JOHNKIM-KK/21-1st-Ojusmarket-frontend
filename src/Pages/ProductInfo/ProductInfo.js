@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../../Component/HeaderComponent/Header';
 import Footer from '../../Component/FooterComponent/Footer';
+import ProductDetail from './ProductDetail';
 import './ProductInfo.scss';
 
 class ProductInfo extends React.Component {
@@ -16,11 +17,9 @@ class ProductInfo extends React.Component {
   handleCount = event => {
     const { count } = this.state;
     const { className } = event.target;
-    if (className === 'plus') {
-      this.setState({ count: count + 1 });
-    } else if (className === 'minus' && count > 1) {
-      this.setState({ count: count - 1 });
-    }
+    className === 'plus'
+      ? this.setState({ count: count + 1 })
+      : this.setState({ count: count - 1 });
   };
 
   componentDidMount() {
@@ -49,6 +48,31 @@ class ProductInfo extends React.Component {
                 <a href="#">청과</a>
               </span>
               <img className="image" src={infoData.image_url} />
+              <div className="slide-container">
+                <span className="related">연관요리</span>
+                <div className="slide-box">
+                  <div className="dummy-image">
+                    <div className="dum-img"></div>
+                    <span className="imageName">상품정보</span>
+                  </div>
+                  <div className="dummy-image">
+                    <div className="dum-img"></div>
+                    <span className="imageName">상품정보</span>
+                  </div>
+                  <div className="dummy-image">
+                    <div className="dum-img"></div>
+                    <span className="imageName">상품정보</span>
+                  </div>
+                  <div className="dummy-image">
+                    <div className="dum-img"></div>
+                    <span className="imageName">상품정보</span>
+                  </div>
+                  <div className="dummy-image">
+                    <div className="dum-img"></div>
+                    <span className="imageName">상품정보</span>
+                  </div>
+                </div>
+              </div>
             </div>
             <div className="info-container">
               <div className="text-title">
@@ -105,6 +129,7 @@ class ProductInfo extends React.Component {
               </div>
             </div>
           </div>
+          <ProductDetail />
           <Footer />
         </>
       )

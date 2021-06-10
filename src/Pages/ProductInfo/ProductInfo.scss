@@ -28,6 +28,43 @@
       font-size: 54px;
       font-weight: 600;
     }
+
+    .slide-container {
+      width: 421px;
+      min-width: 421px;
+      height: 240px;
+      margin-top: 20px;
+      background-color: blue;
+
+      .related {
+        display: block;
+        margin: 15px 0px 0px 10px;
+        color: white;
+        font-size: 25px;
+      }
+
+      .slide-box {
+        display: flex;
+        overflow: hidden;
+        margin: 10px 0px 0px 10px;
+        color: wheat;
+
+        .dummy-image {
+          margin: 10px 0px 0px 10px;
+          .dum-img {
+            height: 115px;
+            width: 115px;
+            background-color: red;
+          }
+          .imageName {
+            display: block;
+            margin-top: 10px;
+            text-align: center;
+            color: yellowgreen;
+          }
+        }
+      }
+    }
   }
 
   .info-container {
@@ -123,6 +160,7 @@
             font-size: 18px;
             border: 1px solid rgba($color: #000000, $alpha: 0.3);
             background-color: white;
+            cursor: pointer;
           }
         }
 
@@ -137,6 +175,7 @@
     .btn-area {
       margin-top: 40px;
       position: relative;
+      cursor: pointer;
 
       button {
         all: unset;
