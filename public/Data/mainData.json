@@ -25,7 +25,7 @@
       "image_url": "https://www.oasis.co.kr:48581/product/834/detail/thumb_8348c63ad7e-cb1b-4ceb-b4a0-257717417f5d.jpg"
     },
     {
-      "id": 3,
+      "id": 4,
       "name": "유기농바나나 (500~600g)",
       "price": "2,980",
       "storage": "싱싱",
@@ -33,6 +33,7 @@
       "image_url": "https://www.oasis.co.kr:48581/product/834/detail/thumb_8348c63ad7e-cb1b-4ceb-b4a0-257717417f5d.jpg"
     }
   ],
+
   "recipe": [
     {
       "id": 1,
