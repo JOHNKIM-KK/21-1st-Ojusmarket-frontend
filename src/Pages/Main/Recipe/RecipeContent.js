@@ -2,14 +2,12 @@ import React from 'react';
 
 class RecipeContent extends React.Component {
   render() {
+    const { recipe } = this.props;
     return (
       <div className="recipe">
-        <img
-          alt="요리사진"
-          src="https://www.oasis.co.kr:48580/content/d30c4f41-1040-472c-b2f3-2d9938a7a6af.jpg"
-        />
+        <img alt="요리사진" src={recipe.image_url} />
         <div className="recipe-name">
-          <span>애플시나몬 와플</span>
+          <span>{recipe.name}</span>
         </div>
       </div>
     );

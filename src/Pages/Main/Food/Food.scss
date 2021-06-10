@@ -82,6 +82,24 @@
         }
       }
 
+      .storage-label {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 1.5%;
+        left: 2.5%;
+        height: 25px;
+        width: 44px;
+        border-radius: 10px;
+        color: #fff;
+
+        span {
+          margin-top: 2px;
+          font-size: 13px;
+        }
+      }
+
       .hover-btn {
         display: flex;
         justify-content: space-between;
@@ -112,7 +130,7 @@
       img {
         height: 245px;
         width: 245px;
-        border-radius: 15px;
+        border-radius: 7px;
       }
 
       .food-info {

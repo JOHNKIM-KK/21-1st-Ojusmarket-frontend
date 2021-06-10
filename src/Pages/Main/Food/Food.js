@@ -4,39 +4,28 @@ import './Food.scss';
 
 class Food extends React.Component {
   render() {
+    const { isProductList, storage } = this.props;
     return (
       <div className="food-component">
         <div className="food-category">
           <ul>
             <li>
-              <button>반찬/요리</button>
-            </li>
-            <li>
-              <button>샐러드/간편식</button>
-            </li>
-            <li>
-              <button>청과</button>
-            </li>
-            <li>
               <button>농산물</button>
-            </li>
-            <li>
-              <button>수산물</button>
             </li>
             <li>
               <button>축산물</button>
             </li>
             <li>
-              <button>간식/과자</button>
+              <button>수산물</button>
             </li>
             <li>
-              <button>신선식품</button>
+              <button>양념/면류</button>
             </li>
             <li>
-              <button>건강음료</button>
+              <button>간식/유제품</button>
             </li>
             <li>
-              <button>생활리빙</button>
+              <button>간편식품</button>
             </li>
           </ul>
         </div>
@@ -45,13 +34,9 @@ class Food extends React.Component {
           <span>원하는 시간에 우리집에 쏙~</span>
         </div>
         <div className="food-wrap">
-          <FoodContent />
-          <FoodContent />
-          <FoodContent />
-          <FoodContent />
-          <FoodContent />
-          <FoodContent />
-          <FoodContent />
+          {isProductList.map(data => (
+            <FoodContent ingredients={data} storage={storage} />
+          ))}
         </div>
       </div>
     );

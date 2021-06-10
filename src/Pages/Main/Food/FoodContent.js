@@ -1,28 +1,40 @@
 import React from 'react';
 
 class FoodContent extends React.Component {
+  componentDidMount() {}
+
   render() {
+    const labelColor = {
+      냉장: '#686de0',
+      냉동: '#7ed6df',
+      실온: '#f0932b',
+      싱싱: '#badc58',
+    };
+    const { ingredients } = this.props;
+    const labelName = ingredients.storage;
+    console.log(ingredients);
     return (
       <div className="food">
-        <img
-          alt="제품사진"
-          src="https://www.oasis.co.kr:48581/product/17616/detail/detail_17616_0_67c662fb-167d-4a55-8aa8-3cfdc6fa9837.jpg"
-        />
+        <img alt="제품사진" src={ingredients.image_url} />
+        <div
+          className="storage-label"
+          style={{ backgroundColor: labelColor[labelName] }}
+        >
+          <span>{ingredients.storage}</span>
+        </div>
         <div className="hover-btn">
           <button>
-            <i class="fas fa-shopping-cart"></i>
+            <i className="fas fa-shopping-cart"></i>
           </button>
           <button>
-            <i class="far fa-heart"></i>
+            <i className="far fa-heart"></i>
           </button>
         </div>
         <div className="food-info">
-          <h2>
-            &#91;MD&#93;추천 &#40;특품&#41;저탄소인증 성주참외 &#40;4~5입,1.2kg
-            내외&#41;
-          </h2>
+          <h2>{ingredients.name}</h2>
           <p>
-            <span>43%</span>6800원
+            <span>43%</span>
+            {ingredients.price}원
           </p>
         </div>
       </div>

@@ -15,22 +15,10 @@ class Recipe extends React.Component {
               <button>국/찌개/전골</button>
             </li>
             <li>
-              <button>밥/죽</button>
-            </li>
-            <li>
               <button>반찬/김치</button>
             </li>
             <li>
-              <button>일품요리</button>
-            </li>
-            <li>
-              <button>간단요리</button>
-            </li>
-            <li>
               <button>면류/파스타</button>
-            </li>
-            <li>
-              <button>간식/음료</button>
             </li>
             <li>
               <button>베이킹</button>
@@ -42,12 +30,9 @@ class Recipe extends React.Component {
             <p>레시피</p>
             <span>오져스 제품으로 즐길 수 있는 레시피</span>
           </div>
-          <RecipeContent />
-          <RecipeContent />
-          <RecipeContent />
-          <RecipeContent />
-          <RecipeContent />
-          <RecipeContent />
+          {this.props.isRecipeList.map(data => (
+            <RecipeContent recipe={data} />
+          ))}
         </div>
       </div>
     );
