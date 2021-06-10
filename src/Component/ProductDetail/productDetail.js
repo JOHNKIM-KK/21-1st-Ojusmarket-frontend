@@ -8,7 +8,7 @@ class ProductDetail extends React.Component {
     super();
     this.state = {
       activeID: 0,
-      isClicked: '',
+      isClicked: 'select-btn',
     };
   }
 
