@@ -17,15 +17,15 @@ class ProductInfo extends React.Component {
   handleCount = event => {
     const { count } = this.state;
     const { className } = event.target;
-    className === 'plus'
-      ? this.setState({ count: count + 1 })
-      : this.setState({ count: count - 1 });
+    if (className === 'plus') {
+      this.setState({ count: count + 1 });
+    } else if (className === 'minus' && count > 1) {
+      this.setState({ count: count - 1 });
+    }
   };
 
   componentDidMount() {
-    fetch('http://localhost:3000/Data/infoData.json', {
-      method: 'GET',
-    })
+    fetch('Data/infoData.json')
       .then(response => response.json())
       .then(data => {
         this.setState({ infoData: data, isLoading: true });
@@ -51,14 +51,6 @@ class ProductInfo extends React.Component {
               <div className="slide-container">
                 <span className="related">연관요리</span>
                 <div className="slide-box">
-                  <div className="dummy-image">
-                    <div className="dum-img"></div>
-                    <span className="imageName">상품정보</span>
-                  </div>
-                  <div className="dummy-image">
-                    <div className="dum-img"></div>
-                    <span className="imageName">상품정보</span>
-                  </div>
                   <div className="dummy-image">
                     <div className="dum-img"></div>
                     <span className="imageName">상품정보</span>

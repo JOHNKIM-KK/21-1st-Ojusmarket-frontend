@@ -1,3 +1,5 @@
+@import '../../Styles/Common.scss';
+
 .product-detail-conponent {
   display: flex;
   flex-direction: column;
@@ -8,16 +10,14 @@
     display: flex;
     margin: 40px 0px;
     div {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      @include flexCenter;
 
       button {
         height: 81px;
         width: 512px;
         min-width: 400px;
         border: none;
-        border: 1px solid #dbdbdb;
+        border: 1px solid $ligth-gray;
         border-radius: 3px;
         background-color: #fff;
         font-size: 24px;
@@ -30,7 +30,7 @@
       }
 
       .select-btn {
-        border-top: 3px solid #6ca437;
+        border-top: 3px solid $o-green;
         border-bottom: none;
       }
     }

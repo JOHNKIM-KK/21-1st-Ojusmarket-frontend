@@ -8,13 +8,12 @@ class ProductDetail extends React.Component {
     super();
     this.state = {
       activeID: 0,
-      isClicked: 'select-btn',
     };
   }
 
   clickHandleTab = e => {
     const id = parseInt(e.target.id);
-    this.setState({ activeID: id, isClicked: 'select-btn' });
+    this.setState({ activeID: id });
   };
 
   render() {
@@ -29,7 +28,7 @@ class ProductDetail extends React.Component {
             <button
               name="info"
               id="0"
-              className={!this.state.activeID ? `${this.state.isClicked}` : ''}
+              className={!this.state.activeID ? `select-btn` : ''}
               onClick={this.clickHandleTab}
             >
               상품정보
@@ -39,7 +38,7 @@ class ProductDetail extends React.Component {
             <button
               name="reviews"
               id="1"
-              className={this.state.activeID ? `${this.state.isClicked}` : ''}
+              className={this.state.activeID ? `select-btn` : ''}
               onClick={this.clickHandleTab}
             >
               구매후기

@@ -4,7 +4,7 @@ import './Reviews.scss';
 class Reviews extends React.Component {
   render() {
     return (
-      <div className="review-component">
+      <div className="reviews">
         <div>
           <img
             alt="배너사진"
