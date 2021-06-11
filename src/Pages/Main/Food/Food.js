@@ -4,40 +4,31 @@ import './Food.scss';
 
 class Food extends React.Component {
   render() {
-    const { productList, storage, filterRecipeCategory } = this.props;
+    const { productList, storage, filterFoodCategory } = this.props;
+
     return (
       <div className="food-component">
         <div className="food-category">
           <ul>
             <li>
-              <button onClick={() => filterRecipeCategory('농산물')}>
-                농산물
-              </button>
+              <button onClick={() => filterFoodCategory('1')}>농산물</button>
             </li>
             <li>
-              <button onClick={() => filterRecipeCategory('축산물')}>
-                축산물
-              </button>
+              <button onClick={() => filterFoodCategory('2')}>축산물</button>
             </li>
             <li>
-              <button onClick={() => filterRecipeCategory('수산물')}>
-                수산물
-              </button>
+              <button onClick={() => filterFoodCategory('3')}>수산물</button>
             </li>
             <li>
-              <button onClick={() => filterRecipeCategory('양념/면류')}>
-                양념/면류
-              </button>
+              <button onClick={() => filterFoodCategory('4')}>양념/면류</button>
             </li>
             <li>
-              <button onClick={() => filterRecipeCategory('간식/유제품')}>
+              <button onClick={() => filterFoodCategory('5')}>
                 간식/유제품
               </button>
             </li>
             <li>
-              <button onClick={() => filterRecipeCategory('간편식품')}>
-                간편식품
-              </button>
+              <button onClick={() => filterFoodCategory('6')}>간편식품</button>
             </li>
           </ul>
         </div>

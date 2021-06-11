@@ -27,12 +27,12 @@ class Main extends React.Component {
   };
 
   componentDidMount() {
-    fetch('/data/mainData.json')
+    fetch('http://10.58.6.155:8000/ingredient/main')
       .then(res => res.json())
       .then(data => {
         this.setState({
-          productList: data.ingredients,
-          productSortList: data.ingredients,
+          productList: data.ingredient,
+          productSortList: data.ingredient,
           recipeList: data.recipe,
           recipeSortList: data.recipe,
         });
@@ -49,7 +49,7 @@ class Main extends React.Component {
 
   filterFoodCategory = name => {
     const categoryItems = this.state.productSortList.filter(items => {
-      return items.category.includes(name);
+      return items.category_id.toString().includes(name);
     });
 
     this.setState({
@@ -59,7 +59,7 @@ class Main extends React.Component {
 
   filterRecipeCategory = name => {
     const categoryItems = this.state.recipeSortList.filter(items => {
-      return items.category.includes(name);
+      return items.category_id.toString().includes(name);
     });
 
     this.setState({

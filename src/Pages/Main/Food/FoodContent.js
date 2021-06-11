@@ -31,8 +31,8 @@ class FoodContent extends React.Component {
         <div className="food-info">
           <h2>{ingredients.name}</h2>
           <p>
-            <span className="discount">43%</span>
-            <span>{ingredients.price}원</span>
+            <span className="discount">0%</span>
+            <span>{Math.floor(ingredients.price).toLocaleString()}원</span>
           </p>
         </div>
       </div>
