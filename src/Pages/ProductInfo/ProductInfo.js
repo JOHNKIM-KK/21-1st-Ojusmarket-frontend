@@ -3,6 +3,7 @@ import Header from '../../Component/HeaderComponent/Header';
 import Footer from '../../Component/FooterComponent/Footer';
 import ProductDetail from './ProductDetail';
 import './ProductInfo.scss';
+import RelatedList from './RelatedList';
 
 class ProductInfo extends React.Component {
   constructor() {
@@ -50,19 +51,14 @@ class ProductInfo extends React.Component {
               <img className="image" src={infoData.image_url} />
               <div className="slide-container">
                 <span className="related">연관요리</span>
-                <div className="slide-box">
-                  <div className="dummy-image">
-                    <div className="dum-img"></div>
-                    <span className="imageName">상품정보</span>
-                  </div>
-                  <div className="dummy-image">
-                    <div className="dum-img"></div>
-                    <span className="imageName">상품정보</span>
-                  </div>
-                  <div className="dummy-image">
-                    <div className="dum-img"></div>
-                    <span className="imageName">상품정보</span>
-                  </div>
+                <div className="related-list">
+                  {infoData.related.map(list => (
+                    <RelatedList
+                      key={list.id}
+                      name={list.name}
+                      image={list.image}
+                    />
+                  ))}
                 </div>
               </div>
             </div>
