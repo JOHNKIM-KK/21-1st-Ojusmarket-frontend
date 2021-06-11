@@ -12,7 +12,6 @@ class FoodContent extends React.Component {
     };
     const { ingredients } = this.props;
     const labelName = ingredients.storage;
-    console.log(ingredients);
     return (
       <div className="food">
         <img alt="제품사진" src={ingredients.image_url} />
