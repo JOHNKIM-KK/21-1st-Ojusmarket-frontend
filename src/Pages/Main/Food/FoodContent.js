@@ -1,23 +1,22 @@
 import React from 'react';
 
-class FoodContent extends React.Component {
-  componentDidMount() {}
+const label_color = {
+  냉장: '#686de0',
+  냉동: '#7ed6df',
+  실온: '#f0932b',
+  싱싱: '#badc58',
+};
 
+class FoodContent extends React.Component {
   render() {
-    const labelColor = {
-      냉장: '#686de0',
-      냉동: '#7ed6df',
-      실온: '#f0932b',
-      싱싱: '#badc58',
-    };
     const { ingredients } = this.props;
     const labelName = ingredients.storage;
     return (
-      <div className="food">
+      <div className="food-content">
         <img alt="제품사진" src={ingredients.image_url} />
         <div
           className="storage-label"
-          style={{ backgroundColor: labelColor[labelName] }}
+          style={{ backgroundColor: label_color[labelName] }}
         >
           <span>{ingredients.storage}</span>
         </div>

@@ -10,45 +10,84 @@ class Main extends React.Component {
   constructor() {
     super();
     this.state = {
-      isChangeTap: 0,
-      isProductList: [],
-      // isRecipeList: [],
+      changeTap: 0,
+      productList: [],
+      productSortList: [],
+      recipeList: [],
+      recipeSortList: [],
       storageLabel: '',
+      slideImgList: [],
     };
   }
 
   handleTap = id => {
     this.setState({
-      isChangeTap: id,
+      changeTap: id,
     });
   };
 
   componentDidMount() {
-    fetch('./data/mainData.json')
+    fetch('/data/mainData.json')
       .then(res => res.json())
       .then(data => {
         this.setState({
-          isProductList: data.ingredients,
-          isRecipeList: data.recipe,
+          productList: data.ingredients,
+          productSortList: data.ingredients,
+          recipeList: data.recipe,
+          recipeSortList: data.recipe,
+        });
+      });
+
+    fetch('/data/SlideData.json')
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          slideImgList: data.slideImg,
         });
       });
   }
+
+  filterFoodCategory = name => {
+    const categoryItems = this.state.productSortList.filter(items => {
+      return items.category.includes(name);
+    });
+
+    this.setState({
+      productList: categoryItems,
+    });
+  };
+
+  filterRecipeCategory = name => {
+    const categoryItems = this.state.recipeSortList.filter(items => {
+      return items.category.includes(name);
+    });
+
+    this.setState({
+      recipeList: categoryItems,
+    });
+  };
 
   render() {
     const tab = {
       0: (
         <Food
-          isProductList={this.state.isProductList}
+          productList={this.state.productList}
           storageLabel={this.state.storageLabel}
+          filterFoodCategory={this.filterFoodCategory}
         />
       ),
-      1: <Recipe isRecipeList={this.state.isRecipeList} />,
+      1: (
+        <Recipe
+          recipeList={this.state.recipeList}
+          filterRecipeCategory={this.filterRecipeCategory}
+        />
+      ),
     };
     return (
       <>
         <Header />
         <div className="main">
-          <Slider />
+          <Slider slideImgList={this.state.slideImgList} />
           <div>
             <div className="product-container">
               <div className="product-selection">
@@ -60,7 +99,7 @@ class Main extends React.Component {
                 </div>
               </div>
             </div>
-            <div>{tab[this.state.isChangeTap]}</div>
+            <div>{tab[this.state.changeTap]}</div>
           </div>
         </div>
         <Footer />
