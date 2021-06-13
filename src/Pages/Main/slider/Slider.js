@@ -41,7 +41,7 @@ class Slider extends React.Component {
           indexCount: this.state.indexCount - 1,
         });
       }
-    }, 8000);
+    }, 4000);
   }
 
   componentWillMount() {
