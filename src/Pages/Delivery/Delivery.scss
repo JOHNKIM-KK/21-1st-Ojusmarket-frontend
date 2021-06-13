@@ -10,7 +10,6 @@
   .delivery-container {
     height: 100vh;
     width: 1024px;
-    border: 2px solid red;
 
     .delivery-header {
       display: flex;
@@ -25,7 +24,9 @@
       }
       div {
         display: flex;
-
+        .location {
+          color: $o-green;
+        }
         span {
           font-size: 16px;
         }
@@ -71,16 +72,21 @@
           margin: 20px;
           font-size: 20px;
 
-          input[type='radio'] {
-            height: 20px;
-            width: 20px;
-            margin-right: 8px;
-            background-color: green;
+          label {
+            display: flex;
+            align-items: center;
+            input[type='radio'] {
+              height: 20px;
+              width: 20px;
+              margin-right: 8px;
+              background-color: green;
+            }
           }
         }
       }
       .address-info {
         width: 500px;
+        margin-bottom: 120px;
         padding-left: 20px;
 
         input {
@@ -120,6 +126,175 @@
             }
           }
         }
+      }
+      .delivery-type {
+        display: flex;
+        align-items: center;
+        height: 70px;
+        margin-bottom: 80px;
+        padding-left: 20px;
+        border-bottom: 2px solid #f6f6f6;
+
+        label {
+          display: flex;
+          align-items: center;
+          font-size: 18px;
+
+          input[type='radio'] {
+            height: 20px;
+            width: 20px;
+            margin: 0 8px 0 0;
+            background-color: green;
+          }
+        }
+      }
+      .choose-package {
+        .package-header {
+          display: flex;
+          align-items: center;
+          height: 70px;
+          padding-left: 20px;
+          border-bottom: 2px solid #f6f6f6;
+          span {
+            font-size: 18px;
+            font-weight: 700;
+            color: $o-green;
+          }
+        }
+
+        .package-option {
+          display: flex;
+          flex-direction: column;
+          height: 225px;
+          border-bottom: 2px solid #f6f6f6;
+
+          label {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+            padding-left: 20px;
+            font-size: 18px;
+
+            input[type='radio'] {
+              height: 20px;
+              width: 20px;
+              margin: 0 8px 0 0;
+              background-color: green;
+            }
+
+            span {
+              color: $dark-gray;
+            }
+          }
+        }
+      }
+      .package-recall {
+        font-size: 18px;
+        padding: 0px 20px;
+        h4 {
+          margin-top: 45px;
+          font-weight: 700;
+          span {
+            color: #e81616;
+          }
+        }
+        p {
+          margin: 25px 0 10px 0;
+        }
+      }
+      .corona-notice {
+        height: 217px;
+        margin-bottom: 90px;
+        padding: 30px 15px 10px 15px;
+        border-radius: 20px;
+        background-color: #ecf2e5;
+
+        .notice-header {
+          display: flex;
+          align-items: center;
+          color: $o-green;
+
+          .notice-image {
+            @include flexCenter;
+            height: 30px;
+            width: 30px;
+            margin-right: 7px;
+            background-color: #fff;
+            border-radius: 50%;
+            i {
+              font-size: 18px;
+            }
+          }
+
+          h5 {
+            font-size: 24px;
+            font-weight: 700;
+          }
+        }
+
+        .notice-contents {
+          p {
+            margin: 20px 50px 0px 50px;
+          }
+        }
+      }
+      .order-title {
+        display: flex;
+        flex-direction: column;
+        padding: 20px 0 0 20px;
+        font-size: 18px;
+
+        span {
+          margin-right: 20px;
+        }
+
+        .option-container {
+          display: flex;
+          align-items: center;
+
+          span {
+            color: $black;
+          }
+
+          select {
+            height: 35px;
+            width: 500px;
+            padding-left: 20px;
+            border: 1px solid $ligth-gray;
+            color: #828282;
+            border-radius: 5px;
+          }
+        }
+
+        .order-message {
+          margin: 20px 0 0 98px;
+          input {
+            height: 52px;
+            width: 500px;
+          }
+
+          p {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #828282;
+          }
+        }
+      }
+    }
+
+    .submit {
+      display: flex;
+      justify-content: center;
+      margin-top: 65px;
+
+      button {
+        height: 50px;
+        width: 400px;
+        background-color: $o-green;
+        border: none;
+        border-radius: 5px;
+        font-size: 18px;
+        color: #fff;
       }
     }
   }
