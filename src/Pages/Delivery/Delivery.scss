@@ -63,6 +63,7 @@
     .address {
       .address-selection {
         display: flex;
+        border-bottom: 2px solid #f6f6f6;
 
         div {
           display: flex;
@@ -75,6 +76,48 @@
             width: 20px;
             margin-right: 8px;
             background-color: green;
+          }
+        }
+      }
+      .address-info {
+        width: 500px;
+        padding-left: 20px;
+
+        input {
+          height: 50px;
+          margin-top: 25px;
+        }
+        .user-info {
+          display: flex;
+          flex-direction: column;
+        }
+        .address-input {
+          .address-zip {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            input {
+              width: 100px;
+            }
+
+            button {
+              height: 50px;
+              width: 100px;
+              margin: 25px 0 0 20px;
+              border: none;
+              border-radius: 5px;
+              font-size: 18px;
+            }
+          }
+
+          .detailed-address {
+            display: flex;
+            flex-direction: column;
+
+            span {
+              margin-top: 25px;
+              font-size: 18px;
+            }
           }
         }
       }
