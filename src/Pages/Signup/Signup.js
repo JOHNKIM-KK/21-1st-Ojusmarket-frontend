@@ -14,14 +14,14 @@ class Signup extends Component {
       disabled: true,
       background: '#d2f7d2',
       password: '',
-      repassword: '',
+      rePassword: '',
       isAvailedPassword: '',
       name: '',
       phone: '',
       isAvailedPhone: '',
       email: '',
       isAvailedEmail: '',
-      // address: '서울시',
+      address: '',
       // zoneCode: '',
       firstAddress: '',
       secondAddress: '',
@@ -65,15 +65,27 @@ class Signup extends Component {
 
       .then(result => {
         console.log('결과: ', result);
-        // if (result.message === 'SUCCESS') {
-        //   this.props.history.push('/login');
-        // } else if (result.message === 'IDENTITY_ALREADY_EXISTS') {
-        //   this.setState({ isAvailedId: '이미 존재하는 아이디 입니다.' });
-        // }
+        if (result.message === 'SUCCESS') {
+          alert('사용 가능한 아이디 입니다.');
+        } else if (result.message === 'IDENTITY_ALREADY_EXISTS') {
+          alert('이미 존재하는 아이디 입니다.');
+          this.setState({ identity: '' });
+        }
       });
   };
 
-  //pw 일치여부확인
+  //pw 유효성검사 (알림창띄우기)
+  pwCheck = e => {
+    const pwreg =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,18}/g;
+    let userPw = e.target.value;
+    this.setState({ password: e.target.value });
+
+    if (false === pwreg.test(userPw)) {
+      alert('다시 입력해주세요. (대소문자,숫자,특수문자 모두 포함 8~18자)');
+    }
+  };
+  //pw 중복체크
   handleConfirmPassword = e => {
     this.setState({
       [e.target.name]: e.target.value,
@@ -92,7 +104,7 @@ class Signup extends Component {
       });
     }
   };
-  // repw 일치여부 확인
+
   handleConfirmrePassword = e => {
     this.setState({
       [e.target.name]: e.target.value,
@@ -108,12 +120,11 @@ class Signup extends Component {
     } else if (e.target.value === this.state.password) {
       this.setState({
         isAvailedPassword: '',
-        //keyup이벤트 추가(value값 초기화)
       });
     }
   };
 
-  //name ,상세주소 phone value값 지정 ,  phone  검사
+  //name ,address, phone value값 지정 ,  phone  검사
   handleOnChange = e => {
     this.setState(
       {
@@ -124,6 +135,10 @@ class Signup extends Component {
           this.PhoneCheck();
 
           return;
+        } else if (e.target.name === 'secondAddress') {
+          this.setState({
+            address: this.state.firstAddress + this.state.secondAddress,
+          });
         }
       }
     );
@@ -135,7 +150,7 @@ class Signup extends Component {
     this.setState({ phone: userPhone });
 
     if (false === phonereg.test(userPhone)) {
-      this.setState({ isAvailedPhone: '휴대폰 11자리 입력해주세요' });
+      this.setState({ isAvailedPhone: '휴대폰번호 10~11자리 입력해주세요' });
     } else {
       this.setState({ isAvailedPhone: '' });
     }
@@ -181,16 +196,17 @@ class Signup extends Component {
     let AllAddress = data.address;
     let extraAddress = '';
     // let zoneCodes = data.zonecode;
-
     if (data.addressType === 'R') {
-      if (data.bname !== '') {
+      if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
         extraAddress += data.bname;
       }
       if (data.buildingName !== '') {
+        //공동주택제한일 경우 if안에  && data.apartment === 'Y' 추가
         extraAddress +=
-          extraAddress !== '' ? `, ${data.buildingName}` : data.buildingName;
+          extraAddress !== '' ? ', ' + data.buildingName : data.buildingName;
+        // extraAddress !== '' ? `, ${data.buildingName}` : data.buildingName;
       }
-      AllAddress += extraAddress !== '' ? ` (${extraAddress})` : '';
+      AllAddress += extraAddress !== '' ? `(${extraAddress})` : ''; //템플릿 리터럴 표현
     }
     this.setState({
       firstAddress: AllAddress,
@@ -200,7 +216,6 @@ class Signup extends Component {
   //회원가입버튼
   signUpSummit = e => {
     e.preventDefault();
-
     if (this.state.identity === '') {
       alert('아이디를 입력해주세요');
     } else if (this.state.password === '') {
@@ -221,11 +236,9 @@ class Signup extends Component {
   //백엔드 통신
   clickSignup = e => {
     e.preventDefault();
-
     // const { identity, password, name, phone, email, address } = this.state;
   };
   clickSignup = e => {
-    console.log(this.state.address);
     fetch('http://10.58.2.234:8000/user/sign-up', {
       method: 'POST',
       body: JSON.stringify({
@@ -234,33 +247,31 @@ class Signup extends Component {
         name: this.state.name,
         phone: this.state.phone,
         email: this.state.email,
-        address: this.state.firstAddress + this.state.secondAddress,
+        address: this.state.address,
       }),
     })
       .then(response => response.json())
       .then(result => {
         console.log('결과: ', result);
-        // if (result.message === 'SUCCESS') {
-        //   this.props.history.push('/login');
-        // } else if (result.message === 'IDENTITY_ALREADY_EXISTS') {
-        //   this.setState({ isAvailedId: '이미 존재하는 아이디 입니다.' });
-        // }
+        if (result.message === 'SUCCESS') {
+          alert('가입을 축하드립니다.');
+          this.props.history.push('/login');
+        } else if (result.message === 'IDENTITY_ALREADY_EXISTS') {
+          this.setState({ isAvailedId: '입력값을 확인해주세요' });
+        }
       });
   };
 
   render() {
-    // const { isModalShow, isModalClose } = this.props;
-    const { isDaumPost, firstAddress } = this.state; //name, phone, email, address,
-    // DaumPostCode style
-    const width = 505;
-    const height = 420;
+    // const { isModalOpen, isModalClose } = this.props;
+    const { isDaumPost, firstAddress } = this.state; //identity, password, name, phone, email, address,
+    // 주소창 style
+    const width = 600;
+    const height = 450;
     const modalStyle = {
       position: 'absolute',
-      // top: 0,
-      // left: '-178px',
       zIndex: '100',
       border: '1px solid #333333',
-      // overflow: 'hidden',
     };
     return (
       <div>
@@ -303,6 +314,7 @@ class Signup extends Component {
                 <input
                   id="password"
                   name="password"
+                  onBlur={this.pwCheck}
                   onChange={this.handleConfirmPassword}
                   type="password"
                   placeholder="비밀번호 (8~18 자, 대소문자 숫자 특수문자 모두 포함)"
@@ -375,16 +387,8 @@ class Signup extends Component {
                     placeholder="상세주소"
                     className="second_Address"
                     onChange={this.handleOnChange}
-                    // onKeyUp={this.handleInput}
                   />
                 </div>
-              </div>
-              <div>
-                <img
-                  classname="recom_Img"
-                  alt="가입혜택"
-                  src="/images/recom.png"
-                />
               </div>
 
               <div className="finish">
