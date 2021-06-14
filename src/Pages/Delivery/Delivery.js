@@ -5,8 +5,8 @@ class Delivery extends React.Component {
   constructor() {
     super();
     this.state = {
-      UserName: '',
-      UserPhone: '',
+      userName: '',
+      userPhone: '',
     };
   }
   render() {
