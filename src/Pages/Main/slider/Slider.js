@@ -41,16 +41,10 @@ class Slider extends React.Component {
           indexCount: this.state.indexCount - 1,
         });
       }
-    }, 4000);
+    }, 3000);
   }
 
-  componentWillMount() {
-    clearInterval(this.autoSlide);
-  }
-
-  render() {
-    console.log(this.state.indexCount);
-    //딜레이 오류를 막기위해 렌더로 내렸음
+  componentDidUpdate() {
     if (this.state.TransformImg === -600) {
       console.log(this.state.TransformImg);
       setTimeout(() => {
@@ -71,6 +65,16 @@ class Slider extends React.Component {
         });
       }, 1000);
     }
+  }
+
+  componentWillMount() {
+    clearInterval(this.autoSlide);
+  }
+
+  render() {
+    console.log(this.state.indexCount);
+    //딜레이 오류를 막기위해 렌더로 내렸음
+
     const count = this.state.TransformImg;
 
     return (
