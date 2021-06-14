@@ -5,11 +5,32 @@ class Delivery extends React.Component {
   constructor() {
     super();
     this.state = {
-      userName: '',
-      userPhone: '',
+      senderName: '',
+      senderPhone: '',
+      userAddress: '',
     };
   }
+
+  handleChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  componentDidMount() {
+    fetch('/data/userData.json')
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          userName: data.userName,
+          userPhone: data.userPhone,
+          userAddress: data.userAddress,
+        });
+      });
+  }
+
   render() {
+    console.log(this.state.userName);
     return (
       <div className="delivery">
         <div className="delivery-container">
@@ -29,11 +50,21 @@ class Delivery extends React.Component {
           <div className="user-info-container">
             <div>
               <label htmlFor="orderUserName">보내시는 분</label>
-              <input id="orderUserName" name="orderUserName"></input>
+              <input
+                id="senderName"
+                name="userName"
+                value={this.state.userName}
+                onChange={this.handleChange}
+              ></input>
             </div>
             <div>
               <label htmlFor="orderUserPhone">연락처</label>
-              <input id="orderUserPhone" name="orderUserPhone"></input>
+              <input
+                id="senderPhone"
+                name="userPhone"
+                value={this.state.userPhone}
+                onChange={this.handleChange}
+              ></input>
             </div>
           </div>
 
@@ -74,7 +105,7 @@ class Delivery extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="head-line">
+            {/* <div className="head-line">
               <span>&#42;배송방법 선택</span>
             </div>
             <div className="delivery-type">
@@ -107,7 +138,7 @@ class Delivery extends React.Component {
                   <span>보냉재 더 추가 포장 (보냉재를 넉넉히 사용)</span>
                 </label>
               </div>
-            </div>
+            </div> */}
             <div className="package-recall">
               <h4>
                 포장재 회수 요청
@@ -137,11 +168,11 @@ class Delivery extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="head-line">
+            {/* <div className="head-line">
               <span>&#42;배송 요청사항</span>
-            </div>
+            </div> */}
             <div className="order-title">
-              <div className="option-container">
+              {/* <div className="option-container">
                 <span>배송메세지</span>
                 <select>
                   <option>직접입력</option>
@@ -156,10 +187,10 @@ class Delivery extends React.Component {
                   매장에서 산지로 주문하는 경우 영수증번호와 주문시간을 입력해
                   주세요.
                 </p>
-              </div>
-              <div className="submit">
-                <button>주문서 작성 완료</button>
-              </div>
+              </div> */}
+            </div>
+            <div className="submit">
+              <button>주문서 작성 완료</button>
             </div>
           </div>
         </div>

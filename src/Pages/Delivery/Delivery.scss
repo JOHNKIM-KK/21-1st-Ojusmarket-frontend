@@ -8,7 +8,6 @@
   }
 
   .delivery-container {
-    height: 100vh;
     width: 1024px;
 
     .delivery-header {
@@ -58,6 +57,9 @@
         input {
           height: 50px;
           width: 250px;
+          padding-left: 20px;
+          font-size: 15px;
+          color: #666666;
         }
       }
     }
@@ -204,7 +206,7 @@
       }
       .corona-notice {
         height: 217px;
-        margin-bottom: 90px;
+        margin-bottom: 50px;
         padding: 30px 15px 10px 15px;
         border-radius: 20px;
         background-color: #ecf2e5;
@@ -285,7 +287,7 @@
     .submit {
       display: flex;
       justify-content: center;
-      margin-top: 65px;
+      margin: 20px 0 70px 0;
 
       button {
         height: 50px;
@@ -295,6 +297,10 @@
         border-radius: 5px;
         font-size: 18px;
         color: #fff;
+
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
   }
