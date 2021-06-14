@@ -27,6 +27,10 @@
         color: $o-green;
 
         i {
+          color: $ligth-gray;
+        }
+
+        .checked {
           color: $o-green;
         }
       }
@@ -87,6 +91,7 @@
         all: unset;
         margin-right: 10px;
         cursor: pointer;
+        z-index: 2;
       }
     }
   }

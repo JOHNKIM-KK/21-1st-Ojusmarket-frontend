@@ -2,10 +2,6 @@ import React from 'react';
 import './CartItem.scss';
 
 class CartItem extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const {
       id,
@@ -13,7 +9,6 @@ class CartItem extends React.Component {
       image,
       quantity,
       price,
-      isChecked,
       selectedArr,
       handleQuantity,
       removeCartItem,
@@ -23,15 +18,11 @@ class CartItem extends React.Component {
       <li className="cart-item">
         <div>
           <div className="cart-item__info">
-            <button onClick={handleIsChecked}>
+            <button onClick={() => handleIsChecked(id)}>
               <i
-                id={id}
-                style={
-                  selectedArr.includes(id)
-                    ? { color: `#6ca437` }
-                    : { color: `#dbdbdb` }
-                }
-                className="fas fa-check-circle fa-lg"
+                className={`fas fa-check-circle fa-lg ${
+                  selectedArr[id] ? `checked` : ``
+                }`}
               />
             </button>
             <img className="item-image" src={image} alt="상품이미지" />
@@ -42,7 +33,7 @@ class CartItem extends React.Component {
           <div className="cart-button__container">
             <div className="item-button__box">
               <button
-                id={id}
+                value={id}
                 className="quantity-minus"
                 onClick={handleQuantity}
               >
@@ -50,7 +41,7 @@ class CartItem extends React.Component {
               </button>
               <span>{quantity}</span>
               <button
-                id={id}
+                value={id}
                 className="quantity-plus"
                 onClick={handleQuantity}
               >
@@ -61,8 +52,8 @@ class CartItem extends React.Component {
               <span>{(price * quantity).toLocaleString()}</span>
               <span>원</span>
             </div>
-            <button className="item-delete" onClick={removeCartItem}>
-              <i id={id} className="fas fa-times fa-lg" />
+            <button className="item-delete" onClick={() => removeCartItem(id)}>
+              <i className="fas fa-times fa-lg" />
             </button>
           </div>
         </div>
