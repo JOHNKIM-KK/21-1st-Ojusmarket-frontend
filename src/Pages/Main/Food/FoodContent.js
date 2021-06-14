@@ -1,6 +1,6 @@
 import React from 'react';
 
-const label_color = {
+const LABEL_COLOR = {
   냉장: '#686de0',
   냉동: '#7ed6df',
   실온: '#f0932b',
@@ -9,16 +9,16 @@ const label_color = {
 
 class FoodContent extends React.Component {
   render() {
-    const { ingredients } = this.props;
-    const labelName = ingredients.storage;
+    const { image_url, storage, price, name } = this.props.ingredients;
+    const labelName = storage;
     return (
       <div className="food-content">
-        <img alt="제품사진" src={ingredients.image_url} />
+        <img alt="제품사진" src={image_url} />
         <div
           className="storage-label"
-          style={{ backgroundColor: label_color[labelName] }}
+          style={{ backgroundColor: LABEL_COLOR[labelName] }}
         >
-          <span>{ingredients.storage}</span>
+          <span>{storage}</span>
         </div>
         <div className="hover-btn">
           <button>
@@ -29,10 +29,10 @@ class FoodContent extends React.Component {
           </button>
         </div>
         <div className="food-info">
-          <h2>{ingredients.name}</h2>
+          <p className="delivery-label">오아시스배송</p>
+          <h2>{name}</h2>
           <p>
-            <span className="discount">0%</span>
-            <span>{Math.floor(ingredients.price).toLocaleString()}원</span>
+            <span>{Math.floor(price).toLocaleString()}원</span>
           </p>
         </div>
       </div>

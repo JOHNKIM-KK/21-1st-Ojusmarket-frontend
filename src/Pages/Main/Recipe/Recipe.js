@@ -13,22 +13,24 @@ class Recipe extends React.Component {
               <button>전체보기</button>
             </li>
             <li>
-              <button onClick={() => filterRecipeCategory('1')}>
+              <button onClick={filterRecipeCategory} value={'1'}>
                 국/찌개/전골
               </button>
             </li>
             <li>
-              <button onClick={() => filterRecipeCategory('2')}>
+              <button onClick={filterRecipeCategory} value={'2'}>
                 반찬/김치
               </button>
             </li>
             <li>
-              <button onClick={() => filterRecipeCategory('3')}>
+              <button onClick={filterRecipeCategory} value={'3'}>
                 면류/파스타
               </button>
             </li>
             <li>
-              <button onClick={() => filterRecipeCategory('4')}>베이킹</button>
+              <button onClick={filterRecipeCategory} value={'4'}>
+                베이킹
+              </button>
             </li>
           </ul>
         </div>

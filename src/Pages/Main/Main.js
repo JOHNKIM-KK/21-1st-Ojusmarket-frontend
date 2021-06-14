@@ -1,4 +1,5 @@
 import React from 'react';
+import { GET_PRODUCT_API } from '../../Utill/config';
 import Header from '../../Component/HeaderComponent/Header';
 import Slider from './slider/Slider';
 import Food from './Food/Food';
@@ -27,12 +28,13 @@ class Main extends React.Component {
   };
 
   componentDidMount() {
-    fetch('http://10.58.6.155:8000/ingredient/main')
+    // fetch(`${GET_PRODUCT_API}`)
+    fetch('/data/MainData.json')
       .then(res => res.json())
       .then(data => {
         this.setState({
-          productList: data.ingredient,
-          productSortList: data.ingredient,
+          productList: data.ingredients,
+          productSortList: data.ingredients,
           recipeList: data.recipe,
           recipeSortList: data.recipe,
         });
@@ -47,9 +49,9 @@ class Main extends React.Component {
       });
   }
 
-  filterFoodCategory = name => {
+  filterFoodCategory = e => {
     const categoryItems = this.state.productSortList.filter(items => {
-      return items.category_id.toString().includes(name);
+      return items.category_id.toString().includes(e.target.value);
     });
 
     this.setState({
@@ -57,9 +59,9 @@ class Main extends React.Component {
     });
   };
 
-  filterRecipeCategory = name => {
+  filterRecipeCategory = e => {
     const categoryItems = this.state.recipeSortList.filter(items => {
-      return items.category_id.toString().includes(name);
+      return items.category_id.toString().includes(e.target.value);
     });
 
     this.setState({
@@ -71,6 +73,7 @@ class Main extends React.Component {
     const tab = {
       0: (
         <Food
+          productSortList={this.state.productSortList}
           productList={this.state.productList}
           storageLabel={this.state.storageLabel}
           filterFoodCategory={this.filterFoodCategory}
@@ -78,6 +81,7 @@ class Main extends React.Component {
       ),
       1: (
         <Recipe
+          recipeSortList={this.state.recipeSortList}
           recipeList={this.state.recipeList}
           filterRecipeCategory={this.filterRecipeCategory}
         />
