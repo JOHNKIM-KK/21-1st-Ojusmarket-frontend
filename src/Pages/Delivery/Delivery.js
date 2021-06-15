@@ -165,27 +165,6 @@ class Delivery extends React.Component {
                 </div>
               </div>
             </div>
-            {/* <div className="head-line">
-              <span>&#42;배송 요청사항</span>
-            </div> */}
-            <div className="order-title">
-              {/* <div className="option-container">
-                <span>배송메세지</span>
-                <select>
-                  <option>직접입력</option>
-                  <option>배송 전, 연락바랍니다.</option>
-                  <option>부재시, 전화 또는 문자 주세요.</option>
-                  <option>부재시, 경비실에 맡겨주세요.</option>
-                </select>
-              </div>
-              <div className="order-message">
-                <input></input>
-                <p>
-                  매장에서 산지로 주문하는 경우 영수증번호와 주문시간을 입력해
-                  주세요.
-                </p>
-              </div> */}
-            </div>
             <div className="submit">
               <button>주문서 작성 완료</button>
             </div>
