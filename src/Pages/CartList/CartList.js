@@ -51,9 +51,10 @@ class CartList extends React.Component {
     const { selectedArr } = this.state;
     for (let i of selectedArr) {
       if (!i) {
-        return false;
+        return true;
       }
     }
+    return false;
   };
 
   removeCartItem = id => {
@@ -81,8 +82,25 @@ class CartList extends React.Component {
 
   selectAll = () => {
     const { selectedArr } = this.state;
-    console.log(selectedArr);
-    console.log(Array(selectedArr.lenth).fill(this.isCheckArr()));
+    const newCheckArr = Array(selectedArr.length).fill(this.isCheckArr());
+    this.setState({ selectedArr: newCheckArr });
+  };
+
+  selectDelete = () => {
+    const { cartData, selectedArr } = this.state;
+    const checkedArr = [];
+    let idx = selectedArr.indexOf(true);
+    while (idx !== -1) {
+      checkedArr.push(idx);
+      idx = selectedArr.indexOf(true, idx + 1);
+    }
+    const newCheckedArr = cartData.filter((_, index) => {
+      return !checkedArr.includes(index);
+    });
+    this.setState({
+      cartData: newCheckedArr,
+      selectedArr: Array(newCheckedArr.length).fill(false),
+    });
   };
 
   render() {
@@ -115,10 +133,16 @@ class CartList extends React.Component {
               </div>
               <div className="select-item__container">
                 <button className="select-all" onClick={this.selectAll}>
-                  <i className="fas fa-check-circle fa-lg" />
+                  <i
+                    className={`fas fa-check-circle fa-lg ${
+                      this.isCheckArr() ? `` : 'select-all__btn'
+                    }`}
+                  />
                   전체선택
                 </button>
-                <button className="select-delete">선택삭제</button>
+                <button className="select-delete" onClick={this.selectDelete}>
+                  선택삭제
+                </button>
               </div>
               <div className="cart-item__container">
                 <ul className="cart-item__list">
