@@ -1,26 +1,27 @@
 import React, { Component } from 'react';
-import './Signup.scss';
 import Header from '../../Component/HeaderComponent/Header';
 import Footer from '../../Component/FooterComponent/Footer';
 import DaumPostCode from 'react-daum-postcode';
+import './Signup.scss';
+import '../../Styles/Common.scss';
 
 class Signup extends Component {
   constructor(props) {
     super(props);
     this.state = {
       identity: '',
-      isAvailedId: '',
-      idChecked: false,
-      disabled: true,
+      // isAvailedId: '',
+      // idChecked: false,
+      // disabled: true,
       background: '#d2f7d2',
       password: '',
       rePassword: '',
       isAvailedPassword: '',
       name: '',
       phone: '',
-      isAvailedPhone: '',
+      // isAvailedPhone: '',
       email: '',
-      isAvailedEmail: '',
+      // isAvailedEmail: '',
       address: '',
       // zoneCode: '',
       firstAddress: '',
@@ -31,29 +32,12 @@ class Signup extends Component {
 
   //id 요휴성검사
   idCheck = e => {
-    const idreg = /^[a-z0-9]{5,15}/g;
-    let userId = e.target.value;
     this.setState({ identity: e.target.value });
+  };
 
-    if (false === idreg.test(userId)) {
-      this.setState(
-        { isAvailedId: '올바른 아이디 형식이 아닙니다.', idChecked: false },
-        () => this.btnChangeColor()
-      );
-    } else {
-      this.setState({ isAvailedId: '', idChecked: true }, () =>
-        this.btnChangeColor()
-      );
-    }
-  };
-  //id 버튼활성화
-  btnChangeColor = () => {
-    this.state.idChecked
-      ? this.setState({ background: '#6ca437', disabled: false })
-      : this.setState({ background: '#d2f7d2', disabled: true });
-  };
   //id 중복체크
-  rightId = e => {
+  checkDuplicateId = e => {
+    console.log('a');
     e.preventDefault();
     fetch('http://10.58.2.234:8000/user/id-check', {
       method: 'POST',
@@ -87,45 +71,27 @@ class Signup extends Component {
   };
   //pw 중복체크
   handleConfirmPassword = e => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
-    if (e.target.value !== this.state.rePassword) {
-      this.setState({
-        isAvailedPassword: '비밀번호가 일치하지 않습니다.',
-      });
-    } else if (e.target.value === '') {
-      this.setState({
-        isAvailedPassword: '',
-      });
-    } else if (e.target.value === this.state.rePassword) {
-      this.setState({
-        isAvailedPassword: '',
-      });
-    }
-  };
+    this.setState(
+      {
+        [e.target.name]: e.target.value,
+      },
+      () => {
+        const { password, rePassword } = this.state;
 
-  handleConfirmrePassword = e => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
-    if (e.target.value !== this.state.password) {
-      this.setState({
-        isAvailedPassword: '비밀번호가 일치하지 않습니다.',
-      });
-    } else if (e.target.value === '') {
-      this.setState({
-        isAvailedPassword: '',
-      });
-    } else if (e.target.value === this.state.password) {
-      this.setState({
-        isAvailedPassword: '',
-      });
-    }
+        let isAvailedPassword = '';
+
+        if (e.target.value) {
+          isAvailedPassword =
+            password === rePassword ? '' : '비밀번호가 일치하지 않습니다.';
+        }
+
+        this.setState({ isAvailedPassword });
+      }
+    );
   };
 
   //name ,address, phone value값 지정 ,  phone  검사
-  handleOnChange = e => {
+  handleInputChange = e => {
     this.setState(
       {
         [e.target.name]: e.target.value,
@@ -170,21 +136,6 @@ class Signup extends Component {
     }
   };
 
-  // blur = e => {
-  //   this.setState({ email: e.target.value });
-  //   this.state.email &&
-  //     this.setState({
-  //       email: e.target.value,
-  //       isAvailedEmail: '',
-  //     });
-  // } else {
-  //   this.setState({
-  //     email: '',
-  //     isAvailedEmail: '이메일 형식이 맞지 않습니다.',
-  //   });
-  // }
-  // };
-
   //주소
   handleOpenPost = () => {
     this.setState({
@@ -193,7 +144,7 @@ class Signup extends Component {
   };
   // daum api 불러오기
   handleAddress = data => {
-    let AllAddress = data.address;
+    let allAddress = data.address;
     let extraAddress = '';
     // let zoneCodes = data.zonecode;
     if (data.addressType === 'R') {
@@ -206,10 +157,10 @@ class Signup extends Component {
           extraAddress !== '' ? ', ' + data.buildingName : data.buildingName;
         // extraAddress !== '' ? `, ${data.buildingName}` : data.buildingName;
       }
-      AllAddress += extraAddress !== '' ? `(${extraAddress})` : ''; //템플릿 리터럴 표현
+      allAddress += extraAddress !== '' ? `(${extraAddress})` : ''; //템플릿 리터럴 표현
     }
     this.setState({
-      firstAddress: AllAddress,
+      firstAddress: allAddress,
     });
   };
 
@@ -236,9 +187,6 @@ class Signup extends Component {
   //백엔드 통신
   clickSignup = e => {
     e.preventDefault();
-    // const { identity, password, name, phone, email, address } = this.state;
-  };
-  clickSignup = e => {
     fetch('http://10.58.2.234:8000/user/sign-up', {
       method: 'POST',
       body: JSON.stringify({
@@ -273,11 +221,17 @@ class Signup extends Component {
       zIndex: '100',
       border: '1px solid #333333',
     };
+    //id체크
+    const idreg = /^[a-z0-9]{5,15}/g;
+    const isIdValid = idreg.test(this.state.identity);
+    // validateId(this.state.identity); // true / false 을 반환한다.
+
     return (
       <div>
         <nav className="navi">
           <Header />
         </nav>
+        {/* <div className={isIdValid ? 'active' : 'inactive'} /> */}
         <div className="contents_All">
           <div className="img">
             <img src="/images/adlogo.png" alt="광고사진" className="a_Img" />
@@ -302,14 +256,20 @@ class Signup extends Component {
                 />
                 <button
                   className="btnId"
-                  style={{ backgroundColor: this.state.background }}
-                  disabled={this.state.disabled}
-                  onClick={this.rightId}
+                  style={{ backgroundColor: isIdValid ? '#6ca437' : '#d2f7d2' }}
+                  disabled={!isIdValid}
+                  onClick={this.checkDuplicateId}
                 >
                   중복체크
                 </button>
               </div>
-              <div className="errMsg">{this.state.isAvailedId}</div>
+
+              {!isIdValid ? (
+                <p className="errMsg">아이디 형식이 올바르지 않습니다.</p>
+              ) : (
+                <p className="errMsg"></p>
+              )}
+
               <div className="inputBox_Pw">
                 <input
                   id="password"
@@ -323,7 +283,7 @@ class Signup extends Component {
                 <input
                   id="rePassword"
                   name="rePassword"
-                  onChange={this.handleConfirmrePassword}
+                  onChange={this.handleConfirmPassword}
                   type="password"
                   placeholder="비밀번호확인"
                 />
@@ -333,14 +293,14 @@ class Signup extends Component {
                 <input
                   className="name"
                   name="name"
-                  onChange={this.handleOnChange}
+                  onChange={this.handleInputChange}
                   type="text"
                   placeholder="이름"
                 />
                 <input
                   className="phone"
                   name="phone"
-                  onChange={this.handleOnChange}
+                  onChange={this.handleInputChange}
                   type="number"
                   placeholder="휴대폰번호 (-제외 숫자만입력)"
                 />
@@ -386,7 +346,7 @@ class Signup extends Component {
                     name="secondAddress"
                     placeholder="상세주소"
                     className="second_Address"
-                    onChange={this.handleOnChange}
+                    onChange={this.handleInputChange}
                   />
                 </div>
               </div>
@@ -408,9 +368,8 @@ class Signup extends Component {
             </form>
           </article>
         </div>
-        <footer>
-          <Footer />
-        </footer>
+
+        <Footer />
       </div>
     );
   }

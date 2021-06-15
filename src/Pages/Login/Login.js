@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import Header from '../../Component/HeaderComponent/Header';
 import Footer from '../../Component/FooterComponent/Footer';
-
 import './Login.scss';
+import '../../Styles/Common.scss';
 
 class Login extends Component {
   constructor(props) {
@@ -11,29 +11,11 @@ class Login extends Component {
     this.state = {
       identity: '',
       password: '',
-      background: '#d2f7d2',
-      disabled: true,
-      idChecked: false,
-      pwChecked: false,
-      isAvailedInfo: '',
+      loginButtonBackground: '#d2f7d2',
+      isLoginButtonDisabled: true,
     };
   }
   //로그인 버튼활성화
-  // handleInputId = e => {
-  //   this.setState({ identity: e.target.value });
-  //   e.target.value.length > 4
-  //     ? this.setState({ idChecked: true }, () => this.btnChangeColor())
-  //     : this.setState({ idChecked: false }, () => this.btnChangeColor());
-  // };
-
-  // handleInputPw = e => {
-  //   this.setState({ password: e.target.value });
-  //   e.target.value.length > 7
-  //     ? this.setState({ password: e.target.value, pwChecked: true }, () =>
-  //         this.btnChangeColor()
-  //       )
-  //     : this.setState({ pwChecked: false }, () => this.btnChangeColor());
-  // };
   handleInput = e => {
     // input에 작성한 값
     this.setState({
@@ -41,26 +23,22 @@ class Login extends Component {
     });
   };
 
-  colorChange = () => {
-    if (this.state.identity.length > 4 && this.state.password.length > 4) {
+  changeLoginButtonColor = () => {
+    const isIdAndPasswordValid =
+      this.state.identity.length > 4 && this.state.password.length > 7;
+    if (isIdAndPasswordValid) {
       this.setState({
-        background: '#6ca437',
-        disabled: false,
+        loginButtonBackground: '#6ca437',
+        isLoginButtonDisabled: false,
       });
     } else {
       this.setState({
-        background: '#d2f7d2',
-        disabled: true,
+        loginButtonBackground: '#d2f7d2',
+        isLoginButtonDisabled: true,
       });
     }
   };
-  // if(validation = 'true')
 
-  // btnChangeColor = () => {
-  //   this.state.idChecked && this.state.pwChecked
-  //     ? this.setState({ background: '#6ca437', disabled: false })
-  //     : this.setState({ background: '#d2f7d2', disabled: true });
-  // };
   //버튼 이벤트 (백엔드 통신)
   goToMain = () => {
     fetch('http://10.58.7.179:8000/user/sign-in', {
@@ -85,72 +63,69 @@ class Login extends Component {
     this.props.history.push('/signup');
   };
   render() {
-    let validation =
-      this.state.identity.length > 4 && this.state.password.length > 4;
     return (
-      <div>
+      <div className="login">
         <nav className="navi">
           <Header />
         </nav>
         <div className="backgroundImg">
-          <body>
-            <div className="Login">
-              <div className="container">
-                <div className="inner">
-                  <header className="header">
-                    <h1>오아시스 로그인</h1>
-                  </header>
+          <div className="loginContent">
+            <div className="container">
+              <div className="inner">
+                <header className="header">
+                  <h1>오아시스 로그인</h1>
+                </header>
 
-                  <form className="form">
-                    <div className="input_box">
-                      <input
-                        id="id"
-                        onChange={this.handleInput}
-                        onKeyUp={this.colorChange}
-                        name="identity"
-                        type="text"
-                        placeholder="아이디"
-                      />
-                    </div>
-                    <div className="input_box">
-                      <input
-                        id="password"
-                        onChange={this.handleInput}
-                        onKeyUp={this.colorChange}
-                        name="password"
-                        type="password"
-                        placeholder="비밀번호"
-                      />
-                    </div>
-                    <div className="button_box">
-                      <button
-                        style={{ backgroundColor: this.state.background }}
-                        disabled={this.state.disabled}
-                        onClick={this.goToMain}
-                        type="button"
-                        className="btn"
-                      >
-                        <span>로그인</span>
-                      </button>
-                    </div>
-                    <div className="sign_up">
-                      <button
-                        type="button"
-                        className="btn_sign"
-                        onClick={this.goToSignUp}
-                      >
-                        <span>가입하기</span>
-                      </button>
-                    </div>
-                  </form>
-                </div>
+                <form className="form">
+                  <div className="input_box">
+                    <input
+                      id="id"
+                      onChange={this.handleInput}
+                      onKeyUp={this.changeLoginButtonColor}
+                      name="identity"
+                      type="text"
+                      placeholder="아이디"
+                    />
+                  </div>
+                  <div className="input_box">
+                    <input
+                      id="password"
+                      onChange={this.handleInput}
+                      onKeyUp={this.changeLoginButtonColor}
+                      name="password"
+                      type="password"
+                      placeholder="비밀번호"
+                    />
+                  </div>
+                  <div className="button_box">
+                    <button
+                      style={{
+                        backgroundColor: this.state.loginButtonBackground,
+                      }}
+                      disabled={this.state.isLoginButtonDisabled}
+                      onClick={this.goToMain}
+                      type="button"
+                      className="btn"
+                    >
+                      <span>로그인</span>
+                    </button>
+                  </div>
+                  <div className="sign_up">
+                    <button
+                      type="button"
+                      className="btn_sign"
+                      onClick={this.goToSignUp}
+                    >
+                      <span>가입하기</span>
+                    </button>
+                  </div>
+                </form>
               </div>
             </div>
-          </body>
+          </div>
         </div>
-        <footer>
-          <Footer />
-        </footer>
+
+        <Footer />
       </div>
     );
   }
