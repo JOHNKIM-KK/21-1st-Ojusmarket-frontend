@@ -95,9 +95,14 @@
           height: 50px;
           margin-top: 25px;
         }
-        .user-info {
+        .reciver-info {
           display: flex;
           flex-direction: column;
+
+          input {
+            padding-left: 20px;
+            color: #666666;
+          }
         }
         .address-input {
           .address-zip {
@@ -121,6 +126,11 @@
           .detailed-address {
             display: flex;
             flex-direction: column;
+
+            input {
+              padding-left: 20px;
+              color: #666666;
+            }
 
             span {
               margin-top: 25px;

@@ -5,9 +5,12 @@ class Delivery extends React.Component {
   constructor() {
     super();
     this.state = {
-      senderName: '',
-      senderPhone: '',
+      userName: '',
+      userPhone: '',
       userAddress: '',
+      reciverName: '',
+      reciverPhone: '',
+      reciverAddress: '',
     };
   }
 
@@ -51,7 +54,7 @@ class Delivery extends React.Component {
             <div>
               <label htmlFor="orderUserName">보내시는 분</label>
               <input
-                id="senderName"
+                id="userName"
                 name="userName"
                 value={this.state.userName}
                 onChange={this.handleChange}
@@ -60,7 +63,7 @@ class Delivery extends React.Component {
             <div>
               <label htmlFor="orderUserPhone">연락처</label>
               <input
-                id="senderPhone"
+                id="userPhone"
                 name="userPhone"
                 value={this.state.userPhone}
                 onChange={this.handleChange}
@@ -87,31 +90,41 @@ class Delivery extends React.Component {
               </div>
             </div>
             <div className="address-info">
-              <div className="user-info">
-                <input></input>
-                <input></input>
+              <div className="reciver-info">
+                <input
+                  id="userName"
+                  name="userName"
+                  value={this.state.userName}
+                  onChange={this.handleChange}
+                ></input>
+                <input
+                  id="userPhone"
+                  name="userPhone"
+                  value={this.state.userPhone}
+                  onChange={this.handleChange}
+                ></input>
               </div>
               <div className="address-input">
-                <div className="address-zip">
-                  <input></input>
-                  <button>주소찾기</button>
-                </div>
                 <div className="detailed-address">
-                  <input></input>
-                  <input></input>
+                  <input
+                    id="reciverAddress"
+                    name="userAddress"
+                    value={this.state.userAddress}
+                    onChange={this.handleChange}
+                  ></input>
                   <span>
                     배송을 위해 고객님의 주소가 맞는지 다시한번 확인해주세요
                   </span>
                 </div>
               </div>
             </div>
-            {/* <div className="head-line">
+            <div className="head-line">
               <span>&#42;배송방법 선택</span>
             </div>
             <div className="delivery-type">
               <label>
                 <input type="radio" checked></input>
-                <span>새벽배송 주문하기</span>
+                <span>오져스배송 주문하기</span>
               </label>
             </div>
             <div className="head-line">
@@ -126,19 +139,19 @@ class Delivery extends React.Component {
               </div>
               <div className="package-option">
                 <label>
-                  <input type="radio" checked></input>
+                  <input type="radio" name="package"></input>
                   <span>최소포장 ( 생수와 포장재를 최소한으로 사용 )</span>
                 </label>
                 <label>
-                  <input type="radio"></input>
+                  <input type="radio" name="package"></input>
                   <span>친환경 포장 (생수와 드라이아이스를 조금 사용)</span>
                 </label>
                 <label>
-                  <input type="radio"></input>
+                  <input type="radio" name="package"></input>
                   <span>보냉재 더 추가 포장 (보냉재를 넉넉히 사용)</span>
                 </label>
               </div>
-            </div> */}
+            </div>
             <div className="package-recall">
               <h4>
                 포장재 회수 요청
