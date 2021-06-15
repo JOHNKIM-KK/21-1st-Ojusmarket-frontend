@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 const LABEL_COLOR = {
   냉장: '#686de0',
@@ -8,11 +9,16 @@ const LABEL_COLOR = {
 };
 
 class FoodContent extends React.Component {
+  goToDetail = () => {
+    const { id } = this.props.ingredients;
+    this.props.history.push(`/productinfo/${id}`);
+  };
+
   render() {
     const { image_url, storage, price, name } = this.props.ingredients;
     const labelName = storage;
     return (
-      <div className="food-content">
+      <div className="food-content" onClick={this.goToDetail}>
         <img alt="제품사진" src={image_url} />
         <div
           className="storage-label"
@@ -39,4 +45,4 @@ class FoodContent extends React.Component {
     );
   }
 }
-export default FoodContent;
+export default withRouter(FoodContent);

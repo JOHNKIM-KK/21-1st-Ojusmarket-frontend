@@ -27,9 +27,7 @@ class ProductInfo extends React.Component {
   };
 
   componentDidMount() {
-    fetch(
-      `http://10.58.5.227:8000/ingredients/${this.props.match.params.ingredient_id}`
-    )
+    fetch(`http://10.58.2.123:8000/${this.props.match.params.id}`)
       .then(response => response.json())
       .then(data => {
         this.setState({ infoData: data, isLoading: true });
@@ -51,12 +49,12 @@ class ProductInfo extends React.Component {
                 {'>'}
                 <a href="#">청과</a>
               </span>
-              <img className="image" src={infoData.ingredient.image_url} />
+              <img className="image" src={infoData.ingredients.image_url} />
               <div className="slide-container">
                 <span className="related">연관요리</span>
                 <div className="related-list">
-                  {infoData &&
-                    infoData.ingredient.related_recipe.map(list => (
+                  {infoData.ingredients &&
+                    infoData.ingredients.related_recipe.map(list => (
                       <RelatedList
                         key={list.id}
                         name={list.name}
@@ -68,13 +66,13 @@ class ProductInfo extends React.Component {
             </div>
             <div className="info-container">
               <div className="text-title">
-                <h1>{infoData.ingredient.name}</h1>
+                <h1>{infoData.ingredients.name}</h1>
               </div>
               <div className="text-contents">
                 <div className="price">
                   <span className="price-text">일반가</span>
                   <span className="price-number">
-                    {Math.floor(infoData.ingredient.price).toLocaleString()}원
+                    {Math.floor(infoData.ingredients.price).toLocaleString()}원
                   </span>
                 </div>
                 <div className="info-box">
@@ -84,13 +82,13 @@ class ProductInfo extends React.Component {
                   </div>
                   <div className="storage">
                     <span>보관방법</span>
-                    <span>{infoData.ingredient.storage}</span>
+                    <span>{infoData.ingredients.storage}</span>
                   </div>
                 </div>
               </div>
               <div className="product-feature__box">
                 <span>상품특징</span>
-                <span>{infoData.ingredient.info}</span>
+                <span>{infoData.ingredients.info}</span>
               </div>
               <div className="product-counter">
                 <span className="buy-counter">구매수량</span>
@@ -106,7 +104,7 @@ class ProductInfo extends React.Component {
                   </div>
                   <div className="total-price">
                     <span>{`${(
-                      Math.floor(infoData.ingredient.price) * count
+                      Math.floor(infoData.ingredients.price) * count
                     ).toLocaleString()}`}</span>
                     <span>원</span>
                   </div>
