@@ -27,10 +27,7 @@ class CartList extends React.Component {
   handleQuantity = event => {
     const { cartData } = this.state;
     const { value, className } = event.target;
-    if (
-      className === 'quantity-minus' &&
-      cartData[parseInt(value)].quantity === 1
-    )
+    if (className === 'quantity-minus' && cartData[parseInt(value)].count === 1)
       return;
 
     const newQuantity = cartData.map((cartItem, index) => {
@@ -38,10 +35,10 @@ class CartList extends React.Component {
         ? cartItem
         : {
             ...cartItem,
-            quantity:
+            count:
               className === 'quantity-plus'
-                ? cartItem.quantity + 1
-                : cartItem.quantity - 1,
+                ? cartItem.count + 1
+                : cartItem.count - 1,
           };
     });
     this.setState({ cartData: newQuantity });
@@ -68,7 +65,7 @@ class CartList extends React.Component {
   getTotalPrice = numArr => {
     let totalPrice = 0;
     numArr.forEach(el => {
-      totalPrice += el.quantity * el.price;
+      totalPrice += el.count * el.price;
     });
     return totalPrice;
   };
@@ -152,7 +149,7 @@ class CartList extends React.Component {
                       key={index}
                       name={data.name}
                       image={data.image}
-                      quantity={data.quantity}
+                      count={data.count}
                       price={data.price}
                       selectedArr={selectedArr}
                       handleQuantity={this.handleQuantity}

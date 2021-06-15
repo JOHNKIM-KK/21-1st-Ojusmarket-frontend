@@ -7,7 +7,7 @@ class CartItem extends React.Component {
       id,
       name,
       image,
-      quantity,
+      count,
       price,
       selectedArr,
       handleQuantity,
@@ -39,7 +39,7 @@ class CartItem extends React.Component {
               >
                 -
               </button>
-              <span>{quantity}</span>
+              <span>{count}</span>
               <button
                 value={id}
                 className="quantity-plus"
@@ -49,7 +49,7 @@ class CartItem extends React.Component {
               </button>
             </div>
             <div className="item-total__price">
-              <span>{(price * quantity).toLocaleString()}</span>
+              <span>{(price * count).toLocaleString()}</span>
               <span>원</span>
             </div>
             <button className="item-delete" onClick={() => removeCartItem(id)}>
