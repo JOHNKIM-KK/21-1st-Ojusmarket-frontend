@@ -1,0 +1,25 @@
+{
+  "id": 1,
+  "name": "유기농 바나나",
+  "price": 3800,
+  "storage": "싱싱",
+  "info": "유기농으로 키워 부드럽고 달콤한",
+  "image_url": "https://lh3.googleusercontent.com/proxy/LJX_bMFuZnfeVN1D3Su9aI9B7ZUbdF8IKUr2fQkGZtAqBOjz-9J6G-N5UNCofBvJ_8xVs-LFG2f_slkkzFOANCg5dgNQeGk63qT3iDAGavA",
+  "related": [
+    {
+      "id": 1,
+      "name": "one",
+      "image": "http://image.auction.co.kr/itemimage/1b/15/15/1b1515a426.jpg"
+    },
+    {
+      "id": 2,
+      "name": "two",
+      "image": "https://my-nutri.co.kr/wp-content/uploads/2020/02/055.%EB%B0%94%EB%82%98%EB%82%98-%ED%9A%A8%EB%8A%A5.jpg"
+    },
+    {
+      "id": 3,
+      "name": "three",
+      "image": "https://lh3.googleusercontent.com/proxy/LUIt0UdsNZ18DiPOtxdpCYhbxQqg8KfzlZsc0Yipb03t-DZFLFZ3X3XWRzPNcqT5vtRIwkSV7xdTKkzVH5TmU6Oxpmj-4YNr1jtxvu1FS0w6"
+    }
+  ]
+}
