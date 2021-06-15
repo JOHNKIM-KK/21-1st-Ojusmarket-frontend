@@ -8,7 +8,6 @@ class Food extends React.Component {
     return (
       <div className="food-component">
         <div className="food-category">
-          {console.log(productList)}
           <ul>
             <li>
               <button onClick={filterFoodCategory} value={''}>
