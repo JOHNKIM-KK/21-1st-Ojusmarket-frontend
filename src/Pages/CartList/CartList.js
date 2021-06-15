@@ -57,8 +57,6 @@ class CartList extends React.Component {
     }
   };
 
-  // setState({checkedArr : Array(selectedArr.lenth).fill(isCheckArr())})
-
   removeCartItem = id => {
     const { cartData } = this.state;
     const newCartData = cartData.filter((_, index) => {
@@ -84,9 +82,8 @@ class CartList extends React.Component {
 
   selectAll = () => {
     const { selectedArr } = this.state;
-    const selectAll = selectedArr.map(selectedItem => {
-      if (!selectedItem) return (selectedItem = true);
-    });
+    console.log(selectedArr);
+    console.log(Array(selectedArr.lenth).fill(this.isCheckArr()));
   };
 
   render() {
