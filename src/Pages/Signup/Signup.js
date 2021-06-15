@@ -211,8 +211,7 @@ class Signup extends Component {
   };
 
   render() {
-    // const { isModalOpen, isModalClose } = this.props;
-    const { isDaumPost, firstAddress } = this.state; //identity, password, name, phone, email, address,
+    const { isDaumPost, firstAddress } = this.state;
     // 주소창 style
     const width = 600;
     const height = 450;
@@ -231,7 +230,6 @@ class Signup extends Component {
         <nav className="navi">
           <Header />
         </nav>
-        {/* <div className={isIdValid ? 'active' : 'inactive'} /> */}
         <div className="contents_All">
           <div className="img">
             <img src="/images/adlogo.png" alt="광고사진" className="a_Img" />

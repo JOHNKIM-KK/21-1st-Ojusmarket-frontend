@@ -11,8 +11,8 @@ class Login extends Component {
     this.state = {
       identity: '',
       password: '',
-      loginButtonBackground: '#d2f7d2',
-      isLoginButtonDisabled: true,
+      // loginButtonBackground: '#d2f7d2',
+      // isLoginButtonDisabled: true,
     };
   }
   //로그인 버튼활성화
@@ -21,22 +21,6 @@ class Login extends Component {
     this.setState({
       [e.target.name]: e.target.value,
     });
-  };
-
-  changeLoginButtonColor = () => {
-    const isIdAndPasswordValid =
-      this.state.identity.length > 4 && this.state.password.length > 7;
-    if (isIdAndPasswordValid) {
-      this.setState({
-        loginButtonBackground: '#6ca437',
-        isLoginButtonDisabled: false,
-      });
-    } else {
-      this.setState({
-        loginButtonBackground: '#d2f7d2',
-        isLoginButtonDisabled: true,
-      });
-    }
   };
 
   //버튼 이벤트 (백엔드 통신)
@@ -63,6 +47,8 @@ class Login extends Component {
     this.props.history.push('/signup');
   };
   render() {
+    const isIdAndPasswordValid =
+      this.state.identity.length > 4 && this.state.password.length > 7;
     return (
       <div className="login">
         <nav className="navi">
@@ -81,7 +67,6 @@ class Login extends Component {
                     <input
                       id="id"
                       onChange={this.handleInput}
-                      onKeyUp={this.changeLoginButtonColor}
                       name="identity"
                       type="text"
                       placeholder="아이디"
@@ -91,7 +76,6 @@ class Login extends Component {
                     <input
                       id="password"
                       onChange={this.handleInput}
-                      onKeyUp={this.changeLoginButtonColor}
                       name="password"
                       type="password"
                       placeholder="비밀번호"
@@ -100,9 +84,11 @@ class Login extends Component {
                   <div className="button_box">
                     <button
                       style={{
-                        backgroundColor: this.state.loginButtonBackground,
+                        backgroundColor: isIdAndPasswordValid
+                          ? '#6ca437'
+                          : '#d2f7d2',
                       }}
-                      disabled={this.state.isLoginButtonDisabled}
+                      disabled={!isIdAndPasswordValid}
                       onClick={this.goToMain}
                       type="button"
                       className="btn"
