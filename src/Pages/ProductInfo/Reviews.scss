@@ -1,4 +1,5 @@
-@import '../../Styles/Common.scss';
+@import '../../Styles/Variable.scss';
+@import '../../Styles/Mixin.scss';
 
 .reviews {
   ul {
@@ -6,16 +7,16 @@
     margin-top: 100px;
 
     .li-header {
-      background-color: #fafafa;
-      border-top: 0.5px solid $ligth-gray;
-      border-bottom: 0.5px solid $ligth-gray;
+      background-color: $white;
+      border-top: 0.5px solid $light-gray;
+      border-bottom: 0.5px solid $light-gray;
     }
 
     li {
       display: grid;
       grid-template-columns: 1fr 1fr 6fr 1fr 1fr;
       height: 54px;
-      border-bottom: 0.5px solid $ligth-gray;
+      border-bottom: 0.5px solid $light-gray;
 
       div {
         @include flexCenter;
@@ -36,14 +37,14 @@
     a {
       padding: 10px 15px;
       border: none;
-      background-color: #fff;
+      background-color: $white;
       color: #76715d;
       font-size: 20px;
       cursor: pointer;
 
       &:hover {
-        background-color: #a7a392;
-        color: #fff;
+        background-color: $light-gray;
+        color: $white;
       }
     }
   }
