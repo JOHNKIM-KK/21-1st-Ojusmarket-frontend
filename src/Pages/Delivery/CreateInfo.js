@@ -8,13 +8,13 @@ class CreateInfo extends React.Component {
           <input
             id="userName"
             name="userName"
-            value={this.props.userName}
+            value={this.props.reciverName}
             onChange={this.props.handleChange}
           ></input>
           <input
             id="userPhone"
             name="userPhone"
-            value={this.props.userPhone}
+            value={this.props.reciverPhone}
             onChange={this.props.handleChange}
           ></input>
         </div>
@@ -23,7 +23,7 @@ class CreateInfo extends React.Component {
             <input
               id="reciverAddress"
               name="userAddress"
-              value={this.props.userAddress}
+              value={this.props.reciverAddress}
               onChange={this.props.handleChange}
             ></input>
             <span>

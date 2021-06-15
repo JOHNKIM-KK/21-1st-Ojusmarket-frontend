@@ -29,6 +29,25 @@ class Delivery extends React.Component {
     });
   };
 
+  handleSubmit = e => {
+    // e.preventDefault();
+    // fetch('http://10.58.4.160:8000/', {
+    //   method: 'POST',
+    //   body: JSON.stringify({
+    //     reciverName: this.state.reciverName,
+    //     reciverPhone: this.state.reciverPhone,
+    //     reciverAddress: this.state.reciverAddress,
+    //   }),
+    // })
+    //   .then(response => response.json())
+    //   .then(result => {
+    //     console.log('결과: ', result);
+    //     if (result.message === 'SUCCESS') {
+    this.props.history.push('../purchase');
+    //   }
+    // });
+  };
+
   componentDidMount() {
     fetch('/data/userData.json')
       .then(res => res.json())
@@ -50,7 +69,13 @@ class Delivery extends React.Component {
           userAddress={this.state.userAddress}
         />
       ),
-      1: <CreateInfo />,
+      1: (
+        <CreateInfo
+          reciverName={this.state.reciverName}
+          reciverPhone={this.state.reciverPhone}
+          reciverAddress={this.state.reciverAddress}
+        />
+      ),
     };
     return (
       <div className="delivery">
@@ -166,7 +191,7 @@ class Delivery extends React.Component {
               </div>
             </div>
             <div className="submit">
-              <button>주문서 작성 완료</button>
+              <button onClick={this.handleSubmit}>주문서 작성 완료</button>
             </div>
           </div>
         </div>
