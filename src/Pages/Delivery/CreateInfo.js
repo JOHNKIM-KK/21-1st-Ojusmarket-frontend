@@ -1,21 +1,21 @@
 import React from 'react';
 
-class DeliveryInfo extends React.Component {
-  reder() {
+class CreateInfo extends React.Component {
+  render() {
     return (
       <div className="address-info">
         <div className="reciver-info">
           <input
             id="userName"
             name="userName"
-            value={this.state.userName}
-            onChange={this.handleChange}
+            value={this.props.userName}
+            onChange={this.props.handleChange}
           ></input>
           <input
             id="userPhone"
             name="userPhone"
-            value={this.state.userPhone}
-            onChange={this.handleChange}
+            value={this.props.userPhone}
+            onChange={this.props.handleChange}
           ></input>
         </div>
         <div className="address-input">
@@ -23,8 +23,8 @@ class DeliveryInfo extends React.Component {
             <input
               id="reciverAddress"
               name="userAddress"
-              value={this.state.userAddress}
-              onChange={this.handleChange}
+              value={this.props.userAddress}
+              onChange={this.props.handleChange}
             ></input>
             <span>
               배송을 위해 고객님의 주소가 맞는지 다시한번 확인해주세요
@@ -35,4 +35,4 @@ class DeliveryInfo extends React.Component {
     );
   }
 }
-export default DeliveryInfo;
+export default CreateInfo;

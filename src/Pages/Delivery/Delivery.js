@@ -1,10 +1,13 @@
 import React from 'react';
+import BasicInfo from './BasicInfo';
+import CreateInfo from './CreateInfo';
 import './Delivery.scss';
 
 class Delivery extends React.Component {
   constructor() {
     super();
     this.state = {
+      changeInfo: 0,
       userName: '',
       userPhone: '',
       userAddress: '',
@@ -13,6 +16,12 @@ class Delivery extends React.Component {
       reciverAddress: '',
     };
   }
+
+  handleTap = id => {
+    this.setState({
+      changeInfo: id,
+    });
+  };
 
   handleChange = e => {
     this.setState({
@@ -33,7 +42,16 @@ class Delivery extends React.Component {
   }
 
   render() {
-    console.log(this.state.userName);
+    const tab = {
+      0: (
+        <BasicInfo
+          userName={this.state.userName}
+          userPhone={this.state.userPhone}
+          userAddress={this.state.userAddress}
+        />
+      ),
+      1: <CreateInfo />,
+    };
     return (
       <div className="delivery">
         <div className="delivery-container">
@@ -76,48 +94,14 @@ class Delivery extends React.Component {
           </div>
           <div className="address">
             <div className="address-selection">
-              <div>
-                <label for="basic">
-                  <input type="radio" id="basic" name="address" checked></input>
-                  <span>기본 배송지</span>
-                </label>
+              <div onClick={() => this.handleTap(0)}>
+                <span>기본 배송지</span>
               </div>
-              <div>
-                <label>
-                  <input type="radio" id="new" name="address"></input>
-                  <span>직접입력</span>
-                </label>
+              <div onClick={() => this.handleTap(1)}>
+                <span>직접입력</span>
               </div>
             </div>
-            <div className="address-info">
-              <div className="reciver-info">
-                <input
-                  id="userName"
-                  name="userName"
-                  value={this.state.userName}
-                  onChange={this.handleChange}
-                ></input>
-                <input
-                  id="userPhone"
-                  name="userPhone"
-                  value={this.state.userPhone}
-                  onChange={this.handleChange}
-                ></input>
-              </div>
-              <div className="address-input">
-                <div className="detailed-address">
-                  <input
-                    id="reciverAddress"
-                    name="userAddress"
-                    value={this.state.userAddress}
-                    onChange={this.handleChange}
-                  ></input>
-                  <span>
-                    배송을 위해 고객님의 주소가 맞는지 다시한번 확인해주세요
-                  </span>
-                </div>
-              </div>
-            </div>
+            <div>{tab[this.state.changeInfo]}</div>
             <div className="head-line">
               <span>&#42;배송방법 선택</span>
             </div>
