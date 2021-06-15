@@ -83,8 +83,8 @@ class Slider extends React.Component {
           </li>
           {slideImgList.map((data, idx) => {
             return (
-              <li>
-                <img key={idx} alt="슬라이드 이미지" src={data} />
+              <li key={idx}>
+                <img alt="슬라이드 이미지" src={data} />
               </li>
             );
           })}

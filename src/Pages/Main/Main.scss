@@ -1,10 +1,11 @@
+@import '../../Styles/Variable.scss';
+@import '../../Styles/Mixin.scss';
+
 .main {
   overflow: hidden;
 
   .product-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    @include flexCenter;
 
     & div {
       width: 1025px;
@@ -15,15 +16,13 @@
       height: 94px;
 
       div {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @include flexCenter;
         width: 200px;
-        border: 3px solid white;
-        background-color: #fff;
-        color: #333333;
+        border: 3px solid $white;
+        background-color: $white;
+        color: $black;
         &:hover {
-          color: #6ca437;
+          color: $o-green;
         }
 
         button {
@@ -38,7 +37,7 @@
 
           &:hover {
             cursor: pointer;
-            border-bottom: 2px solid #6ca437;
+            border-bottom: 2px solid $o-green;
           }
         }
       }
@@ -47,28 +46,26 @@
       display: flex;
       justify-content: space-around;
       width: 100vw;
-      background-color: #fff;
-      border-bottom: 2px solid #dbdbdb;
+      background-color: $white;
+      border-bottom: 2px solid $light-gray;
 
       ul {
+        @include flexCenter(flex, space-around, center);
         width: 910px;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
         height: 54px;
 
         li {
           button {
             padding-bottom: 5px;
             border: none;
-            background-color: #fff;
+            background-color: $white;
             font-size: 15px;
 
             &:hover {
               cursor: pointer;
               font-weight: 700;
-              color: #6ca437;
-              border-bottom: 2px solid #6ca437;
+              color: $o-green;
+              border-bottom: 2px solid $o-green;
             }
           }
         }
@@ -78,12 +75,12 @@
       display: flex;
       flex-wrap: wrap;
       width: 1150px;
-      background-color: #fff;
+      background-color: $white;
 
       .food {
         width: 245px;
         margin: 20px;
-        background-color: white;
+        background-color: $white;
 
         img {
           height: 245px;
@@ -103,7 +100,7 @@
             span {
               margin-right: 10px;
               font-weight: 700;
-              color: #6ca437;
+              color: $o-green;
             }
           }
         }
