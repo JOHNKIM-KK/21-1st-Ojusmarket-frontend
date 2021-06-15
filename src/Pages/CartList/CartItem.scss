@@ -1,8 +1,9 @@
-@import '../../Styles/Common.scss';
+@import '../../Styles/Variable.scss';
+@import '../../Styles/Mixin.scss';
 
 .cart-item {
   padding: 20px 0px;
-  border-bottom: 1px solid $ligth-gray;
+  border-bottom: 1px solid $light-gray;
 
   &:last-child {
     padding-bottom: 0px;
@@ -27,7 +28,7 @@
         color: $o-green;
 
         i {
-          color: $ligth-gray;
+          color: $light-gray;
         }
 
         .checked {
@@ -56,8 +57,8 @@
       width: 50%;
 
       .item-button__box {
-        background-color: white;
-        border: 1px solid $ligth-gray;
+        background-color: $white;
+        border: 1px solid $light-gray;
 
         span {
           padding: 5px 15px 0px 15px;
@@ -66,16 +67,16 @@
         button {
           padding: 5px 7px;
           font-size: 14px;
-          background-color: white;
+          background-color: $white;
           border: none;
           cursor: pointer;
 
           &:first-child {
-            border-right: 1px solid $ligth-gray;
+            border-right: 1px solid $light-gray;
           }
 
           &:last-child {
-            border-left: 1px solid $ligth-gray;
+            border-left: 1px solid $light-gray;
           }
         }
       }

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Main from './Pages/Main/Main';
 import Login from './Pages/Login/Login';
 import CartList from './Pages/CartList/CartList';
+import ProductInfo from './Pages/ProductInfo/ProductInfo';
 
 class Routes extends React.Component {
   render() {

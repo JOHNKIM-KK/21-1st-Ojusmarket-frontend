@@ -1,6 +1,8 @@
+@import '../../../Styles/Variable.scss';
+@import '../../../Styles/Mixin.scss';
+
 .image-slider {
   position: relative;
-
   width: 500vw;
 
   &:hover {
@@ -28,9 +30,9 @@
     display: flex;
     justify-content: space-between;
     position: absolute;
+    width: 90px;
     top: 90%;
     left: 10%;
-    width: 90px;
     z-index: 1;
 
     button {
@@ -39,20 +41,20 @@
       padding: 0;
       border: none;
       border-radius: 100%;
-      background-color: gray;
+      background-color: $dark-gray;
       opacity: 0.5;
     }
 
     .showing {
-      background-color: #fff;
+      background-color: $white;
     }
   }
 
   .image-side-btn {
-    visibility: hidden;
     display: flex;
     justify-content: space-between;
     position: absolute;
+    visibility: hidden;
     top: 40%;
     left: 4.1%;
     height: 40px;
@@ -64,19 +66,19 @@
       width: 60px;
       border: none;
       border-radius: 50%;
-      background-color: gray;
+      background-color: $dark-gray;
       opacity: 0.5;
       font-size: 40px;
       cursor: pointer;
 
       .fa-chevron-left {
         margin-right: 5px;
-        color: white;
+        color: $white;
       }
 
       .fa-chevron-right {
         margin-left: 5px;
-        color: white;
+        color: $white;
       }
     }
   }

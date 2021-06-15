@@ -39,8 +39,8 @@ class Recipe extends React.Component {
             <p>레시피</p>
             <span>오져스 제품으로 즐길 수 있는 레시피</span>
           </div>
-          {recipeList.map(data => (
-            <RecipeContent key={data.id} recipe={data} />
+          {recipeList.map((data, index) => (
+            <RecipeContent key={index} recipe={data} />
           ))}
         </div>
       </div>

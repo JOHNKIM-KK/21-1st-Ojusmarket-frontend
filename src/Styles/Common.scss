@@ -2,14 +2,3 @@
   box-sizing: border-box;
   font-family: 'Noto Sans KR', sans-serif;
 }
-
-@mixin flexCenter {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-$ligth-gray: #dbdbdb;
-$dark-gray: #bbbbbb;
-$o-green: #6ca437;
-$black: #333333;

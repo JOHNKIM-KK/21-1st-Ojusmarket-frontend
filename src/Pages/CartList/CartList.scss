@@ -1,4 +1,5 @@
-@import '../../Styles/Common.scss';
+@import '../../Styles/Variable.scss';
+@import '../../Styles/Mixin.scss';
 
 .cart-list {
   @include flexCenter;
@@ -65,7 +66,7 @@
 
         i {
           margin-right: 10px;
-          color: $ligth-gray;
+          color: $light-gray;
         }
 
         .select-all__btn {
@@ -85,7 +86,7 @@
     align-items: center;
     margin-top: 60px;
     padding: 30px 10px;
-    border: 2px solid $ligth-gray;
+    border: 2px solid $light-gray;
 
     div {
       display: flex;
