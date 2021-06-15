@@ -53,7 +53,6 @@ class CartList extends React.Component {
       if (!i) {
         return false;
       }
-      return true;
     }
   };
 
@@ -91,6 +90,7 @@ class CartList extends React.Component {
     return (
       cartData && (
         <>
+          <Header />
           <section className="cart-list">
             <div className="cart-list__container">
               <div className="cart-list__box">
