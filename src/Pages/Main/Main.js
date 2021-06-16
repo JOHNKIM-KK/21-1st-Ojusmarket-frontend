@@ -19,7 +19,6 @@ class Main extends React.Component {
   }
 
   handleTap = event => {
-    console.log('탭 바꿈');
     this.props.history.push(`/${event.target.value}`);
   };
 
@@ -39,7 +38,6 @@ class Main extends React.Component {
       )
         .then(res => res.json())
         .then(data => {
-          console.log(data);
           this.setState({
             productList: data,
           });
@@ -75,8 +73,6 @@ class Main extends React.Component {
   };
 
   render() {
-    console.log('렌더 발생');
-    console.log(this.state.productList);
     const { productList } = this.state;
 
     return (
