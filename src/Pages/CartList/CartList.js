@@ -10,6 +10,7 @@ class CartList extends React.Component {
     this.state = {
       cartData: [],
       selectedArr: [],
+      deletedArr: [],
     };
   }
 
@@ -46,8 +47,8 @@ class CartList extends React.Component {
 
   isCheckArr = () => {
     const { selectedArr } = this.state;
-    for (let i of selectedArr) {
-      if (!i) {
+    for (let isChecked of selectedArr) {
+      if (!isChecked) {
         return true;
       }
     }
@@ -56,10 +57,13 @@ class CartList extends React.Component {
 
   removeCartItem = id => {
     const { cartData } = this.state;
-    const newCartData = cartData.filter((_, index) => {
-      return parseInt(id) !== index;
+    const newCartData = cartData.filter(cartItem => {
+      return parseInt(id) !== parseInt(cartItem.id);
     });
-    this.setState({ cartData: newCartData });
+    const deletedData = cartData.filter(cartItem => {
+      return parseInt(id) === parseInt(cartItem.id);
+    });
+    this.setState({ cartData: newCartData, deletedArr: deletedData });
   };
 
   getTotalPrice = numArr => {
@@ -91,17 +95,21 @@ class CartList extends React.Component {
       checkedArr.push(idx);
       idx = selectedArr.indexOf(true, idx + 1);
     }
-    const newCheckedArr = cartData.filter((_, index) => {
-      return !checkedArr.includes(index);
+    const newCheckedArr = cartData.filter(cartItem => {
+      return !checkedArr.includes(parseInt(cartItem.id));
+    });
+    const newDeletedArr = cartData.filter(cartItem => {
+      return checkedArr.includes(parseInt(cartItem.id));
     });
     this.setState({
       cartData: newCheckedArr,
+      deletedArr: newDeletedArr,
       selectedArr: Array(newCheckedArr.length).fill(false),
     });
   };
 
   render() {
-    const { cartData, selectedArr } = this.state;
+    const { cartData, selectedArr, deletedArr } = this.state;
     return (
       cartData && (
         <>
@@ -145,7 +153,7 @@ class CartList extends React.Component {
                 <ul className="cart-item__list">
                   {cartData.map((data, index) => (
                     <CartItem
-                      id={index}
+                      id={data.id}
                       key={index}
                       name={data.name}
                       image={data.image}
