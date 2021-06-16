@@ -14,7 +14,7 @@ class Purchase extends React.Component {
   }
 
   handlePayment = () => {
-    this.props.history.push('../Payment ');
+    this.props.history.push('/Payment');
   };
 
   handleCart = () => {

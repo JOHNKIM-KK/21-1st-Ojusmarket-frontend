@@ -30,14 +30,29 @@
 
     .payment-service {
       @include flexCenter;
-      height: 700px;
-      background-color: $o-green;
+      flex-direction: column;
+      height: 300px;
+      margin-top: 100px;
+      background-color: #fff;
 
       .payment-message {
         p {
+          @include flexCenter;
+          height: 200px;
+          width: 1024px;
+          border: 20px solid #dbdbdb;
           font-size: 40px;
-          color: #fff;
+          color: #666666;
         }
+      }
+      button {
+        height: 70px;
+        width: 400px;
+        margin-top: 80px;
+        border: none;
+        border-radius: 10px;
+        background-color: $o-green;
+        color: #fff;
       }
     }
   }

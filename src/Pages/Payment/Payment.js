@@ -18,7 +18,10 @@ class Payment extends React.Component {
 
           <div className="payment-service">
             <div className="payment-message">
-              <p>구매해 주셔서 감사합니다!</p>
+              <p>구매가 정상적으로 처리되었습니다.</p>
+            </div>
+            <div>
+              <button>메인으로 가기</button>
             </div>
           </div>
         </div>

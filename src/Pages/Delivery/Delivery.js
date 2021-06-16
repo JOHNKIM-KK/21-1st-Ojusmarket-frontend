@@ -23,11 +23,11 @@ class Delivery extends React.Component {
     });
   };
 
-  handleChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
-  };
+  // handleChange = e => {
+  //   this.setState({
+  //     [e.target.name]: e.target.value,
+  //   });
+  // };
 
   handleSubmit = e => {
     // e.preventDefault();
@@ -43,7 +43,7 @@ class Delivery extends React.Component {
     //   .then(result => {
     //     console.log('결과: ', result);
     //     if (result.message === 'SUCCESS') {
-    this.props.history.push('../purchase');
+    this.props.history.push('/purchase');
     //   }
     // });
   };
