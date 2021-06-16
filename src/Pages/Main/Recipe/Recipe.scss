@@ -1,3 +1,6 @@
+@import '../../../Styles/Variable.scss';
+@import '../../../Styles/Mixin.scss';
+
 .recipe-component {
   display: flex;
   flex-direction: column;
@@ -8,14 +11,12 @@
   }
 
   .recipe-header {
-    display: flex;
+    @include flexCenter;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     height: 150px;
     margin-bottom: 30px;
-    background-color: #fff;
-    color: #6ca437;
+    background-color: $white;
+    color: $o-green;
 
     p {
       margin-bottom: 15px;
@@ -31,28 +32,26 @@
     justify-content: space-around;
     margin-bottom: 20px;
     width: 100vw;
-    background-color: #fff;
-    border-bottom: 2px solid rgb(235, 230, 230);
+    background-color: $white;
+    border-bottom: 2px solid $white;
 
     ul {
+      @include flexCenter(flex, space-around, center);
       width: 910px;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
       height: 54px;
 
       li {
         button {
           padding-bottom: 5px;
           border: none;
-          background-color: #fff;
+          background-color: $white;
           font-size: 15px;
 
           &:hover {
             cursor: pointer;
             font-weight: 700;
-            color: #6ca437;
-            border-bottom: 2px solid #6ca437;
+            color: $o-green;
+            border-bottom: 2px solid $o-green;
           }
         }
       }
@@ -64,7 +63,7 @@
     justify-content: flex-start;
     flex-wrap: wrap;
     width: 1150px;
-    background-color: #fff;
+    background-color: $white;
 
     .recipe {
       display: flex;
@@ -73,20 +72,18 @@
       width: 330px;
       margin-bottom: 10px;
       margin-left: 20px;
-      background-color: #fff;
+      background-color: $white;
 
       img {
         height: 195px;
       }
 
       .recipe-name {
+        @include flexCenter;
         height: 70px;
         width: inherit;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: 1px solid #dbdbdb;
-        color: #666666;
+        border: 1px solid $light-gray;
+        color: $dark-gray;
       }
     }
   }

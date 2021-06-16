@@ -1,4 +1,6 @@
-@import '../../../Styles/Common.scss';
+@import '../../../Styles/Variable.scss';
+@import '../../../Styles/Mixin.scss';
+
 .food-component {
   display: flex;
   flex-direction: column;
@@ -9,14 +11,12 @@
   }
 
   .food-header {
-    display: flex;
+    @include flexCenter;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     height: 150px;
     margin-bottom: 30px;
-    background-color: #fff;
-    color: #6ca437;
+    background-color: $white;
+    color: $o-green;
 
     p {
       margin-bottom: 15px;
@@ -32,28 +32,28 @@
     justify-content: space-around;
     margin-bottom: 20px;
     width: 100vw;
-    background-color: #fff;
-    border-bottom: 2px solid rgb(235, 230, 230);
+    background-color: $white;
+    border-bottom: 2px solid $white;
 
     ul {
-      width: 910px;
       display: flex;
       justify-content: space-around;
       align-items: center;
+      width: 910px;
       height: 54px;
 
       li {
         button {
           padding-bottom: 5px;
           border: none;
-          background-color: #fff;
+          background-color: $white;
           font-size: 15px;
 
           &:hover {
             cursor: pointer;
             font-weight: 700;
-            color: #6ca437;
-            border-bottom: 2px solid #6ca437;
+            color: $o-green;
+            border-bottom: 2px solid $o-green;
           }
         }
       }
@@ -63,13 +63,13 @@
     display: flex;
     flex-wrap: wrap;
     width: 1150px;
-    background-color: #fff;
+    background-color: $white;
 
     .food-content {
       position: relative;
       width: 245px;
       margin: 20px;
-      background-color: white;
+      background-color: $white;
 
       &:hover {
         img {
@@ -84,16 +84,14 @@
       }
 
       .storage-label {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @include flexCenter;
         position: absolute;
         top: 1.5%;
         left: 2.5%;
         height: 25px;
         width: 44px;
         border-radius: 10px;
-        color: #fff;
+        color: $white;
 
         span {
           margin-top: 2px;
@@ -118,12 +116,12 @@
 
           i {
             margin-top: 2px;
-            color: white;
+            color: $white;
             font-size: 20px;
           }
 
           &:hover {
-            background-color: #6ca437;
+            background-color: $o-green;
           }
         }
       }
@@ -141,16 +139,14 @@
         font-size: 18px;
 
         .delivery-label {
-          display: flex;
-          justify-content: center;
-          align-items: center;
+          @include flexCenter;
           width: 70px;
           height: 18px;
           margin-bottom: 8px;
-          background-color: #6ca437;
+          background-color: $o-green;
           border-radius: 5px;
           font-size: 11px;
-          color: #fff;
+          color: $white;
         }
 
         p {
@@ -159,7 +155,7 @@
           .discount {
             margin-right: 10px;
             font-weight: 700;
-            color: #6ca437;
+            color: $o-green;
           }
 
           span {
