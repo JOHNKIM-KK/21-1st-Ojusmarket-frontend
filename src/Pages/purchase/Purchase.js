@@ -6,6 +6,9 @@ class Purchase extends React.Component {
   constructor() {
     super();
     this.state = {
+      orderName: '',
+      orderAddress: '',
+      orderPrice: 0,
       isViewCart: false,
     };
   }
@@ -20,8 +23,27 @@ class Purchase extends React.Component {
     });
   };
 
+  componentDidMount() {
+    fetch('http://10.58.6.166:8000/orders/payment', {
+      method: 'GET',
+      headers: {
+        Authorization:
+          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6M30.Xd67BvcRiSNVJgAugHUg92lBMAdXkIekFx8icNdTJaQ',
+      },
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        this.setState({
+          orderName: data.payment[0].name,
+          orderAddress: data.payment[0].address,
+          orderPrice: data.payment[0].price,
+        });
+      });
+  }
+
   render() {
-    const { isViewCart } = this.state;
+    const { isViewCart, orderAddress, orderPrice, orderName } = this.state;
     return (
       <div className="purchase">
         <div className="purchase-container">
@@ -84,27 +106,29 @@ class Purchase extends React.Component {
                 <p>오져스배송</p>
               </div>
               <div className="order-info">
-                <p>김명준</p>
-                <p>서울 광진구 동일로26길 38-4 01호</p>
+                <p>{orderName}</p>
+                <p>{orderAddress}</p>
               </div>
               <div className="header-line">최종 결제금액</div>
               <div className="total-price">
                 <div>
                   <span>상품금액</span>
                   <span className="price">
-                    130,400<b>원</b>
+                    {Math.floor(orderPrice).toLocaleString()}
+                    <b>원</b>
                   </span>
                 </div>
                 <div className="delivery-price">
                   <span>총 배송비</span>
                   <span className="price">
-                    &#43;3000<b>원</b>
+                    &#43;3,000<b>원</b>
                   </span>
                 </div>
                 <div className="total">
                   <span>총 주문금액</span>
                   <span className="price">
-                    133,400<b>원</b>
+                    {(Math.floor(orderPrice) + 3000).toLocaleString()}
+                    <b>원</b>
                   </span>
                 </div>
               </div>
