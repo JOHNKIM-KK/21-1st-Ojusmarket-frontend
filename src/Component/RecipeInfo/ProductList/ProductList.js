@@ -6,7 +6,12 @@ class ProductList extends Component {
       <div>
         {/* {this.props.recipeData.related_ingredients.map(recipe => {
           return (
-            <Product id={recipe.id} name={recipe.name} email={recipe.email} />
+            <Product
+              key={recipe.id}
+              id={recipe.id}
+              name={recipe.name}
+              email={recipe.email}
+            />
           );
         })} */}
       </div>
