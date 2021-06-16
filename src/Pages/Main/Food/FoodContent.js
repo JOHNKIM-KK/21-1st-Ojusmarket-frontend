@@ -29,10 +29,12 @@ class FoodContent extends React.Component {
           </button>
         </div>
         <div className="food-info">
-          <p className="delivery-label">오아시스배송</p>
+          <p className="delivery-label">오져스배송</p>
           <h2>{name}</h2>
           <p>
-            <span>{Math.floor(price).toLocaleString()}원</span>
+            <span>
+              <b>{Math.floor(price).toLocaleString()}</b>원
+            </span>
           </p>
         </div>
       </div>

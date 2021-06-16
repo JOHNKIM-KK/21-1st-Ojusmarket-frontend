@@ -32,76 +32,11 @@
           border: none;
           background-color: inherit;
           font-size: 30px;
-          font-family: 'Jua', sans-serif;
           color: iherit;
 
           &:hover {
             cursor: pointer;
             border-bottom: 2px solid $o-green;
-          }
-        }
-      }
-    }
-    .food-category {
-      display: flex;
-      justify-content: space-around;
-      width: 100vw;
-      background-color: $white;
-      border-bottom: 2px solid $light-gray;
-
-      ul {
-        @include flexCenter(flex, space-around, center);
-        width: 910px;
-        height: 54px;
-
-        li {
-          button {
-            padding-bottom: 5px;
-            border: none;
-            background-color: $white;
-            font-size: 15px;
-
-            &:hover {
-              cursor: pointer;
-              font-weight: 700;
-              color: $o-green;
-              border-bottom: 2px solid $o-green;
-            }
-          }
-        }
-      }
-    }
-    .food-wrap {
-      display: flex;
-      flex-wrap: wrap;
-      width: 1150px;
-      background-color: $white;
-
-      .food {
-        width: 245px;
-        margin: 20px;
-        background-color: $white;
-
-        img {
-          height: 245px;
-          width: 245px;
-          border-radius: 15px;
-        }
-
-        .food-info {
-          height: 105px;
-          width: 245px;
-          margin-top: 30px;
-          font-size: 18px;
-
-          p {
-            margin-top: 10px;
-
-            span {
-              margin-right: 10px;
-              font-weight: 700;
-              color: $o-green;
-            }
           }
         }
       }
