@@ -1,13 +1,14 @@
 import { Component } from 'react';
-
+import Product from '../Product/Product';
 class ProductList extends Component {
   render() {
     return (
       <div>
-        <img className="onionImg" src={this.props.image_url} alt="" />
-
-        <h3>{this.props.name}</h3>
-        <span> {Math.floor(this.props.price).toLocaleString()}원</span>
+        {/* {this.props.recipeData.related_ingredients.map(recipe => {
+          return (
+            <Product id={recipe.id} name={recipe.name} email={recipe.email} />
+          );
+        })} */}
       </div>
     );
   }

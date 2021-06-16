@@ -1,12 +1,19 @@
 import { Component } from 'react';
-
+import Recipe from '../Recipe/Recipe';
 class RecipeList extends Component {
   render() {
-    const { id, name, image_url } = this.props;
+    console.log(this.props.recipeData);
+    const { recipeData } = this.props;
+
     return (
       <div>
-        <h3>{name}</h3>
-        <img id={id} className="onionImg" src={image_url} alt="/" />
+        <div>
+          <Recipe
+            id={recipeData.id}
+            name={recipeData.name}
+            image_url={recipeData.image_url}
+          />
+        </div>
       </div>
     );
   }
