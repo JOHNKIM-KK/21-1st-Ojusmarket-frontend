@@ -46,9 +46,11 @@ class Login extends Component {
   goToSignUp = () => {
     this.props.history.push('/signup');
   };
+
   render() {
     const isIdAndPasswordValid =
       this.state.identity.length > 4 && this.state.password.length > 7;
+
     return (
       <div className="login">
         <nav className="navi">

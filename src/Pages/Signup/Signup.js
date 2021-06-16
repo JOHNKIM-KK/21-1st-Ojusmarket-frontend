@@ -2,42 +2,42 @@ import React, { Component } from 'react';
 import Header from '../../Component/HeaderComponent/Header';
 import Footer from '../../Component/FooterComponent/Footer';
 import DaumPostCode from 'react-daum-postcode';
+import { validateId } from '../../Utill/validaters';
+import { validateEmail } from '../../Utill/validaters';
+import { validatePhone } from '../../Utill/validaters';
 import './Signup.scss';
 import '../../Styles/Common.scss';
+
+// 주소창 style
+const width = 600;
+const height = 450;
+const postStyle = {
+  position: 'absolute',
+  zIndex: '100',
+  border: '1px solid #333333',
+};
 
 class Signup extends Component {
   constructor(props) {
     super(props);
     this.state = {
       identity: '',
-      // isAvailedId: '',
-      // idChecked: false,
-      // disabled: true,
       background: '#d2f7d2',
       password: '',
       rePassword: '',
       isAvailedPassword: '',
       name: '',
       phone: '',
-      // isAvailedPhone: '',
       email: '',
-      // isAvailedEmail: '',
       address: '',
-      // zoneCode: '',
       firstAddress: '',
       secondAddress: '',
       isDaumPost: false,
     };
   }
 
-  //id 요휴성검사
-  idCheck = e => {
-    this.setState({ identity: e.target.value });
-  };
-
   //id 중복체크
   checkDuplicateId = e => {
-    console.log('a');
     e.preventDefault();
     fetch('http://10.58.2.234:8000/user/id-check', {
       method: 'POST',
@@ -90,50 +90,20 @@ class Signup extends Component {
     );
   };
 
-  //name ,address, phone value값 지정 ,  phone  검사
+  //id , name , phone , email, address value값 지정 / 주소 value 합치기
   handleInputChange = e => {
     this.setState(
       {
         [e.target.name]: e.target.value,
       },
       () => {
-        if (e.target.name === 'phone') {
-          this.PhoneCheck();
-
-          return;
-        } else if (e.target.name === 'secondAddress') {
+        if (e.target.name === 'secondAddress') {
           this.setState({
             address: this.state.firstAddress + this.state.secondAddress,
           });
         }
       }
     );
-  };
-
-  PhoneCheck = () => {
-    const phonereg = /^\d{3}\d{3,4}\d{4}$/;
-    let userPhone = this.state.phone;
-    this.setState({ phone: userPhone });
-
-    if (false === phonereg.test(userPhone)) {
-      this.setState({ isAvailedPhone: '휴대폰번호 10~11자리 입력해주세요' });
-    } else {
-      this.setState({ isAvailedPhone: '' });
-    }
-  };
-
-  //email 형식 검사
-  emailCheck = e => {
-    const emailreg =
-      /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-    let userEmail = e.target.value;
-    this.setState({ email: e.target.value });
-
-    if (false === emailreg.test(userEmail)) {
-      this.setState({ isAvailedEmail: '올바른 이메일 형식이 아닙니다.' });
-    } else {
-      this.setState({ isAvailedEmail: '' });
-    }
   };
 
   //주소
@@ -212,18 +182,10 @@ class Signup extends Component {
 
   render() {
     const { isDaumPost, firstAddress } = this.state;
-    // 주소창 style
-    const width = 600;
-    const height = 450;
-    const modalStyle = {
-      position: 'absolute',
-      zIndex: '100',
-      border: '1px solid #333333',
-    };
+
     //id체크
     const idreg = /^[a-z0-9]{5,15}/g;
     const isIdValid = idreg.test(this.state.identity);
-    // validateId(this.state.identity); // true / false 을 반환한다.
 
     return (
       <div>
@@ -249,12 +211,14 @@ class Signup extends Component {
                   id="identity"
                   type="text"
                   name="identity"
-                  onChange={this.idCheck}
+                  onChange={this.handleInputChange}
                   placeholder="아이디 (7~12 자 , Only 영문 숫자 조합)"
                 />
                 <button
                   className="btnId"
-                  style={{ backgroundColor: isIdValid ? '#6ca437' : '#d2f7d2' }}
+                  style={{
+                    backgroundColor: isIdValid ? '#6ca437' : '#d2f7d2',
+                  }}
                   disabled={!isIdValid}
                   onClick={this.checkDuplicateId}
                 >
@@ -262,7 +226,7 @@ class Signup extends Component {
                 </button>
               </div>
 
-              {!isIdValid ? (
+              {!validateId(this.state.identity) ? (
                 <p className="errMsg">아이디 형식이 올바르지 않습니다.</p>
               ) : (
                 <p className="errMsg"></p>
@@ -302,15 +266,23 @@ class Signup extends Component {
                   type="number"
                   placeholder="휴대폰번호 (-제외 숫자만입력)"
                 />
-                <p className="errMsg">{this.state.isAvailedPhone}</p>
+                {!validatePhone(this.state.phone) ? (
+                  <p className="errMsg">휴대폰번호 10~11자리 입력해주세요.</p>
+                ) : (
+                  <p className="errMsg"></p>
+                )}
                 <input
                   className="email"
                   name="email"
-                  onChange={this.emailCheck}
+                  onChange={this.handleInputChange}
                   type="text"
                   placeholder="이메일"
                 />
-                <p className="errMsg">{this.state.isAvailedEmail}</p>
+                {!validateEmail(this.state.email) ? (
+                  <p className="errMsg">이메일 형식이 올바르지 않습니다.</p>
+                ) : (
+                  <p className="errMsg"></p>
+                )}
               </div>
               <div className="addressBox">
                 <div className="cellFirst">
@@ -332,7 +304,7 @@ class Signup extends Component {
                       autoClose
                       width={width}
                       height={height}
-                      style={modalStyle}
+                      style={postStyle}
                       isDaumPost={isDaumPost}
                     />
                   )}
