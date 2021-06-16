@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "버섯탕",
+
+    "image_url": "https://www.oasis.co.kr:48580/content/256a4ffc-82a2-4b78-931b-dca2fe087570.jpg",
+    "related_ingredient": [
+      {
+        "id": 31,
+        "name": "양파",
+        "image_url": "https://www.oasis.co.kr:48580/content/256a4ffc-82a2-4b78-931b-dca2fe087570.jpg",
+        "price": 1000
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "김치찌개",
+
+    "image_url": "https://www.oasis.co.kr:48581/product/4014/detail/detail_4014_0_ea80ef25-768b-4486-8b83-cc83dbfe9901.jpg",
+    "related_ingredient": [
+      {
+        "id": 21,
+        "name": "당근",
+        "image_url": "https://www.oasis.co.kr:48580/content/256a4ffc-82a2-4b78-931b-dca2fe087570.jpg",
+        "price": 2000
+      }
+    ]
+  }
+]
