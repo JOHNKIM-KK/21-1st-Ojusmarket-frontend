@@ -30,7 +30,8 @@ class Main extends React.Component {
 
   componentDidMount() {
     // fetch(`${GET_PRODUCT_API}`)
-    fetch('http://10.58.2.123:8000/ingedients')
+    //http://10.58.6.166:8000/ingredients
+    fetch('Data/mainData.json')
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -41,7 +42,7 @@ class Main extends React.Component {
         });
       });
 
-    fetch('http://10.58.2.123:8000/ingredients')
+    fetch('/Data/SlideData.json')
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -92,7 +93,6 @@ class Main extends React.Component {
     return (
       <>
         <Header />
-        {console.log(this.props)}
         <div className="main">
           <Slider slideImgList={this.state.slideImgList} />
           <div>

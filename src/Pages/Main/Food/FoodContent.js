@@ -11,7 +11,7 @@ const LABEL_COLOR = {
 class FoodContent extends React.Component {
   goToDetail = () => {
     const { id } = this.props.ingredients;
-    this.props.history.push(`/productinfo/${id}`);
+    this.props.history.push(`/ingredients/${id}`);
   };
 
   render() {
