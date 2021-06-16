@@ -1,4 +1,3 @@
-@import '../../Styles/Common.scss';
 @import '../../Styles/Variable.scss';
 @import '../../Styles/Mixin.scss';
 
@@ -128,7 +127,7 @@
         align-items: center;
         margin-top: 30px;
         padding: 50px;
-        background-color: #f7f7f7;
+        background-color: $white;
 
         .button-container {
           display: flex;
@@ -136,7 +135,7 @@
           span {
             @include flexCenter;
             width: 80px;
-            background-color: white;
+            background-color: $white;
             font-size: 26px;
           }
 
@@ -144,7 +143,7 @@
             padding: 10px;
             font-size: 18px;
             border: 1px solid $light-gray;
-            background-color: white;
+            background-color: $white;
             cursor: pointer;
           }
         }
@@ -171,12 +170,12 @@
         &:first-child {
           margin-right: 5px;
           background-color: $o-green;
-          color: white;
+          color: $white;
         }
 
         &:nth-child(2) {
           background-color: black;
-          color: white;
+          color: $white;
         }
 
         &:last-child {
@@ -184,7 +183,7 @@
           right: 0;
           padding: 15px;
           background-color: $dark-gray;
-          color: white;
+          color: $white;
         }
       }
     }
