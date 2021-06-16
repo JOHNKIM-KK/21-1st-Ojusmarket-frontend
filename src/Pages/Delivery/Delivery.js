@@ -1,6 +1,5 @@
 import React from 'react';
 import BasicInfo from './BasicInfo';
-import CreateInfo from './CreateInfo';
 import './Delivery.scss';
 
 class Delivery extends React.Component {
@@ -22,12 +21,6 @@ class Delivery extends React.Component {
       changeInfo: id,
     });
   };
-
-  // handleChange = e => {
-  //   this.setState({
-  //     [e.target.name]: e.target.value,
-  //   });
-  // };
 
   handleSubmit = e => {
     // e.preventDefault();
@@ -67,22 +60,6 @@ class Delivery extends React.Component {
   }
 
   render() {
-    const tab = {
-      0: (
-        <BasicInfo
-          userName={this.state.userName}
-          userPhone={this.state.userPhone}
-          userAddress={this.state.userAddress}
-        />
-      ),
-      1: (
-        <CreateInfo
-          reciverName={this.state.reciverName}
-          reciverPhone={this.state.reciverPhone}
-          reciverAddress={this.state.reciverAddress}
-        />
-      ),
-    };
     return (
       <div className="delivery">
         <div className="delivery-container">
@@ -125,47 +102,16 @@ class Delivery extends React.Component {
           </div>
           <div className="address">
             <div className="address-selection">
-              <div onClick={() => this.handleTap(0)}>
+              <div>
                 <span>기본 배송지</span>
               </div>
-              <div onClick={() => this.handleTap(1)}>
-                <span>직접입력</span>
-              </div>
             </div>
-            <div>{tab[this.state.changeInfo]}</div>
-            <div className="head-line">
-              <span>&#42;배송방법 선택</span>
-            </div>
-            <div className="delivery-type">
-              <label>
-                <input type="radio" checked></input>
-                <span>오져스배송 주문하기</span>
-              </label>
-            </div>
-            <div className="head-line">
-              <span>&#42;포장방법 선택</span>
-            </div>
-            <div className="choose-package">
-              <div className="package-header">
-                <span>
-                  포장 하나도 자연에 가깝게! 풀무원생수를 얼려 아이스팩으로
-                  사용합니다.
-                </span>
-              </div>
-              <div className="package-option">
-                <label>
-                  <input type="radio" name="package"></input>
-                  <span>최소포장 ( 생수와 포장재를 최소한으로 사용 )</span>
-                </label>
-                <label>
-                  <input type="radio" name="package"></input>
-                  <span>친환경 포장 (생수와 드라이아이스를 조금 사용)</span>
-                </label>
-                <label>
-                  <input type="radio" name="package"></input>
-                  <span>보냉재 더 추가 포장 (보냉재를 넉넉히 사용)</span>
-                </label>
-              </div>
+            <div>
+              <BasicInfo
+                userName={this.state.userName}
+                userPhone={this.state.userPhone}
+                userAddress={this.state.userAddress}
+              />
             </div>
             <div className="package-recall">
               <h4>

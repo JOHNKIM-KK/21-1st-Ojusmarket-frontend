@@ -2,6 +2,10 @@ import React from 'react';
 import './Payment.scss';
 
 class Payment extends React.Component {
+  goToMain = () => {
+    this.props.history.push('/main');
+  };
+
   render() {
     return (
       <div className="payment">
@@ -21,7 +25,7 @@ class Payment extends React.Component {
               <p>구매가 정상적으로 처리되었습니다.</p>
             </div>
             <div>
-              <button>메인으로 가기</button>
+              <button onClick={this.goToMain}>메인으로 가기</button>
             </div>
           </div>
         </div>

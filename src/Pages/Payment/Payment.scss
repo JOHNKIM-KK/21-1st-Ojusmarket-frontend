@@ -53,6 +53,10 @@
         border-radius: 10px;
         background-color: $o-green;
         color: #fff;
+
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
   }
