@@ -1,5 +1,6 @@
 import React from 'react';
 import { GET_PRODUCT_API } from '../../Utill/config';
+import { withRouter } from 'react-router-dom';
 import Header from '../../Component/HeaderComponent/Header';
 import Slider from './slider/Slider';
 import Food from './Food/Food';

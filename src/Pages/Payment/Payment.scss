@@ -1,0 +1,44 @@
+@import '../../Styles/Mixin.scss';
+@import '../../Styles/Variable.scss';
+.payment {
+  @include flexCenter;
+
+  .payment-container {
+    width: 1024px;
+
+    .payment-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 200px;
+      padding-left: 20px;
+
+      .payment-header__name {
+        font-size: 33px;
+        font-weight: 700;
+      }
+      div {
+        display: flex;
+        .location {
+          color: $o-green;
+        }
+        span {
+          font-size: 16px;
+        }
+      }
+    }
+
+    .payment-service {
+      @include flexCenter;
+      height: 700px;
+      background-color: $o-green;
+
+      .payment-message {
+        p {
+          font-size: 40px;
+          color: #fff;
+        }
+      }
+    }
+  }
+}

@@ -31,12 +31,12 @@ class Delivery extends React.Component {
 
   handleSubmit = e => {
     // e.preventDefault();
-    // fetch('http://10.58.4.160:8000/', {
+    // fetch('http://10.58.6.166:8000/orders/order', {
     //   method: 'POST',
     //   body: JSON.stringify({
-    //     reciverName: this.state.reciverName,
-    //     reciverPhone: this.state.reciverPhone,
-    //     reciverAddress: this.state.reciverAddress,
+    //     // reciverName: this.state.reciverName,
+    //     // reciverPhone: this.state.reciverPhone,
+    //     // reciverAddress: this.state.reciverAddress,
     //   }),
     // })
     //   .then(response => response.json())
@@ -49,13 +49,19 @@ class Delivery extends React.Component {
   };
 
   componentDidMount() {
-    fetch('/data/userData.json')
+    fetch('http://10.58.6.166:8000/orders/order', {
+      method: 'GET',
+      headers: {
+        Authorization:
+          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6M30.Xd67BvcRiSNVJgAugHUg92lBMAdXkIekFx8icNdTJaQ',
+      },
+    })
       .then(res => res.json())
       .then(data => {
         this.setState({
-          userName: data.userName,
-          userPhone: data.userPhone,
-          userAddress: data.userAddress,
+          userName: data.user[0].name,
+          userPhone: data.user[0].phone,
+          userAddress: data.user[0].address,
         });
       });
   }

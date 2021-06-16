@@ -1,4 +1,6 @@
-@import '../../Styles/Common.scss';
+@import '../../Styles/Mixin.scss';
+@import '../../Styles/Variable.scss';
+
 .delivery {
   @include flexCenter;
 
@@ -272,7 +274,7 @@
             height: 35px;
             width: 500px;
             padding-left: 20px;
-            border: 1px solid $ligth-gray;
+            border: 1px solid $light-gray;
             color: #828282;
             border-radius: 5px;
           }

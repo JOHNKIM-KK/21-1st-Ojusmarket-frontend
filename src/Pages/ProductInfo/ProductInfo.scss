@@ -1,11 +1,13 @@
 @import '../../Styles/Common.scss';
+@import '../../Styles/Variable.scss';
+@import '../../Styles/Mixin.scss';
 
 .contents-container {
   display: flex;
   justify-content: center;
   margin-top: 60px;
   padding-bottom: 80px;
-  border-bottom: 2px solid $ligth-gray;
+  border-bottom: 2px solid $light-gray;
 
   .img-container {
     display: flex;
@@ -33,7 +35,7 @@
       min-width: 421px;
       height: 240px;
       margin-top: 20px;
-      border: 1px solid $ligth-gray;
+      border: 1px solid $light-gray;
 
       .related {
         display: block;
@@ -59,7 +61,7 @@
       }
       span {
         font-size: 25px;
-        color: $ligth-gray;
+        color: $light-gray;
       }
     }
 
@@ -67,7 +69,7 @@
       .price {
         display: flex;
         padding-bottom: 50px;
-        border-bottom: 1px solid $ligth-gray;
+        border-bottom: 1px solid $light-gray;
         font-size: 20px;
         color: $black;
 
@@ -78,7 +80,7 @@
       .info-box {
         &:last-child {
           padding-bottom: 50px;
-          border-bottom: 1px solid $ligth-gray;
+          border-bottom: 1px solid $light-gray;
         }
         .delivery {
           display: flex;
@@ -106,7 +108,7 @@
       display: flex;
       margin-top: 50px;
       padding-bottom: 50px;
-      border-bottom: 1px solid $ligth-gray;
+      border-bottom: 1px solid $light-gray;
 
       span:first-child {
         width: 180px;
@@ -141,7 +143,7 @@
           button {
             padding: 10px;
             font-size: 18px;
-            border: 1px solid $ligth-gray;
+            border: 1px solid $light-gray;
             background-color: white;
             cursor: pointer;
           }
