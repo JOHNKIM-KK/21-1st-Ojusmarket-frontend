@@ -11,7 +11,7 @@ class Main extends React.Component {
   constructor() {
     super();
     this.state = {
-      changeTap: 0,
+      changeTap: 'ingredients',
       productList: [],
       storageLabel: '',
       slideImgList: [],
@@ -19,12 +19,14 @@ class Main extends React.Component {
   }
 
   handleTap = event => {
-    this.props.history.push(`/${event.target.value}`);
+    this.setState({
+      changeTap: event.target.value,
+    });
   };
 
-  componentDidUpdate(prevProps, _) {
-    if (prevProps.match.params.category !== this.props.match.params.category)
-      fetch(`${GET_PRODUCT_API}/${this.props.match.params.category}`)
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.changeTap !== this.state.changeTap)
+      fetch(`${GET_PRODUCT_API}/${this.state.changeTap}`)
         .then(res => res.json())
         .then(data => {
           this.setState({
@@ -34,7 +36,7 @@ class Main extends React.Component {
 
     if (prevProps.location.search !== this.props.location.search)
       fetch(
-        `${GET_PRODUCT_API}/${this.props.match.params.category}${this.props.location.search}`
+        `${GET_PRODUCT_API}/${this.state.changeTap}${this.props.location.search}`
       )
         .then(res => res.json())
         .then(data => {
@@ -44,7 +46,7 @@ class Main extends React.Component {
         });
   }
   componentDidMount() {
-    const path = this.props.match.params.category || 'ingredients';
+    const path = this.state.changeTap;
     fetch(`${GET_PRODUCT_API}/${path}`)
       .then(res => res.json())
       .then(data => {
@@ -64,17 +66,16 @@ class Main extends React.Component {
 
   filterFoodCategory = e => {
     const query = `category_id=${e.target.value}`;
-    this.props.history.push(`/${this.props.match.params.category}?${query}`);
+    this.props.history.push(`?${query}`);
   };
 
   filterRecipeCategory = e => {
     const query = `category_id=${e.target.value}`;
-    this.props.history.push(`/recipes?${query}`);
+    this.props.history.push(`?${query}`);
   };
 
   render() {
     const { productList } = this.state;
-
     return (
       <>
         <Header />
