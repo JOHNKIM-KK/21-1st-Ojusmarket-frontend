@@ -1,4 +1,5 @@
 import React from 'react';
+import { GET_DELIVERY_API, GET_PRODUCT_API } from '../../Utill/config';
 import BasicInfo from './BasicInfo';
 import './Delivery.scss';
 
@@ -10,9 +11,6 @@ class Delivery extends React.Component {
       userName: '',
       userPhone: '',
       userAddress: '',
-      reciverName: '',
-      reciverPhone: '',
-      reciverAddress: '',
     };
   }
 
@@ -23,26 +21,11 @@ class Delivery extends React.Component {
   };
 
   handleSubmit = e => {
-    // e.preventDefault();
-    // fetch('http://10.58.6.166:8000/orders/order', {
-    //   method: 'POST',
-    //   body: JSON.stringify({
-    //     // reciverName: this.state.reciverName,
-    //     // reciverPhone: this.state.reciverPhone,
-    //     // reciverAddress: this.state.reciverAddress,
-    //   }),
-    // })
-    //   .then(response => response.json())
-    //   .then(result => {
-    //     console.log('결과: ', result);
-    //     if (result.message === 'SUCCESS') {
     this.props.history.push('/purchase');
-    //   }
-    // });
   };
 
   componentDidMount() {
-    fetch('http://10.58.6.166:8000/orders/order', {
+    fetch(`${GET_DELIVERY_API}`, {
       method: 'GET',
       headers: {
         Authorization:

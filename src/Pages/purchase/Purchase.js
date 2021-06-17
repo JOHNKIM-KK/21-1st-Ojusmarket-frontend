@@ -1,4 +1,5 @@
 import React from 'react';
+import { GET_PURCHASE_API } from '../../Utill/config';
 import CheckCart from './CheckCart';
 import './Purchase.scss';
 
@@ -10,11 +11,23 @@ class Purchase extends React.Component {
       orderAddress: '',
       orderPrice: 0,
       isViewCart: false,
+      productId: '',
     };
   }
 
   handlePayment = () => {
-    this.props.history.push('/Payment');
+    fetch('http://10.58.6.166:8000/orders/payment', {
+      method: 'POST',
+      body: JSON.stringify({
+        ingredient_id: this.state.productId,
+      }),
+    })
+      .then(res => res.json())
+      .then(result => {
+        if (result.message === 'SUCCESS') {
+          this.props.history.push('/Payment');
+        }
+      });
   };
 
   handleCart = () => {
@@ -24,7 +37,7 @@ class Purchase extends React.Component {
   };
 
   componentDidMount() {
-    fetch('http://10.58.6.166:8000/orders/payment', {
+    fetch(`${GET_PURCHASE_API}`, {
       method: 'GET',
       headers: {
         Authorization:
