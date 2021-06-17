@@ -1,14 +1,15 @@
-@import '../../Styles/Common.scss';
+@import '../../Styles/Variable.scss';
+@import '../../Styles/Mixin.scss';
 
 .related-list {
   display: flex;
-  justify-content: space-evenly;
   margin-top: 20px;
 
   .dummy-image {
     .dum-img {
       height: 115px;
       width: 115px;
+      margin: 0px 10px;
     }
     .imageName {
       display: block;

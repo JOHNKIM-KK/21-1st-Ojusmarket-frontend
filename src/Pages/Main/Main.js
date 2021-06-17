@@ -1,5 +1,6 @@
 import React from 'react';
 import { GET_PRODUCT_API } from '../../Utill/config';
+import { withRouter } from 'react-router-dom';
 import Header from '../../Component/HeaderComponent/Header';
 import Slider from './slider/Slider';
 import Food from './Food/Food';
@@ -55,7 +56,7 @@ class Main extends React.Component {
         });
       });
 
-    fetch('/data/SlideData.json')
+    fetch('/Data/SlideData.json')
       .then(res => res.json())
       .then(data => {
         this.setState({

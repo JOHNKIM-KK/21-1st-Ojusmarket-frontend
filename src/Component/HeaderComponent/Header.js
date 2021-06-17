@@ -1,7 +1,12 @@
 import React from 'react';
+import { Link, withRouter } from 'react-router-dom';
 import './Header.scss';
 
 class Header extends React.Component {
+  goToMain = () => {
+    this.props.history.push(`/main`);
+  };
+
   render() {
     return (
       <header className="header-container">
@@ -31,12 +36,16 @@ class Header extends React.Component {
                 <a href="#">주문/배송조회</a>
               </li>
               <li>
-                <a href="#">장바구니</a>
+                <Link to="/cartlist">장바구니</Link>
               </li>
             </ul>
           </div>
         </div>
-        <img src="/images/logo.png" alt="ojus-market logo" />
+        <img
+          src="/images/logo.png"
+          alt="ojus-market logo"
+          onClick={this.goToMain}
+        />
         <div className="search-container">
           <form action="#" className="search-box">
             <input type="text" placeholder="바른 먹거리를 찾으세요?" />
@@ -50,4 +59,4 @@ class Header extends React.Component {
   }
 }
 
-export default Header;
+export default withRouter(Header);

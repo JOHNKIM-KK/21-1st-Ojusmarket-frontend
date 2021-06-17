@@ -51,8 +51,14 @@ class Food extends React.Component {
           <span>원하는 시간에 우리집에 쏙~</span>
         </div>
         <div className="food-wrap">
-          {productList.ingredients.map(data => (
-            <FoodContent key={data.id} ingredients={data} storage={storage} />
+          {productList.map(data => (
+            <FoodContent
+              key={data.id}
+              id={data.id}
+              ingredients={data}
+              storage={storage}
+              matchId={this.props.matchId}
+            />
           ))}
         </div>
       </div>
