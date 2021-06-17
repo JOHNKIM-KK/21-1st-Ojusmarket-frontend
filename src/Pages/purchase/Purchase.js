@@ -11,23 +11,30 @@ class Purchase extends React.Component {
       orderAddress: '',
       orderPrice: 0,
       isViewCart: false,
-      productId: 2,
+      productId: 5,
     };
   }
 
   handlePayment = () => {
     fetch(`${GET_PURCHASE_API}`, {
       method: 'POST',
+      headers: {
+        Authorization:
+          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.AaUAL2bGGnr1Kixz77dtvRZIGTi6kfb368OejN8iv8A',
+      },
       body: JSON.stringify({
         cart: [{ ingredient_id: this.state.productId }],
       }),
-    })
-      .then(res => res.json())
-      .then(result => {
-        if (result.message === 'created') {
-          this.props.history.push('/Payment');
-        }
-      });
+    }).then(res => {
+      if (res.status !== 200) return alert('error');
+      this.props.history.push('/payment');
+    });
+    // .then(result => {
+    //   console.log(result);
+    //   if (result.message === 'created') {
+    //     this.props.history.push('/Payment');
+    //   }
+    // });
   };
 
   handleCart = () => {
