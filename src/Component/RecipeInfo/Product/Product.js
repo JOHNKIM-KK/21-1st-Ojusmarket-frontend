@@ -1,14 +1,25 @@
 import { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import './Product.scss';
 class Product extends Component {
-  render() {
-    return (
-      <div>
-        <img className="onionImg" src={this.props.image_url} alt="제품명" />
+  clickHandler = id => {
+    this.props.history.push(`/productinfo/${id}`);
+  };
 
-        <h3>{this.props.name}</h3>
-        <span> {Math.floor(this.props.price).toLocaleString()}원</span>
+  render() {
+    const { id, image, name, price } = this.props;
+
+    return (
+      <div className="Product">
+        <div onClick={() => this.clickHandler(id)} className="productbox1">
+          <img className="onionImg" src={image} alt="제품명" />
+          <div className="productInfo">
+            <h3>{name}</h3>
+            <span>{Math.floor(price).toLocaleString()}원</span>
+          </div>
+        </div>
       </div>
     );
   }
 }
-export default Product;
+export default withRouter(Product);

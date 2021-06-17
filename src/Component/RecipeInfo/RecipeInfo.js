@@ -3,6 +3,7 @@ import Header from '../FooterComponent/Footer';
 import Footer from '../HeaderComponent/Header';
 import RecipeList from './RecipeList/RecipeList';
 import ProductList from './ProductList/ProductList';
+import { withRouter } from 'react-router-dom';
 import './RecipeInfo.scss';
 
 class RecipeInfo extends React.Component {
@@ -13,25 +14,17 @@ class RecipeInfo extends React.Component {
 
   componentDidMount() {
     const { id } = this.props.match.params;
-    fetch(`http://10.58.6.166:8000/recipes/${id}`)
+    fetch(`http://10.58.3.10:8000/recipes/${id}`)
       .then(res => res.json())
       .then(res =>
         this.setState({
-          recipeData: res,
+          recipeData: res.recipe,
         })
       );
   }
-
-  // componentDidMount() {
-  //   fetch('/Data/recipeData.json')
-  //     .then(res => res.json())
-  //     .then(result => {
-  //       console.log('결과: ', result);
-  //     });
-  //   // .then(res => {
-  //   //   this.setState({ recipeData: res });
-  //   // });
-  // }
+  goList = () => {
+    this.props.history.push('/main');
+  };
 
   render() {
     const { recipeData } = this.state;
@@ -45,11 +38,10 @@ class RecipeInfo extends React.Component {
             </div>
 
             <p>관련제품</p>
-            <div className="relatedProduct">
-              {/* <ProductList recipeData={this.state.recipeData} /> */}
+            <div>
+              <ProductList recipeData={recipeData} />
             </div>
             <div className="btnBox">
-              <button className="goBasket">관련제품 장바구니</button>
               <button onClick={this.goList} className="goList">
                 목록보기
               </button>
@@ -61,4 +53,4 @@ class RecipeInfo extends React.Component {
     );
   }
 }
-export default RecipeInfo;
+export default withRouter(RecipeInfo);

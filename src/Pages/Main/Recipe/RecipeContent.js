@@ -5,6 +5,7 @@ class RecipeContent extends React.Component {
   clickHandler = id => {
     this.props.history.push(`/recipeinfo/${id}`);
   };
+
   render() {
     const { recipe } = this.props;
 

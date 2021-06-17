@@ -1,20 +1,26 @@
 import { Component } from 'react';
 import Product from '../Product/Product';
+import './ProductList.scss';
+
 class ProductList extends Component {
   render() {
+    const { recipeData } = this.props;
+
     return (
-      <div>
-        {/* {this.props.recipeData.related_ingredients.map(recipe => {
-          return (
-            <Product
-              key={recipe.id}
-              id={recipe.id}
-              name={recipe.name}
-              email={recipe.email}
-            />
-          );
-        })} */}
-      </div>
+      recipeData && (
+        <div className="relatedProduct">
+          {recipeData.related_ingredients &&
+            recipeData.related_ingredients.map(recipe => (
+              <Product
+                key={recipe.id}
+                id={recipe.id}
+                image={recipe.image_url}
+                name={recipe.name}
+                price={recipe.price}
+              />
+            ))}
+        </div>
+      )
     );
   }
 }
