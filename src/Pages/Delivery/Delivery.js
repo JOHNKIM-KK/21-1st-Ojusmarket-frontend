@@ -29,7 +29,7 @@ class Delivery extends React.Component {
       method: 'GET',
       headers: {
         Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6M30.Xd67BvcRiSNVJgAugHUg92lBMAdXkIekFx8icNdTJaQ',
+          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.AaUAL2bGGnr1Kixz77dtvRZIGTi6kfb368OejN8iv8A',
       },
     })
       .then(res => res.json())

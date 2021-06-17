@@ -11,20 +11,20 @@ class Purchase extends React.Component {
       orderAddress: '',
       orderPrice: 0,
       isViewCart: false,
-      productId: '',
+      productId: 2,
     };
   }
 
   handlePayment = () => {
-    fetch('http://10.58.6.166:8000/orders/payment', {
+    fetch(`${GET_PURCHASE_API}`, {
       method: 'POST',
       body: JSON.stringify({
-        ingredient_id: this.state.productId,
+        cart: [{ ingredient_id: this.state.productId }],
       }),
     })
       .then(res => res.json())
       .then(result => {
-        if (result.message === 'SUCCESS') {
+        if (result.message === 'created') {
           this.props.history.push('/Payment');
         }
       });
@@ -41,7 +41,7 @@ class Purchase extends React.Component {
       method: 'GET',
       headers: {
         Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6M30.Xd67BvcRiSNVJgAugHUg92lBMAdXkIekFx8icNdTJaQ',
+          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.AaUAL2bGGnr1Kixz77dtvRZIGTi6kfb368OejN8iv8A',
       },
     })
       .then(res => res.json())
