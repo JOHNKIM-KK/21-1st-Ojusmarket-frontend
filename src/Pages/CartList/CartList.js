@@ -2,8 +2,8 @@ import React from 'react';
 import Header from '../../Component/HeaderComponent/Header';
 import Footer from '../../Component/FooterComponent/Footer';
 import CartItem from '../CartList/CartItem';
+import { Link, withRouter } from 'react-router-dom';
 import './CartList.scss';
-import { clearConfigCache } from 'prettier';
 
 class CartList extends React.Component {
   constructor(props) {
@@ -130,6 +130,10 @@ class CartList extends React.Component {
     });
   };
 
+  goToDelivery = () => {
+    this.props.history.push('/delivery');
+  };
+
   render() {
     const { cartData, selectedArr } = this.state;
     return (
@@ -216,7 +220,9 @@ class CartList extends React.Component {
               <div className="buy-button__container">
                 <button>계속 쇼핑하기</button>
                 <button>선택상품만 주문하기</button>
-                <button>전체상품 주문하기</button>
+                <Link to={{ state: { cartData } }}>
+                  <button onClick={this.goToDelivery}>전체상품 주문하기</button>
+                </Link>
               </div>
             </div>
           </section>
@@ -227,4 +233,4 @@ class CartList extends React.Component {
   }
 }
 
-export default CartList;
+export default withRouter(CartList);

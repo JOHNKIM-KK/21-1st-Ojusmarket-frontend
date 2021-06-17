@@ -31,7 +31,7 @@
     .payment-service {
       @include flexCenter;
       flex-direction: column;
-      height: 300px;
+      height: 700px;
       margin-top: 100px;
       background-color: #fff;
 
@@ -48,7 +48,7 @@
       button {
         height: 70px;
         width: 400px;
-        margin-top: 80px;
+        margin: 80px 0 100px 0;
         border: none;
         border-radius: 10px;
         background-color: $o-green;
