@@ -1,12 +1,10 @@
 import React from 'react';
 import FoodContent from './FoodContent';
 import './Food.scss';
-import { clearConfigCache } from 'prettier';
 
 class Food extends React.Component {
   render() {
     const { productList, storage, filterFoodCategory } = this.props;
-    console.log('haha');
     return (
       <div className="food-component">
         <div className="food-category">
