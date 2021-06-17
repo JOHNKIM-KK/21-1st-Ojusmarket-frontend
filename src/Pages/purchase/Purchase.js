@@ -18,7 +18,6 @@ class Purchase extends React.Component {
   }
 
   handlePayment = () => {
-    console.log(this.state.productId);
     fetch(`${GET_PURCHASE_API}`, {
       method: 'POST',
       headers: {
