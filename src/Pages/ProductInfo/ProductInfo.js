@@ -26,11 +26,20 @@ class ProductInfo extends React.Component {
     }
   };
 
+  goToCart = () => {
+    const { count, infoData } = this.state;
+    fetch(``, {
+      method: 'POST',
+      body: JSON.stringify({ count, ...infoData }),
+    }).then(this.props.history.push('/cartlist'));
+  };
+
   componentDidMount() {
-    fetch(`http://10.58.2.123:8000/ingredients/${this.props.match.params.id}`)
+    //`http://10.58.2.123:8000/ingredients/${this.props.match.params.id}`
+    fetch(`/Data/infoData.json`)
       .then(response => response.json())
       .then(data => {
-        this.setState({ infoData: data.ingredient, isLoading: true });
+        this.setState({ infoData: data, isLoading: true });
       });
   }
 
@@ -53,7 +62,7 @@ class ProductInfo extends React.Component {
               <span className="related">연관요리</span>
               <div className="related-list">
                 {infoData &&
-                  infoData.related_recipe.map(list => (
+                  infoData.related_recipes.map(list => (
                     <RelatedList
                       key={list.id}
                       name={list.name}
@@ -110,7 +119,7 @@ class ProductInfo extends React.Component {
               </div>
             </div>
             <div className="btn-area">
-              <button>장바구니</button>
+              <button onClick={this.goToCart}>장바구니</button>
               <button>바로구매</button>
               <button>
                 <i className="far fa-heart"></i>
