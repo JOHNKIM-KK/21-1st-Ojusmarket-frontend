@@ -52,7 +52,13 @@ class Food extends React.Component {
         </div>
         <div className="food-wrap">
           {productList.map(data => (
-            <FoodContent key={data.id} ingredients={data} storage={storage} />
+            <FoodContent
+              key={data.id}
+              id={data.id}
+              ingredients={data}
+              storage={storage}
+              matchId={this.props.matchId}
+            />
           ))}
         </div>
       </div>

@@ -3,6 +3,7 @@ import Header from '../../Component/HeaderComponent/Header';
 import Footer from '../../Component/FooterComponent/Footer';
 import CartItem from '../CartList/CartItem';
 import './CartList.scss';
+import { clearConfigCache } from 'prettier';
 
 class CartList extends React.Component {
   constructor(props) {
@@ -42,7 +43,16 @@ class CartList extends React.Component {
                 : cartItem.count - 1,
           };
     });
-    this.setState({ cartData: newQuantity });
+    let objId = newQuantity[value].id;
+    let objCount = newQuantity[value].count;
+    const countObj = {
+      ingredient_id: objId,
+      count: objCount,
+    };
+    fetch(``, {
+      method: `POST`,
+      body: JSON.stringify(countObj),
+    }).then(this.setState({ cartData: newQuantity }));
   };
 
   isCheckArr = () => {
@@ -90,26 +100,38 @@ class CartList extends React.Component {
   selectDelete = () => {
     const { cartData, selectedArr } = this.state;
     const checkedArr = [];
+    const deletedArr = [];
     let idx = selectedArr.indexOf(true);
     while (idx !== -1) {
       checkedArr.push(idx);
       idx = selectedArr.indexOf(true, idx + 1);
     }
     const newCheckedArr = cartData.filter(cartItem => {
-      return !checkedArr.includes(parseInt(cartItem.id));
+      const condition = !checkedArr.includes(parseInt(cartItem.id));
+      if (!condition) deletedArr.push(cartItem);
+      return condition;
     });
-    const newDeletedArr = cartData.filter(cartItem => {
-      return checkedArr.includes(parseInt(cartItem.id));
-    });
-    this.setState({
-      cartData: newCheckedArr,
-      deletedArr: newDeletedArr,
-      selectedArr: Array(newCheckedArr.length).fill(false),
+    this.deleteCart(deletedArr)
+      .then(response => response.json())
+      .then(response =>
+        response.status === 200
+          ? this.setState({
+              cartData: newCheckedArr,
+              selectedArr: Array(newCheckedArr.length).fill(false),
+            })
+          : alert('삭제가 제대로 진행 되지 않았습니다.')
+      );
+  };
+
+  deleteCart = payload => {
+    return fetch(`url`, {
+      method: 'POST',
+      body: JSON.stringify(payload),
     });
   };
 
   render() {
-    const { cartData, selectedArr, deletedArr } = this.state;
+    const { cartData, selectedArr } = this.state;
     return (
       cartData && (
         <>
