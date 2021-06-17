@@ -2,8 +2,8 @@ import React from 'react';
 import Header from '../../Component/HeaderComponent/Header';
 import Footer from '../../Component/FooterComponent/Footer';
 import CartItem from '../CartList/CartItem';
+import { Link, withRouter } from 'react-router-dom';
 import './CartList.scss';
-import { clearConfigCache } from 'prettier';
 
 class CartList extends React.Component {
   constructor(props) {
@@ -132,7 +132,7 @@ class CartList extends React.Component {
     });
   };
 
-  goToCredit = () => {
+  goToDelivery = () => {
     const { cartData } = this.state;
     fetch(`http://10.58.3.92:8000/carts/list`, {
       method: 'PATCH',
@@ -143,8 +143,10 @@ class CartList extends React.Component {
     }).then(response => {
       if (response.status !== 200)
         return alert(`다시 시도 해 주세요. 에러코드 : ${response.status}`);
-      alert('구매완료!');
-      // this.props.history.push('/');
+      this.props.history.push({
+        pathname: '/delivery',
+        state: cartData,
+      });
     });
   };
 
@@ -163,6 +165,7 @@ class CartList extends React.Component {
     return (
       cartData && (
         <>
+          {console.log({ cartData })}
           <Header />
           <section className="cart-list">
             <div className="cart-list__container">
@@ -245,7 +248,7 @@ class CartList extends React.Component {
               <div className="buy-button__container">
                 <button>계속 쇼핑하기</button>
                 <button>선택상품만 주문하기</button>
-                <button onClick={this.goToCredit}>전체상품 주문하기</button>
+                <button onClick={this.goToDelivery}>전체상품 주문하기</button>
               </div>
             </div>
           </section>
@@ -256,4 +259,4 @@ class CartList extends React.Component {
   }
 }
 
-export default CartList;
+export default withRouter(CartList);

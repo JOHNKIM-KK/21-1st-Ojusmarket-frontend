@@ -5,6 +5,8 @@ import './Recipe.scss';
 class Recipe extends React.Component {
   render() {
     const { recipeList, filterRecipeCategory } = this.props;
+    console.log('레시피');
+    console.log(recipeList);
     return (
       <div className="recipe-component">
         <div className="recipe-category">
@@ -36,10 +38,10 @@ class Recipe extends React.Component {
         </div>
         <div className="recipe-wrap">
           <div className="recipe-header">
-            <p>레시피</p>
+            <p>레시피</p>
             <span>오져스 제품으로 즐길 수 있는 레시피</span>
           </div>
-          {recipeList.map((data, index) => (
+          {recipeList.recipes.map((data, index) => (
             <RecipeContent key={index} recipe={data} />
           ))}
         </div>

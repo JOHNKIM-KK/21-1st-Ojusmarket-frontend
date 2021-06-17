@@ -72,6 +72,8 @@
       background-color: $white;
 
       &:hover {
+        cursor: pointer;
+
         img {
           filter: brightness(40%);
         }
@@ -86,8 +88,8 @@
       .storage-label {
         @include flexCenter;
         position: absolute;
-        top: 1.5%;
-        left: 2.5%;
+        top: 2.5%;
+        left: 3%;
         height: 25px;
         width: 44px;
         border-radius: 10px;
@@ -122,6 +124,7 @@
 
           &:hover {
             background-color: $o-green;
+            cursor: pointer;
           }
         }
       }
@@ -135,18 +138,30 @@
       .food-info {
         height: 105px;
         width: 245px;
+        text-align: center;
         margin-top: 8px;
+        padding-left: 10px;
         font-size: 18px;
+        color: #333333;
 
         .delivery-label {
           @include flexCenter;
+          position: absolute;
+          top: 0%;
+          left: 24%;
           width: 70px;
-          height: 18px;
+          height: 25px;
           margin-bottom: 8px;
           background-color: $o-green;
           border-radius: 5px;
-          font-size: 11px;
+          font-size: 13px;
           color: $white;
+        }
+
+        h2 {
+          margin-top: 30px;
+          font-weight: 500;
+          font-family: 'Nanum Gothic', sans-serif;
         }
 
         p {
@@ -159,7 +174,11 @@
           }
 
           span {
-            font-weight: 700;
+            b {
+              margin-left: 10px;
+              font-weight: 700;
+              font-family: 'Nanum Gothic', sans-serif;
+            }
           }
         }
       }
