@@ -12,33 +12,47 @@ class Main extends React.Component {
   constructor() {
     super();
     this.state = {
-      changeTap: 0,
+      changeTap: 'ingredients',
       productList: [],
-      productSortList: [],
-      recipeList: [],
-      recipeSortList: [],
       storageLabel: '',
       slideImgList: [],
     };
   }
 
-  handleTap = id => {
+  handleTap = event => {
     this.setState({
-      changeTap: id,
+      changeTap: event.target.value,
     });
   };
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.changeTap !== this.state.changeTap)
+      fetch(`${GET_PRODUCT_API}/${this.state.changeTap}`)
+        .then(res => res.json())
+        .then(data => {
+          this.setState({
+            productList: data,
+          });
+        });
+
+    if (prevProps.location.search !== this.props.location.search)
+      fetch(
+        `${GET_PRODUCT_API}/${this.state.changeTap}${this.props.location.search}`
+      )
+        .then(res => res.json())
+        .then(data => {
+          this.setState({
+            productList: data,
+          });
+        });
+  }
   componentDidMount() {
-    // fetch(`${GET_PRODUCT_API}`)
-    //http://10.58.6.166:8000/ingredients
-    fetch('Data/mainData.json')
+    const path = this.state.changeTap;
+    fetch(`${GET_PRODUCT_API}/${path}`)
       .then(res => res.json())
       .then(data => {
         this.setState({
-          productList: data.ingredients,
-          productSortList: data.ingredients,
-          recipeList: data.recipe,
-          recipeSortList: data.recipe,
+          productList: data,
         });
       });
 
@@ -52,44 +66,17 @@ class Main extends React.Component {
   }
 
   filterFoodCategory = e => {
-    const categoryItems = this.state.productSortList.filter(items => {
-      return items.category_id.toString().includes(e.target.value);
-    });
-
-    this.setState({
-      productList: categoryItems,
-    });
+    const query = `category_id=${e.target.value}`;
+    this.props.history.push(`?${query}`);
   };
 
   filterRecipeCategory = e => {
-    const categoryItems = this.state.recipeSortList.filter(items => {
-      return items.category_id.toString().includes(e.target.value);
-    });
-
-    this.setState({
-      recipeList: categoryItems,
-    });
+    const query = `category_id=${e.target.value}`;
+    this.props.history.push(`?${query}`);
   };
 
   render() {
-    const tab = {
-      0: (
-        <Food
-          productSortList={this.state.productSortList}
-          productList={this.state.productList}
-          storageLabel={this.state.storageLabel}
-          filterFoodCategory={this.filterFoodCategory}
-          matchId={this.props.match.params}
-        />
-      ),
-      1: (
-        <Recipe
-          recipeSortList={this.state.recipeSortList}
-          recipeList={this.state.recipeList}
-          filterRecipeCategory={this.filterRecipeCategory}
-        />
-      ),
-    };
+    const { productList } = this.state;
     return (
       <>
         <Header />
@@ -99,14 +86,32 @@ class Main extends React.Component {
             <div className="product-container">
               <div className="product-selection">
                 <div>
-                  <button onClick={() => this.handleTap(0)}>주문도하고</button>
+                  <button value={'ingredients'} onClick={this.handleTap}>
+                    주문도하고
+                  </button>
                 </div>
                 <div>
-                  <button onClick={() => this.handleTap(1)}>요리도 하고</button>
+                  <button value={'recipes'} onClick={this.handleTap}>
+                    요리도 하고
+                  </button>
                 </div>
               </div>
             </div>
-            <div>{tab[this.state.changeTap]}</div>
+            <div>
+              {productList.ingredients && (
+                <Food
+                  productList={this.state.productList}
+                  storageLabel={this.state.storageLabel}
+                  filterFoodCategory={this.filterFoodCategory}
+                />
+              )}
+              {productList.recipes && (
+                <Recipe
+                  recipeList={this.state.productList}
+                  filterRecipeCategory={this.filterRecipeCategory}
+                />
+              )}
+            </div>
           </div>
         </div>
         <Footer />
