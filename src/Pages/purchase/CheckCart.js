@@ -2,7 +2,17 @@ import React from 'react';
 import './CheckCart.scss';
 
 class CheckCart extends React.Component {
+  getTotalPrice = () => {
+    const { cartData } = this.props;
+    let totalPrice = 0;
+    cartData.forEach(cartItem => {
+      totalPrice += cartItem.price * cartItem.count;
+    });
+    return totalPrice;
+  };
+
   render() {
+    const { cartData } = this.props;
     return (
       <div className="check-cart">
         <div className="notice">
@@ -20,25 +30,24 @@ class CheckCart extends React.Component {
               산지에서 별도로 직송합니다.
             </span>
           </div>
-          <div className="cart-contants">
-            <span className="cart-count">1</span>
-            <img
-              alt="상품사진"
-              src="https://www.oasis.co.kr:48581/product/4886/thumb/thumb_4886118eea07-daa4-4d3f-a176-633f5ea44097.jpg"
-            />
-            <span className="cart-product-name">
-              [한정특가]무농약 송이향버섯(200g)
-            </span>
-            <span className="cart-product-count">수량 8개</span>
-            <span className="cart-product-price">
-              <b>45,600</b>원
-            </span>
-          </div>
+          {cartData.map((data, index) => (
+            <div className="cart-contants">
+              <span className="cart-count">{index + 1}</span>
+              <img alt="상품사진" src={data.image} />
+              <span className="cart-product-name">{data.name}</span>
+              <span className="cart-product-count">수량 {data.count}개</span>
+              <span className="cart-product-price">
+                <b>{data.price.toLocaleString()}</b>원
+              </span>
+            </div>
+          ))}
 
           <div className="cart-total-price">
             <p>
-              상품금액<span>130,400</span>원 + 배송비<span>3000</span>원 =
-              주문금액 <span>133,400</span>원
+              상품금액<span>{this.getTotalPrice().toLocaleString()}</span>원 +
+              배송비
+              <span>{(3000).toLocaleString()}</span>원 = 주문금액{' '}
+              <span>{(this.getTotalPrice() + 3000).toLocaleString()}</span>원
             </p>
           </div>
         </div>
