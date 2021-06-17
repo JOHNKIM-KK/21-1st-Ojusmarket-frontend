@@ -29,10 +29,14 @@ class Main extends React.Component {
   };
 
   componentDidMount() {
-    // fetch(`${GET_PRODUCT_API}`)
-    //http://10.58.6.166:8000/ingredients
-    fetch('Data/mainData.json')
-      .then(res => res.json())
+    fetch(`http://10.58.3.10:8000/ingredients`)
+      .then(res => {
+        if (res.status !== 200)
+          return alert(
+            `페이지를 불러오지 못했습니다. 에러코드 : ${res.status}`
+          );
+        return res.json();
+      })
       .then(data => {
         this.setState({
           productList: data.ingredients,

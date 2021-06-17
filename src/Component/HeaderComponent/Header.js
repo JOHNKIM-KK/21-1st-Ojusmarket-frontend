@@ -4,7 +4,7 @@ import './Header.scss';
 
 class Header extends React.Component {
   goToMain = () => {
-    this.props.history.push(`/main`);
+    this.props.history.push(`/`);
   };
 
   render() {
@@ -30,7 +30,7 @@ class Header extends React.Component {
                 <a href="#">회원가입</a>
               </li>
               <li>
-                <a href="#">베스트후기</a>
+                <Link to="/comments">베스트후기</Link>
               </li>
               <li>
                 <a href="#">주문/배송조회</a>

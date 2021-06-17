@@ -6,6 +6,7 @@ class CartItem extends React.Component {
     const {
       id,
       name,
+      index,
       image,
       count,
       price,
@@ -33,7 +34,7 @@ class CartItem extends React.Component {
           <div className="cart-button__container">
             <div className="item-button__box">
               <button
-                value={id}
+                value={index}
                 className="quantity-minus"
                 onClick={handleQuantity}
               >
@@ -41,7 +42,7 @@ class CartItem extends React.Component {
               </button>
               <span>{count}</span>
               <button
-                value={id}
+                value={index}
                 className="quantity-plus"
                 onClick={handleQuantity}
               >
