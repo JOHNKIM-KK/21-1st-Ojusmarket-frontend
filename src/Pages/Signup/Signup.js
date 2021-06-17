@@ -8,8 +8,8 @@ import { validatePw } from '../../Utill/validaters';
 import { confirmPassword } from '../../Utill/validaters';
 import { validateEmail } from '../../Utill/validaters';
 import { validatePhone } from '../../Utill/validaters';
+import { GET_SIGNUP_API } from '../../Utill/config';
 import './Signup.scss';
-import '../../Styles/Common.scss';
 
 // 주소창 style
 const POST_WIDTH = 600;
@@ -48,7 +48,7 @@ class Signup extends Component {
   //id 중복체크
   checkDuplicateId = e => {
     e.preventDefault();
-    fetch('http://10.58.7.21:8000/user/id-check', {
+    fetch(`${GET_SIGNUP_API}/id-check`, {
       method: 'POST',
       body: JSON.stringify({
         identity: this.state.identity,
@@ -115,7 +115,7 @@ class Signup extends Component {
 
   //백엔드 통신
   clickSignup = e => {
-    fetch('http://10.58.7.21:8000/user/sign-up', {
+    fetch(`${GET_SIGNUP_API}/sign-up`, {
       method: 'POST',
       body: JSON.stringify({
         identity: this.state.identity,

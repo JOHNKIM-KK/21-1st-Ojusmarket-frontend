@@ -7,3 +7,12 @@
   align-items: $align-items;
   justify-content: $justify-content;
 }
+
+@mixin border-style {
+  border: 1px solid;
+}
+
+@mixin btn-style {
+  color: #ffff;
+  background-color: #6ca437;
+}

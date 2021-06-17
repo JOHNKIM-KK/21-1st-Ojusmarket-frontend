@@ -1,11 +1,4 @@
-@mixin border-style {
-  border: 1px solid;
-}
-
-@mixin btn-style {
-  color: #ffff;
-  background-color: #6ca437;
-}
+@import '../../Styles/Mixin.scss';
 
 .contents_All {
   display: flex;
