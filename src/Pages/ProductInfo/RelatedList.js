@@ -11,7 +11,7 @@ class RelatedList extends React.Component {
     return (
       <div className="dummy-image">
         <img className="dum-img" src={image} alt="" />
-        <span className="imageName">{name}</span>
+        <span className="imageName">{name.slice(0, 5)}...</span>
       </div>
     );
   }
