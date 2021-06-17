@@ -1,10 +1,15 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 class RecipeContent extends React.Component {
+  clickHandler = id => {
+    this.props.history.push(`/recipeinfo/${id}`);
+  };
+
   render() {
     const { recipe } = this.props;
     return (
-      <div className="recipe">
+      <div onClick={() => this.clickHandler(recipe.id)} className="recipe">
         <img alt="요리사진" src={recipe.image_url} />
         <div className="recipe-name">
           <span>{recipe.name}</span>
@@ -13,4 +18,4 @@ class RecipeContent extends React.Component {
     );
   }
 }
-export default RecipeContent;
+export default withRouter(RecipeContent);
