@@ -36,6 +36,8 @@ class Login extends Component {
         if (result.acess_token) {
           alert('로그인 성공');
           this.props.history.push('/main');
+        } else if (result.message === 'INVALID_USER') {
+          alert('아이디/비밀번호를 확인해주세요');
         }
       });
   };
