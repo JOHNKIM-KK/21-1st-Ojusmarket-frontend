@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import Header from '../../Component/HeaderComponent/Header';
 import Footer from '../../Component/FooterComponent/Footer';
+import { GET_LOGIN_API } from '../../Utill/config';
 import './Login.scss';
 
 class Login extends Component {
@@ -10,8 +11,6 @@ class Login extends Component {
     this.state = {
       identity: '',
       password: '',
-      // loginButtonBackground: '#d2f7d2',
-      // isLoginButtonDisabled: true,
     };
   }
   //로그인 버튼활성화
@@ -24,7 +23,7 @@ class Login extends Component {
 
   //버튼 이벤트 (백엔드 통신)
   goToMain = () => {
-    fetch('http://10.58.7.179:8000/user/sign-in', {
+    fetch(`${GET_LOGIN_API}`, {
       method: 'POST',
       body: JSON.stringify({
         identity: this.state.identity,
