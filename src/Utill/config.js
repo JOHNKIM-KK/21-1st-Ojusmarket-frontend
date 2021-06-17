@@ -1,7 +1,7 @@
 const MAIN_LIST = '/data/MainData.json';
 const DELIVERY_DATA = 'http://10.58.6.166:8000/orders/order';
 const PURCHASE_DATA = 'http://10.58.6.166:8000/orders/order';
-const SIGNUP_URL = 'http://10.58.7.21:8000';
+const SIGNUP_URL = 'http://10.58.3.92:8000';
 const LOGIN_URL = 'http://10.58.7.179:8000';
 const BASE_URL = 'http://10.58.3.10:8000';
 

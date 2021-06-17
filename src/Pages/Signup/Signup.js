@@ -31,14 +31,13 @@ class Signup extends Component {
       name: '',
       phone: '',
       email: '',
-      address: '',
       firstAddress: '',
       secondAddress: '',
       isDaumPost: false,
     };
   }
 
-  //id , name , phone , email, address value값 지정
+  //id , pw, name , phone , email, address value값 지정
   handleInputChange = e => {
     this.setState({
       [e.target.name]: e.target.value,
@@ -98,7 +97,11 @@ class Signup extends Component {
     e.preventDefault();
     if (this.state.identity === '' || !validateId(this.state.identity)) {
       alert('아이디를 확인해주세요');
-    } else if (this.state.password === '' || !validatePw(this.state.password)) {
+    } else if (
+      this.state.password === '' ||
+      !validatePw(this.state.password) ||
+      !confirmPassword(this.state.password, this.state.rePassword)
+    ) {
       alert('비밀번호를 확인해주세요');
     } else if (this.state.name === '') {
       alert('이름을 확인해주세요');
@@ -106,7 +109,7 @@ class Signup extends Component {
       alert('휴대폰 번호를 확인해주세요');
     } else if (this.state.email === '' || !validateEmail(this.state.email)) {
       alert('이메일을 확인해주세요');
-    } else if (this.state.address === '') {
+    } else if (this.state.firstAddress === '') {
       alert('주소를 확인해주세요');
     } else {
       this.clickSignup();
