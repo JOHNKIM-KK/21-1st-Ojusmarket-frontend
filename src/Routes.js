@@ -5,6 +5,7 @@ import Login from './Pages/Login/Login';
 import Delivery from './Pages/Delivery/Delivery';
 import Purchase from './Pages/purchase/Purchase';
 import CartList from './Pages/CartList/CartList';
+import RecipeInfo from './Pages/RecipeInfo/RecipeInfo';
 import ProductInfo from './Pages/ProductInfo/ProductInfo';
 import Payment from './Pages/Payment/Payment';
 
@@ -18,6 +19,7 @@ class Routes extends React.Component {
           <Route exact path="/Purchase" component={Purchase} />
           <Route exact path="/Payment" component={Payment} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/recipeinfo/:id" component={RecipeInfo} />
           <Route exact path="/ingredients/:id" component={ProductInfo} />
           <Route exact path="/cartlist" component={CartList} />
         </Switch>
