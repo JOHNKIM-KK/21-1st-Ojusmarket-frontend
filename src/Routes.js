@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Login from './Pages/Login/Login';
 import Signup from './Pages/Signup/Signup';
 import Main from './Pages/Main/Main';
-import RecipeInfo from './Component/RecipeInfo/RecipeInfo';
+import RecipeInfo from './Pages/RecipeInfo/RecipeInfo';
+import CartList from './Pages/CartList/CartList';
+import ProductInfo from './Pages/ProductInfo/ProductInfo';
 
 class Routes extends React.Component {
   render() {
@@ -14,6 +16,8 @@ class Routes extends React.Component {
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/recipeinfo/:id" component={RecipeInfo} />
+          <Route exact path="/ingredients/:id" component={ProductInfo} />
+          <Route exact path="/cartlist" component={CartList} />
         </Switch>
       </Router>
     );

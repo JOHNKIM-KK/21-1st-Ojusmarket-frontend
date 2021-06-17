@@ -1,6 +1,6 @@
 import React from 'react';
-import Header from '../FooterComponent/Footer';
-import Footer from '../HeaderComponent/Header';
+import Header from '../../Component/FooterComponent/Footer';
+import Footer from '../../Component/HeaderComponent/Header';
 import RecipeList from './RecipeList/RecipeList';
 import ProductList from './ProductList/ProductList';
 import { withRouter } from 'react-router-dom';

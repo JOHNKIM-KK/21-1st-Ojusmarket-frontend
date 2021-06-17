@@ -8,7 +8,6 @@ class RecipeContent extends React.Component {
 
   render() {
     const { recipe } = this.props;
-
     return (
       <div onClick={() => this.clickHandler(recipe.id)} className="recipe">
         <img alt="요리사진" src={recipe.image_url} />

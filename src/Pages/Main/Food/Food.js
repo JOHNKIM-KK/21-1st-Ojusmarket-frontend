@@ -8,7 +8,6 @@ class Food extends React.Component {
     return (
       <div className="food-component">
         <div className="food-category">
-          {console.log(productList)}
           <ul>
             <li>
               <button onClick={filterFoodCategory} value={''}>
@@ -53,7 +52,13 @@ class Food extends React.Component {
         </div>
         <div className="food-wrap">
           {productList.map(data => (
-            <FoodContent key={data.id} ingredients={data} storage={storage} />
+            <FoodContent
+              key={data.id}
+              id={data.id}
+              ingredients={data}
+              storage={storage}
+              matchId={this.props.matchId}
+            />
           ))}
         </div>
       </div>

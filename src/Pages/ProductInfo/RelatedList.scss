@@ -1,0 +1,21 @@
+@import '../../Styles/Variable.scss';
+@import '../../Styles/Mixin.scss';
+
+.related-list {
+  display: flex;
+  margin-top: 20px;
+
+  .dummy-image {
+    .dum-img {
+      height: 115px;
+      width: 115px;
+      margin: 0px 10px;
+    }
+    .imageName {
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+      color: yellowgreen;
+    }
+  }
+}
