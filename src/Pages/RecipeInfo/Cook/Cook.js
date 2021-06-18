@@ -12,7 +12,7 @@ class Cook extends Component {
         <div className="recipeImgBox">
           <img
             className="onionImg"
-            src={recipeData.image_url}
+            src="/images/recipes/소시지야채구이.png"
             alt="제품이미지"
           />
         </div>
