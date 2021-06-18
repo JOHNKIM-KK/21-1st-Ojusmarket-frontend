@@ -5,8 +5,6 @@ import './Recipe.scss';
 class Recipe extends React.Component {
   render() {
     const { recipeList, filterRecipeCategory } = this.props;
-    console.log('레시피');
-    console.log(recipeList);
     return (
       <div className="recipe-component">
         <div className="recipe-category">

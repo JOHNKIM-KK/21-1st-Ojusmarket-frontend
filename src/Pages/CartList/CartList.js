@@ -2,7 +2,8 @@ import React from 'react';
 import Header from '../../Component/HeaderComponent/Header';
 import Footer from '../../Component/FooterComponent/Footer';
 import CartItem from '../CartList/CartItem';
-import { Link, withRouter } from 'react-router-dom';
+import { GET_CART_LIST, LOGIN_TOKEN } from '../../Utill/config';
+import { withRouter } from 'react-router-dom';
 import './CartList.scss';
 
 class CartList extends React.Component {
@@ -16,10 +17,10 @@ class CartList extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://10.58.3.92:8000/carts/list', {
+    fetch(`${GET_CART_LIST}`, {
       method: 'GET',
       headers: {
-        Authorization: `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.65ArDu4rHJdYIAxCMoZIuTKYjb5P0-OvoOc2BXt8G-M`,
+        Authorization: `${LOGIN_TOKEN}`,
       },
     })
       .then(response => {
@@ -132,12 +133,22 @@ class CartList extends React.Component {
     });
   };
 
+  deleteCart = payload => {
+    return fetch(`${GET_CART_LIST}`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `${LOGIN_TOKEN}`,
+      },
+      body: JSON.stringify(payload),
+    });
+  };
+
   goToDelivery = () => {
     const { cartData } = this.state;
-    fetch(`http://10.58.3.92:8000/carts/list`, {
+    fetch(`${GET_CART_LIST}`, {
       method: 'PATCH',
       headers: {
-        Authorization: `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.65ArDu4rHJdYIAxCMoZIuTKYjb5P0-OvoOc2BXt8G-M`,
+        Authorization: `${LOGIN_TOKEN}`,
       },
       body: JSON.stringify(cartData),
     }).then(response => {
@@ -150,22 +161,11 @@ class CartList extends React.Component {
     });
   };
 
-  deleteCart = payload => {
-    return fetch(`http://10.58.3.92:8000/carts/list`, {
-      method: 'DELETE',
-      headers: {
-        Authorization: `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.65ArDu4rHJdYIAxCMoZIuTKYjb5P0-OvoOc2BXt8G-M`,
-      },
-      body: JSON.stringify(payload),
-    });
-  };
-
   render() {
     const { cartData, selectedArr } = this.state;
     return (
       cartData && (
         <>
-          {console.log({ cartData })}
           <Header />
           <section className="cart-list">
             <div className="cart-list__container">

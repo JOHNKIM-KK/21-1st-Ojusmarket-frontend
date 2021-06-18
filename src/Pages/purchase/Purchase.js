@@ -1,5 +1,9 @@
 import React from 'react';
-import { GET_LOGIN_API, GET_PURCHASE_API } from '../../Utill/config';
+import {
+  GET_LOGIN_API,
+  GET_PURCHASE_API,
+  LOGIN_TOKEN,
+} from '../../Utill/config';
 import Header from '../../Component/HeaderComponent/Header';
 import Footer from '../../Component/FooterComponent/Footer';
 import CheckCart from './CheckCart';
@@ -21,8 +25,7 @@ class Purchase extends React.Component {
     fetch(`${GET_PURCHASE_API}`, {
       method: 'POST',
       headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.AaUAL2bGGnr1Kixz77dtvRZIGTi6kfb368OejN8iv8A',
+        Authorization: `${LOGIN_TOKEN}`,
       },
       body: JSON.stringify({
         address: this.state.orderAddress,
@@ -44,8 +47,7 @@ class Purchase extends React.Component {
     fetch(`${GET_PURCHASE_API}`, {
       method: 'GET',
       headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.AaUAL2bGGnr1Kixz77dtvRZIGTi6kfb368OejN8iv8A',
+        Authorization: `${LOGIN_TOKEN}`,
       },
     })
       .then(res => res.json())
@@ -84,7 +86,7 @@ class Purchase extends React.Component {
               <div className="header-line">
                 주문 상품
                 <button onClick={this.handleCart}>
-                  <i class="fas fa-chevron-down"></i>
+                  <i className="fas fa-chevron-down"></i>
                 </button>
               </div>
               {isViewCart && <CheckCart cartData={this.props.location.state} />}

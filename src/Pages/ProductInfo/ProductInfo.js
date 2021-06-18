@@ -5,6 +5,11 @@ import ProductDetail from './ProductDetail';
 import './ProductInfo.scss';
 import RelatedList from './RelatedList';
 import { withRouter } from 'react-router-dom';
+import {
+  GET_CART_LIST,
+  GET_PRODUCT_API,
+  LOGIN_TOKEN,
+} from '../../Utill/config';
 
 class ProductInfo extends React.Component {
   constructor() {
@@ -28,23 +33,24 @@ class ProductInfo extends React.Component {
 
   goToCart = () => {
     const { count, infoData } = this.state;
-    fetch(`http://10.58.3.92:8000/carts/list`, {
+    fetch(`${GET_CART_LIST}`, {
       method: 'POST',
       headers: {
-        Authorization: `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.65ArDu4rHJdYIAxCMoZIuTKYjb5P0-OvoOc2BXt8G-M`,
+        Authorization: `${LOGIN_TOKEN}`,
       },
       body: JSON.stringify({ count, ...infoData }),
     }).then(response => {
       if (response.status !== 200)
         return alert(
-          `페이지 이동에 실패 했습니다. 다시 한번 시도 해 주세요 에러코드 : ${response.status}`
+          `페이지 이동에 실패 했습니다. 다시 한번 시도 해 주세요. 에러코드 : ${response.status}`
         );
       return this.props.history.push('/cartlist');
     });
   };
 
   componentDidMount() {
-    fetch(`http://10.58.3.10:8000/ingredients/${this.props.match.params.id}`)
+    const { id } = this.props.match.params;
+    fetch(`${GET_PRODUCT_API}/ingredients/${id}`)
       .then(response => {
         if (response.status !== 200)
           return alert(
@@ -79,6 +85,7 @@ class ProductInfo extends React.Component {
                   {infoData &&
                     infoData.related_recipes.map(list => (
                       <RelatedList
+                        id={list.id}
                         key={list.id}
                         name={list.name}
                         image={list.image_url}

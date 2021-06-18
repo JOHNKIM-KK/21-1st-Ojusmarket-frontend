@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import './Product.scss';
 class Product extends Component {
   clickHandler = id => {
-    this.props.history.push(`/productinfo/${id}`);
+    this.props.history.push(`/ingredients/${id}`);
   };
 
   render() {

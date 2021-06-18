@@ -8,7 +8,7 @@ import { validatePw } from '../../Utill/validaters';
 import { confirmPassword } from '../../Utill/validaters';
 import { validateEmail } from '../../Utill/validaters';
 import { validatePhone } from '../../Utill/validaters';
-import { GET_SIGNUP_API, BASE_URL } from '../../Utill/config';
+import { GET_SIGNUP_API, GET_ID_CHECK_API } from '../../Utill/config';
 import './Signup.scss';
 
 // 주소창 style
@@ -31,14 +31,13 @@ class Signup extends Component {
       name: '',
       phone: '',
       email: '',
-      address: '',
       firstAddress: '',
       secondAddress: '',
       isDaumPost: false,
     };
   }
 
-  //id , name , phone , email, address value값 지정
+  //id , pw, name , phone , email, address value값 지정
   handleInputChange = e => {
     this.setState({
       [e.target.name]: e.target.value,
@@ -46,9 +45,9 @@ class Signup extends Component {
   };
 
   //id 중복체크
-  checkDuplicateId = e => {
-    e.preventDefault();
-    fetch(`http://10.58.3.92:8000/user/id-check`, {
+  checkDuplicateId = event => {
+    event.preventDefault();
+    fetch(`${GET_ID_CHECK_API}`, {
       method: 'POST',
       body: JSON.stringify({
         identity: this.state.identity,
@@ -98,7 +97,11 @@ class Signup extends Component {
     e.preventDefault();
     if (this.state.identity === '' || !validateId(this.state.identity)) {
       alert('아이디를 확인해주세요');
-    } else if (this.state.password === '' || !validatePw(this.state.password)) {
+    } else if (
+      this.state.password === '' ||
+      !validatePw(this.state.password) ||
+      !confirmPassword(this.state.password, this.state.rePassword)
+    ) {
       alert('비밀번호를 확인해주세요');
     } else if (this.state.name === '') {
       alert('이름을 확인해주세요');
@@ -106,7 +109,7 @@ class Signup extends Component {
       alert('휴대폰 번호를 확인해주세요');
     } else if (this.state.email === '' || !validateEmail(this.state.email)) {
       alert('이메일을 확인해주세요');
-    } else if (this.state.address === '') {
+    } else if (this.state.firstAddress === '') {
       alert('주소를 확인해주세요');
     } else {
       this.clickSignup();
@@ -114,8 +117,8 @@ class Signup extends Component {
   };
 
   //백엔드 통신
-  clickSignup = e => {
-    fetch(`${GET_SIGNUP_API}/sign-up`, {
+  clickSignup = () => {
+    fetch(`${GET_SIGNUP_API}`, {
       method: 'POST',
       body: JSON.stringify({
         identity: this.state.identity,
@@ -128,12 +131,10 @@ class Signup extends Component {
     })
       .then(response => response.json())
       .then(result => {
-        if (result.message === 'SUCCESS') {
-          alert('가입을 축하드립니다.');
-          this.props.history.push('/login');
-        } else if (result.message === 'IDENTITY_ALREADY_EXISTS') {
-          alert('입력값을 확인해주세요');
-        }
+        if (result.status !== 201)
+          return alert(`에러가 발생했습니다. 에러코드 : ${result.status}`);
+        alert('가입을 축하드립니다!');
+        this.props.history.push('/login');
       });
   };
 
@@ -151,7 +152,7 @@ class Signup extends Component {
           </div>
           <article>
             <div className="head">
-              <header>오아시스 회원 가입</header>
+              <header>오져스 회원 가입</header>
               <span className="descrip">
                 세상을 바꾸겠다는 거창한 철학보다는 한 사람의 작은 바람을 담은
                 소비가 가족을 행복하게 하고, 행복한 가족이 모여 행복한 사회를
@@ -292,9 +293,9 @@ class Signup extends Component {
               <div className="rule">
                 본인은 만 14세 이상이며,
                 <span className="look">
-                  <u>오아시스 장보기 회원약관</u>
-                  <u> 오아시스 개인정보보호 정책</u>
-                  <u>오아시스 전자금융거래약관</u>
+                  <u>오져스 장보기 회원약관</u>
+                  <u> 오져스 개인정보보호 정책</u>
+                  <u>오져스 전자금융거래약관</u>
                 </span>
                 의 내용을 확인하였으며, 동의합니다.
               </div>

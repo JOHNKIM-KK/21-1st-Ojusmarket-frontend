@@ -4,7 +4,7 @@ import Header from '../../Component/FooterComponent/Footer';
 import Footer from '../../Component/HeaderComponent/Header';
 import RecipeList from './RecipeList/RecipeList';
 import ProductList from './ProductList/ProductList';
-import { GET_RECIPE_INFO_API } from '../../Utill/config';
+import { GET_RECIPE_INFO_API, LOGIN_TOKEN } from '../../Utill/config';
 import './RecipeInfo.scss';
 
 class RecipeInfo extends React.Component {
@@ -15,8 +15,17 @@ class RecipeInfo extends React.Component {
 
   componentDidMount() {
     const { id } = this.props.match.params;
-    fetch(`${GET_RECIPE_INFO_API}/${id}`)
-      .then(res => res.json())
+    fetch(`${GET_RECIPE_INFO_API}/${id}`, {
+      method: 'GET',
+      headers: {
+        Authorization: `${LOGIN_TOKEN}`,
+      },
+    })
+      .then(res => {
+        if (res.status !== 200)
+          return alert(`에러가 발생했습니다. 에러코드 : ${res.status}`);
+        return res.json();
+      })
       .then(res =>
         this.setState({
           recipeData: res.recipe,
@@ -25,7 +34,7 @@ class RecipeInfo extends React.Component {
   }
 
   goList = () => {
-    this.props.history.push('/main');
+    this.props.history.push('/');
   };
 
   render() {

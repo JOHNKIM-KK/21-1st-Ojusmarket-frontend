@@ -1,5 +1,5 @@
 import React from 'react';
-import { GET_DELIVERY_API } from '../../Utill/config';
+import { GET_DELIVERY_API, LOGIN_TOKEN } from '../../Utill/config';
 import Header from '../../Component/HeaderComponent/Header';
 import Footer from '../../Component/FooterComponent/Footer';
 import { Link, withRouter } from 'react-router-dom';
@@ -34,8 +34,7 @@ class Delivery extends React.Component {
     fetch(`${GET_DELIVERY_API}`, {
       method: 'GET',
       headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.AaUAL2bGGnr1Kixz77dtvRZIGTi6kfb368OejN8iv8A',
+        Authorization: `${LOGIN_TOKEN}`,
       },
     })
       .then(res => res.json())
