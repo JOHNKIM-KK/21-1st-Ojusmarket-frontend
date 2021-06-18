@@ -128,14 +128,12 @@ class Signup extends Component {
         email: this.state.email,
         address: this.state.firstAddress + this.state.secondAddress,
       }),
-    })
-      .then(response => response.json())
-      .then(result => {
-        if (result.status !== 201)
-          return alert(`에러가 발생했습니다. 에러코드 : ${result.status}`);
-        alert('가입을 축하드립니다!');
-        this.props.history.push('/login');
-      });
+    }).then(response => {
+      if (response.status !== 201)
+        return alert(`에러가 발생했습니다. 에러코드 : ${response.status}`);
+      alert('가입을 축하드립니다!');
+      this.props.history.push('/login');
+    });
   };
 
   render() {
@@ -175,7 +173,7 @@ class Signup extends Component {
                       ? '#6ca437'
                       : '#d2f7d2',
                   }}
-                  disabled={!validateId}
+                  disabled={!validateId(this.state.identity)}
                   onClick={this.checkDuplicateId}
                 >
                   중복체크
