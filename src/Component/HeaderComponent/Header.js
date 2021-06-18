@@ -1,10 +1,28 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import { LOGIN_TOKEN } from '../../Utill/config';
 import './Header.scss';
 
 class Header extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      isLogin: true,
+    };
+  }
   goToMain = () => {
-    this.props.history.push(`/main`);
+    this.props.history.push(`/`);
+  };
+
+  getLogOut = () => {
+    const loginInfo = localStorage.getItem(`LII`);
+    if (!loginInfo) {
+      this.props.history.push('/login');
+    } else {
+      localStorage.removeItem(`LII`);
+      alert('로그아웃 되었습니다.');
+      this.props.history.push('/login');
+    }
   };
 
   render() {
@@ -24,13 +42,15 @@ class Header extends React.Component {
           <div className="header-main__menu">
             <ul>
               <li>
-                <a href="#">로그인</a>
+                <button onClick={this.getLogOut}>
+                  {`${!localStorage.getItem('LII') ? '로그인' : '로그아웃'}`}
+                </button>
               </li>
               <li>
-                <a href="#">회원가입</a>
+                <Link to="/signup">회원가입</Link>
               </li>
               <li>
-                <a href="#">베스트후기</a>
+                <Link to="/comments">베스트후기</Link>
               </li>
               <li>
                 <a href="#">주문/배송조회</a>

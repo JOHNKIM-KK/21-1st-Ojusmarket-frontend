@@ -16,7 +16,7 @@ class CheckCart extends React.Component {
     return (
       <div className="check-cart">
         <div className="notice">
-          <i class="fas fa-info-circle"></i>
+          <i className="fas fa-info-circle"></i>
           <p>
             배송방법에 따른 배송 불가 상품이 포함되어 있는 경우 해당 상품은 주문
             취소 될 수 있습니다.
@@ -31,21 +31,21 @@ class CheckCart extends React.Component {
             </span>
           </div>
           {cartData.map((data, index) => (
-            <div className="cart-contants">
+            <div key={index} className="cart-contants">
               <span className="cart-count">{index + 1}</span>
-              <img alt="상품사진" src={data.image} />
+              <img alt="상품사진" src={data.image_url} />
               <span className="cart-product-name">{data.name}</span>
               <span className="cart-product-count">수량 {data.count}개</span>
               <span className="cart-product-price">
-                <b>{data.price.toLocaleString()}</b>원
+                <b>{Math.floor(data.price).toLocaleString()}</b>원
               </span>
             </div>
           ))}
 
           <div className="cart-total-price">
             <p>
-              상품금액<span>{this.getTotalPrice().toLocaleString()}</span>원 +
-              배송비
+              상품금액&nbsp;<span>{this.getTotalPrice().toLocaleString()}</span>
+              원 + 배송비&nbsp;
               <span>{(3000).toLocaleString()}</span>원 = 주문금액{' '}
               <span>{(this.getTotalPrice() + 3000).toLocaleString()}</span>원
             </p>

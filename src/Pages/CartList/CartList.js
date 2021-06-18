@@ -2,7 +2,8 @@ import React from 'react';
 import Header from '../../Component/HeaderComponent/Header';
 import Footer from '../../Component/FooterComponent/Footer';
 import CartItem from '../CartList/CartItem';
-import { Link, withRouter } from 'react-router-dom';
+import { GET_CART_LIST, LOGIN_TOKEN } from '../../Utill/config';
+import { withRouter } from 'react-router-dom';
 import './CartList.scss';
 
 class CartList extends React.Component {
@@ -16,11 +17,22 @@ class CartList extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/Data/CartData.json')
-      .then(response => response.json())
+    fetch(`${GET_CART_LIST}`, {
+      method: 'GET',
+      headers: {
+        Authorization: `${LOGIN_TOKEN}`,
+      },
+    })
+      .then(response => {
+        if (response.status !== 200)
+          return alert(
+            `페이지 로드에 실패했습니다. 에러코드 : ${response.status}`
+          );
+        return response.json();
+      })
       .then(data => {
         this.setState({
-          cartData: data,
+          cartData: data.cart_list,
           selectedArr: Array(data.length).fill(false),
         });
       });
@@ -43,16 +55,7 @@ class CartList extends React.Component {
                 : cartItem.count - 1,
           };
     });
-    let objId = newQuantity[value].id;
-    let objCount = newQuantity[value].count;
-    const countObj = {
-      ingredient_id: objId,
-      count: objCount,
-    };
-    fetch(``, {
-      method: `POST`,
-      body: JSON.stringify(countObj),
-    }).then(this.setState({ cartData: newQuantity }));
+    this.setState({ cartData: newQuantity });
   };
 
   isCheckArr = () => {
@@ -73,7 +76,12 @@ class CartList extends React.Component {
     const deletedData = cartData.filter(cartItem => {
       return parseInt(id) === parseInt(cartItem.id);
     });
-    this.setState({ cartData: newCartData, deletedArr: deletedData });
+    const deletedDataId = [deletedData[0].id];
+    this.deleteCart(deletedDataId).then(response => {
+      if (response.status !== 204)
+        return alert(`삭제에 실패했습니다. 에러코드 : ${response.status}`);
+      return this.setState({ cartData: newCartData, deletedArr: deletedData });
+    });
   };
 
   getTotalPrice = numArr => {
@@ -101,6 +109,7 @@ class CartList extends React.Component {
     const { cartData, selectedArr } = this.state;
     const checkedArr = [];
     const deletedArr = [];
+    const deletedId = [];
     let idx = selectedArr.indexOf(true);
     while (idx !== -1) {
       checkedArr.push(idx);
@@ -111,27 +120,45 @@ class CartList extends React.Component {
       if (!condition) deletedArr.push(cartItem);
       return condition;
     });
-    this.deleteCart(deletedArr)
-      .then(response => response.json())
-      .then(response =>
-        response.status === 200
-          ? this.setState({
-              cartData: newCheckedArr,
-              selectedArr: Array(newCheckedArr.length).fill(false),
-            })
-          : alert('삭제가 제대로 진행 되지 않았습니다.')
-      );
+    deletedArr.map(el => {
+      deletedId.push(el.id);
+    });
+    this.deleteCart(deletedId).then(response => {
+      if (response.status !== 204)
+        return alert(`삭제에 실패했습니다. 에러코드 : ${response.status}`);
+      return this.setState({
+        cartData: newCheckedArr,
+        selectedArr: Array(newCheckedArr.length).fill(false),
+      });
+    });
   };
 
   deleteCart = payload => {
-    return fetch(`url`, {
-      method: 'POST',
+    return fetch(`${GET_CART_LIST}`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `${LOGIN_TOKEN}`,
+      },
       body: JSON.stringify(payload),
     });
   };
 
   goToDelivery = () => {
-    this.props.history.push('/delivery');
+    const { cartData } = this.state;
+    fetch(`${GET_CART_LIST}`, {
+      method: 'PATCH',
+      headers: {
+        Authorization: `${LOGIN_TOKEN}`,
+      },
+      body: JSON.stringify(cartData),
+    }).then(response => {
+      if (response.status !== 200)
+        return alert(`다시 시도 해 주세요. 에러코드 : ${response.status}`);
+      this.props.history.push({
+        pathname: '/delivery',
+        state: cartData,
+      });
+    });
   };
 
   render() {
@@ -181,8 +208,9 @@ class CartList extends React.Component {
                     <CartItem
                       id={data.id}
                       key={index}
+                      index={index}
                       name={data.name}
-                      image={data.image}
+                      image={data.image_url}
                       count={data.count}
                       price={data.price}
                       selectedArr={selectedArr}
@@ -220,9 +248,7 @@ class CartList extends React.Component {
               <div className="buy-button__container">
                 <button>계속 쇼핑하기</button>
                 <button>선택상품만 주문하기</button>
-                <Link to={{ state: { cartData } }}>
-                  <button onClick={this.goToDelivery}>전체상품 주문하기</button>
-                </Link>
+                <button onClick={this.goToDelivery}>전체상품 주문하기</button>
               </div>
             </div>
           </section>

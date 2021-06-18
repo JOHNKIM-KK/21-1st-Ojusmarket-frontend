@@ -1,12 +1,9 @@
 {
   "slideImg": [
-    "https://www.oasis.co.kr:48581/display/mainBanner/main_banner_W_TOP_sIHL.jpg",
-
-    "https://www.oasis.co.kr:48581/display/mainBanner/main_banner_W_TOP_6EiX.jpg",
-
-    "https://www.oasis.co.kr:48581/display/mainBanner/main_banner_W_TOP_i3vL.jpg",
-    "https://www.oasis.co.kr:48581/display/mainBanner/main_banner_W_TOP_i3vL.jpg",
-
-    "https://www.oasis.co.kr:48581/display/mainBanner/main_banner_W_TOP_kgYf.jpg"
+    "/images/banner/배너1.jpg",
+    "/images/banner/배너2.jpg",
+    "/images/banner/배너3.jpg",
+    "/images/banner/배너4.jpg",
+    "/images/banner/배너5.jpg"
   ]
 }

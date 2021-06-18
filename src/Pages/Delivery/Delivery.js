@@ -1,5 +1,5 @@
 import React from 'react';
-import { GET_DELIVERY_API } from '../../Utill/config';
+import { GET_DELIVERY_API, LOGIN_TOKEN } from '../../Utill/config';
 import Header from '../../Component/HeaderComponent/Header';
 import Footer from '../../Component/FooterComponent/Footer';
 import { Link, withRouter } from 'react-router-dom';
@@ -24,15 +24,17 @@ class Delivery extends React.Component {
   };
 
   handleSubmit = e => {
-    this.props.history.push('/purchase');
+    this.props.history.push({
+      pathname: '/purchase',
+      state: this.props.location.state,
+    });
   };
 
   componentDidMount() {
     fetch(`${GET_DELIVERY_API}`, {
       method: 'GET',
       headers: {
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.AaUAL2bGGnr1Kixz77dtvRZIGTi6kfb368OejN8iv8A',
+        Authorization: `${LOGIN_TOKEN}`,
       },
     })
       .then(res => res.json())
@@ -66,20 +68,18 @@ class Delivery extends React.Component {
             </div>
             <div className="user-info-container">
               <div>
-                <label htmlFor="orderUserName">보내시는 분</label>
+                <label>보내시는 분</label>
                 <input
-                  id="userName"
                   name="userName"
-                  value={this.state.userName}
+                  defaultValue={this.state.userName}
                   onChange={this.handleChange}
                 ></input>
               </div>
               <div>
-                <label htmlFor="orderUserPhone">연락처</label>
+                <label>연락처</label>
                 <input
-                  id="userPhone"
                   name="userPhone"
-                  value={this.state.userPhone}
+                  defaultValue={this.state.userPhone}
                   onChange={this.handleChange}
                 ></input>
               </div>
@@ -115,7 +115,7 @@ class Delivery extends React.Component {
                 <div className="corona-notice">
                   <div className="notice-header">
                     <div className="notice-image">
-                      <i class="fas fa-bullhorn"></i>
+                      <i className="fas fa-bullhorn"></i>
                     </div>
                     <h5>알려드립니다.</h5>
                   </div>
@@ -132,9 +132,7 @@ class Delivery extends React.Component {
                 </div>
               </div>
               <div className="submit">
-                <Link to={{ state: this.props.location.state }}>
-                  <button onClick={this.handleSubmit}>주문서 작성 완료</button>
-                </Link>
+                <button onClick={this.handleSubmit}>주문서 작성 완료</button>
               </div>
             </div>
           </div>

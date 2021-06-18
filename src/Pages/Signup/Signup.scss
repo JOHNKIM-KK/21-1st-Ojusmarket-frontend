@@ -1,3 +1,4 @@
+@import '../../Styles/Variable.scss';
 @import '../../Styles/Mixin.scss';
 
 .contents_All {
@@ -5,7 +6,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: white;
+  background-color: $white;
 
   .a_Img {
     width: 100%;
@@ -18,38 +19,38 @@
 
     .head {
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
       margin: 50px 0;
 
       header {
+        padding-bottom: 10px;
         font-size: 25px;
         font-weight: bold;
-        color: #6ca437;
-        padding-bottom: 10px;
+        color: $o-green;
       }
 
       .descrip {
-        font-size: 15px;
-        color: #6ca437;
-        line-height: 1.5;
-        text-align: center;
-        border-top: 2px solid #6ca437;
         padding-top: 15px;
         margin-top: 5px;
+        font-size: 15px;
+        color: $o-green;
+        line-height: 1.5;
+        text-align: center;
+        border-top: 2px solid $o-green;
       }
     }
 
     form {
-      display: flex;
+      @include flexCenter;
       flex-direction: column;
-      justify-self: center;
-      align-items: center;
       width: 100%;
       height: 80%;
 
       .inputBox_Id {
+        display: flex;
+        align-items: center;
         width: 650px;
         height: 80px;
         margin-bottom: 5px;
@@ -61,17 +62,19 @@
         }
 
         .btnId {
-          font-size: 20px;
           width: 20%;
           height: 90%;
+          padding-top: 0px;
+          font-size: 20px;
           @include btn-style;
           @include border-style;
+          cursor: pointer;
         }
       }
 
       .errMsg {
-        color: red;
         padding-bottom: 15px;
+        color: red;
       }
 
       .inputBox_Pw {
@@ -86,8 +89,8 @@
         }
 
         #rePassword {
-          margin-bottom: 10px;
           height: 90%;
+          margin-bottom: 10px;
           @include border-style;
         }
       }
@@ -111,8 +114,8 @@
         }
 
         .email {
-          margin-bottom: 5px;
           height: 100%;
+          margin-bottom: 5px;
           @include border-style;
         }
       }
@@ -123,12 +126,12 @@
         height: 60px;
 
         .btn-serch {
-          font-size: 18px;
           width: 30%;
           height: 100%;
-          justify-content: space-between;
+          font-size: 18px;
           @include btn-style;
           @include border-style;
+          cursor: pointer;
         }
 
         .main_Address {
@@ -140,9 +143,9 @@
       }
 
       .second_Address {
-        position: relative;
         width: 650px;
         height: 60px;
+        position: relative;
         @include border-style;
       }
 
@@ -152,23 +155,24 @@
         margin-top: 20px;
 
         .summit {
-          font-size: 20px;
           width: 100%;
           height: 100%;
           @include btn-style;
           @include border-style;
+          font-size: 20px;
+          cursor: pointer;
         }
       }
 
       .rule {
         width: 380px;
+        margin-top: 15px;
         font-size: 15px;
         text-align: center;
         line-height: 1.3;
-        margin-top: 15px;
 
         .look {
-          color: #6ca437;
+          color: $o-green;
         }
       }
     }

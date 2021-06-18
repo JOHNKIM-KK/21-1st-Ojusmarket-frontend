@@ -35,7 +35,8 @@ class Login extends Component {
         //객체속 acess_token 값이 주어지면 로그인성공으로 페이지 이동
         if (result.acess_token) {
           alert('로그인 성공');
-          this.props.history.push('/main');
+          localStorage.setItem('LII', result.acess_token);
+          this.props.history.push('/');
         } else if (result.message === 'INVALID_USER') {
           alert('아이디/비밀번호를 확인해주세요');
         }
@@ -60,7 +61,7 @@ class Login extends Component {
             <div className="container">
               <div className="inner">
                 <header className="header">
-                  <h1>오아시스 로그인</h1>
+                  <h1>오져스 로그인</h1>
                 </header>
 
                 <form className="form">
@@ -86,6 +87,9 @@ class Login extends Component {
                     <button
                       style={{
                         backgroundColor: isIdAndPasswordValid
+                          ? '#6ca437'
+                          : '#d2f7d2',
+                        borderColor: isIdAndPasswordValid
                           ? '#6ca437'
                           : '#d2f7d2',
                       }}

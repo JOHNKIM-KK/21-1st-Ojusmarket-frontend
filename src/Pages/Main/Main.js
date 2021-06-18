@@ -48,7 +48,13 @@ class Main extends React.Component {
   componentDidMount() {
     const path = this.state.changeTap;
     fetch(`${GET_PRODUCT_API}/${path}`)
-      .then(res => res.json())
+      .then(res => {
+        if (res.status !== 200)
+          return alert(
+            `페이지를 불러오지 못했습니다. 에러코드 : ${res.status}`
+          );
+        return res.json();
+      })
       .then(data => {
         this.setState({
           productList: data,

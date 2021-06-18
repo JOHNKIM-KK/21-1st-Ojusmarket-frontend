@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Footer.scss';
 
 class Footer extends React.Component {
@@ -12,7 +13,7 @@ class Footer extends React.Component {
                 <a href="#">매장안내</a>
               </li>
               <li>
-                <a href="#">멤버소개</a>
+                <Link to="/comments">멤버소개</Link>
               </li>
             </ul>
           </div>

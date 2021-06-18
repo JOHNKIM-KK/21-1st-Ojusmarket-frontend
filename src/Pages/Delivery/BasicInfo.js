@@ -9,13 +9,13 @@ class BasicInfo extends React.Component {
           <input
             id="userName"
             name="userName"
-            value={userName}
+            defaultValue={userName}
             onChange={handleChange}
           />
           <input
             id="userPhone"
             name="userPhone"
-            value={userPhone}
+            defaultValue={userPhone}
             onChange={handleChange}
           />
         </div>
@@ -24,7 +24,7 @@ class BasicInfo extends React.Component {
             <input
               id="reciverAddress"
               name="userAddress"
-              value={userAddress}
+              defaultValue={userAddress}
               onChange={handleChange}
             />
             <span>
