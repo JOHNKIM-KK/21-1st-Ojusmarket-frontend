@@ -33,7 +33,7 @@ class CartList extends React.Component {
       .then(data => {
         this.setState({
           cartData: data.cart_list,
-          selectedArr: Array(data.length).fill(false),
+          selectedArr: Array(data.cart_list.length).fill(false),
         });
       });
   }
@@ -115,8 +115,8 @@ class CartList extends React.Component {
       checkedArr.push(idx);
       idx = selectedArr.indexOf(true, idx + 1);
     }
-    const newCheckedArr = cartData.filter(cartItem => {
-      const condition = !checkedArr.includes(parseInt(cartItem.id));
+    const newCheckedArr = cartData.filter((cartItem, index) => {
+      const condition = !checkedArr.includes(index);
       if (!condition) deletedArr.push(cartItem);
       return condition;
     });

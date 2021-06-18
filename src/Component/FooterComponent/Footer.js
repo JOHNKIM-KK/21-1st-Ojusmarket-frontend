@@ -38,7 +38,7 @@ class Footer extends React.Component {
               </address>
               <ul>
                 <li>상호 : 주식회사 오져스</li>
-                <li>대표자 : 김코드</li>
+                <li>대표자 : 오저수</li>
                 <li>사업자 번호 : 123-45-67890</li>
                 <li>Comment : 200 OK 기원</li>
               </ul>
