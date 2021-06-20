@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  GET_LOGIN_API,
+  GET_PRICE_API,
   GET_PURCHASE_API,
   LOGIN_TOKEN,
 } from '../../Utill/config';
