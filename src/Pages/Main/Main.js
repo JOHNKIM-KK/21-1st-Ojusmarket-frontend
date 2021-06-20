@@ -61,7 +61,7 @@ class Main extends React.Component {
         });
       });
 
-    fetch('http://3.133.13.238:8000/Data/SlideData.json')
+    fetch('/Data/SlideData.json')
       .then(res => res.json())
       .then(data => {
         this.setState({
