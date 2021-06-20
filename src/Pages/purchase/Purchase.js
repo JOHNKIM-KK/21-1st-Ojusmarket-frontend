@@ -44,7 +44,7 @@ class Purchase extends React.Component {
   };
 
   componentDidMount() {
-    fetch(`${GET_PURCHASE_API}`, {
+    fetch(`${GET_PRICE_API}`, {
       method: 'GET',
       headers: {
         Authorization: `${LOGIN_TOKEN}`,

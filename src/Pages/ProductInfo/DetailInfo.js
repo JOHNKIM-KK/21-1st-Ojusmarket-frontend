@@ -7,7 +7,7 @@ class DetailInfo extends React.Component {
       <img
         className="info-image"
         alt="상품정보"
-        src="/images/ingredient/유기농블루베리.png"
+        src="/images/ingredient/빨강파프리카.png"
       />
     );
   }

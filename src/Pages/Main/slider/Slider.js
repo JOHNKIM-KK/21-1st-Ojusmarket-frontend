@@ -36,7 +36,7 @@ class Slider extends React.Component {
           TransitionImg: '1s ease-in-out',
         });
       }
-    }, 2000);
+    }, 4000);
   }
 
   componentDidUpdate() {

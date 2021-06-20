@@ -19,10 +19,10 @@ class CartItem extends React.Component {
       <li className="cart-item">
         <div>
           <div className="cart-item__info">
-            <button onClick={() => handleIsChecked(id)}>
+            <button onClick={() => handleIsChecked(index)}>
               <i
                 className={`fas fa-check-circle fa-lg ${
-                  selectedArr[id] ? `checked` : ``
+                  selectedArr[index] ? `checked` : ``
                 }`}
               />
             </button>

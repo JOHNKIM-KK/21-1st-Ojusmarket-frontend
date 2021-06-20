@@ -5,10 +5,11 @@
   margin-bottom: 50px;
 
   .productbox1 {
-    font-size: 20px;
     display: flex;
     flex-flow: column wrap;
     margin: 15px 15px 0 0;
+    font-size: 20px;
+    cursor: pointer;
 
     .onionImg {
       width: 250px;
