@@ -1,8 +1,8 @@
 import React from 'react';
 import {
+  GET_PRICE_API,
   GET_PURCHASE_API,
   LOGIN_TOKEN,
-  GET_PRICE_API,
 } from '../../Utill/config';
 import Header from '../../Component/HeaderComponent/Header';
 import Footer from '../../Component/FooterComponent/Footer';
