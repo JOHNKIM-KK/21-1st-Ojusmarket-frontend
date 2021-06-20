@@ -44,6 +44,7 @@
 - 정규표현식사용하여 유효성검사 적용
 - fetch 받은 데이터를 이용하여 아이디 중복체크검사 적용
 - 카카오 POST API를 사용하여 주소창 구현
+- ![KAKAO POST](https://user-images.githubusercontent.com/74660207/122675951-cc156600-d216-11eb-87bd-ad28d2590dc5.PNG)
 
 ### 메인페이지
 
