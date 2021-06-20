@@ -2,12 +2,12 @@ export function validateId(identity) {
   if (identity === '') {
     return true;
   }
-  const idreg = /^[a-z0-9]{5,15}/g;
+  const idreg = /^[a-z0-9]{5,15}$/;
   const isIdValid = idreg.test(identity);
   return isIdValid;
 }
 export function validateIdColor(identity) {
-  const idreg = /^[a-z0-9]{5,15}/g;
+  const idreg = /^[a-z0-9]{5,15}$/;
   const isIdValid = idreg.test(identity);
   return isIdValid;
 }
