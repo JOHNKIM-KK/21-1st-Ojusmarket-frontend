@@ -41,7 +41,7 @@ class RecipeInfo extends React.Component {
     const { recipeData } = this.state;
     return (
       <div className="recipeInfo">
-        <Footer />
+        <Header />
         <article>
           <div className="foodInfo">
             <RecipeList recipeData={recipeData} />
@@ -56,7 +56,7 @@ class RecipeInfo extends React.Component {
             </button>
           </div>
         </article>
-        <Header />
+        <Footer />
       </div>
     );
   }

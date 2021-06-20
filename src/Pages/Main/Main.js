@@ -61,7 +61,7 @@ class Main extends React.Component {
         });
       });
 
-    fetch('/data/SlideData.json')
+    fetch('/Data/SlideData.json')
       .then(res => res.json())
       .then(data => {
         this.setState({
