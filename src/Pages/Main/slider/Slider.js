@@ -59,7 +59,7 @@ class Slider extends React.Component {
     }
   }
 
-  componentWillMount() {
+  componentWillUnmount() {
     clearInterval(this.autoSlide);
   }
 
