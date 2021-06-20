@@ -12,6 +12,7 @@
 
 @mixin border-style {
   border: 1px solid $light-gray;
+  padding-left: 15px;
 }
 
 @mixin btn-style {
