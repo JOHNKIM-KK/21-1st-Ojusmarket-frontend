@@ -2,17 +2,18 @@ import React from 'react';
 import './CheckCart.scss';
 
 class CheckCart extends React.Component {
-  getTotalPrice = () => {
-    const { cartData } = this.props;
-    let totalPrice = 0;
-    cartData.forEach(cartItem => {
-      totalPrice += cartItem.price * cartItem.count;
-    });
-    return totalPrice;
-  };
+  // getTotalPrice = () => {
+  //   const { cartData } = this.props;
+  //   let totalPrice = 0;
+  //   cartData.forEach(cartItem => {
+  //     totalPrice += cartItem.price * cartItem.count;
+  //   });
+  //   return totalPrice;
+  // };
 
   render() {
-    const { cartData } = this.props;
+    const { cartData, getTotalPrice } = this.props;
+
     return (
       <div className="check-cart">
         <div className="notice">
@@ -44,10 +45,10 @@ class CheckCart extends React.Component {
 
           <div className="cart-total-price">
             <p>
-              상품금액&nbsp;<span>{this.getTotalPrice().toLocaleString()}</span>
-              원 + 배송비&nbsp;
+              상품금액&nbsp;
+              <span>{getTotalPrice().toLocaleString()}</span>원 + 배송비&nbsp;
               <span>{(3000).toLocaleString()}</span>원 = 주문금액{' '}
-              <span>{(this.getTotalPrice() + 3000).toLocaleString()}</span>원
+              <span>{(getTotalPrice() + 3000).toLocaleString()}</span>원
             </p>
           </div>
         </div>

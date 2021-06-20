@@ -1,8 +1,8 @@
 import React from 'react';
 import {
-  GET_LOGIN_API,
   GET_PURCHASE_API,
   LOGIN_TOKEN,
+  GET_PRICE_API,
 } from '../../Utill/config';
 import Header from '../../Component/HeaderComponent/Header';
 import Footer from '../../Component/FooterComponent/Footer';
@@ -44,7 +44,7 @@ class Purchase extends React.Component {
   };
 
   componentDidMount() {
-    fetch(`${GET_PURCHASE_API}`, {
+    fetch(`${GET_PRICE_API}`, {
       method: 'GET',
       headers: {
         Authorization: `${LOGIN_TOKEN}`,
@@ -53,9 +53,9 @@ class Purchase extends React.Component {
       .then(res => res.json())
       .then(data => {
         this.setState({
-          orderName: data.payment[0].name,
-          orderAddress: data.payment[0].address,
-          orderPrice: data.payment[0].price,
+          orderName: data.user[0].name,
+          orderAddress: data.user[0].address,
+          orderPrice: data.user[0].price,
         });
       });
 
@@ -66,8 +66,17 @@ class Purchase extends React.Component {
     );
   }
 
+  getTotalPrice = () => {
+    let totalPrice = 0;
+    this.props.location.state.forEach(cartItem => {
+      totalPrice += cartItem.price * cartItem.count;
+    });
+    return totalPrice;
+  };
+
   render() {
-    const { isViewCart, orderAddress, orderPrice, orderName } = this.state;
+    console.log(this.props.location.state);
+    const { isViewCart, orderAddress, orderName } = this.state;
     return (
       <>
         <Header />
@@ -89,7 +98,12 @@ class Purchase extends React.Component {
                   <i className="fas fa-chevron-down"></i>
                 </button>
               </div>
-              {isViewCart && <CheckCart cartData={this.props.location.state} />}
+              {isViewCart && (
+                <CheckCart
+                  cartData={this.props.location.state}
+                  getTotalPrice={this.getTotalPrice}
+                />
+              )}
             </div>
             <div className="receipt-container">
               <div className="info-container">
@@ -141,7 +155,7 @@ class Purchase extends React.Component {
                   <div>
                     <span>상품금액</span>
                     <span className="price">
-                      {Math.floor(orderPrice).toLocaleString()}
+                      {this.getTotalPrice().toLocaleString()}
                       <b>원</b>
                     </span>
                   </div>
@@ -154,7 +168,7 @@ class Purchase extends React.Component {
                   <div className="total">
                     <span>총 주문금액</span>
                     <span className="price">
-                      {(Math.floor(orderPrice) + 3000).toLocaleString()}
+                      {(this.getTotalPrice() + 3000).toLocaleString()}
                       <b>원</b>
                     </span>
                   </div>
