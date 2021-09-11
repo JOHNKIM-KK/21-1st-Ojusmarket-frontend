@@ -39,38 +39,38 @@
 - ![JS](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 - ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 
-### 로그인/ 회원가입
+### 로그인/ 회원가입 (기완)
 
 - 정규표현식사용하여 유효성검사 적용
 - fetch 받은 데이터를 이용하여 아이디 중복체크검사 적용
 - 카카오 POST API를 사용하여 주소창 구현
-- ![KAKAO POST](https://user-images.githubusercontent.com/74660207/122675951-cc156600-d216-11eb-87bd-ad28d2590dc5.PNG)
 
-### 메인페이지
+### 메인페이지 (명준)
 
-- 배너 자동 무한 슬라이더 구현
-- 캐러셀 기능 추가
-- Advanced Router를 통해 카테고리 변경 (Query Parameter 사용)
+- React의 lifecyle Method와 setInterval를 적절히 사용하여 자동이미지슬라이드 구현
+- Advanced Router를 통해 카테고리 기능 구현 (Query Parameter 사용)
+- Map 함수를 통해 상품리스트 구현
 
-### 상세페이지 (제품,요리레시피)
+### 상세페이지 (제품,요리레시피) (민기, 기완)
 
 - 상세정보를 fetch메소드로 전달받아 상세페이지 구현
 - 동적 라우팅 (Path Parameter 사용) 으로 리스트페이지와 연결
 
-### 장바구니
+### 장바구니 (민기)
 
 - map 함수와 spread-operator를 사용, 상품 데이터의 수량 변경 기능 구현
 - spread-operator와 map, filter, Array메소드를 적절히 사용하여 물품 선택, 삭제 구현
 - filter를 사용하여 백엔드에 보낼 삭제된 물품 데이터와 view에 비출 남은 물품들의 데이터를 분류
 
-### 배송지페이지
+### 배송지페이지 (명준)
 
 - 유저의 주소정보를 fetch 받아 기본배송지 구현
 
-### 결제페이지
+### 결제페이지 (명준)
 
-- 장바구니로 부터 location.state로 데이터를 전달받아 구매 목록 구현
-- 구매자의 배송지 와 총 구매가격을 구매자에게 알려주는 UI구현
+- 장바구니로 부터 location.state로 데이터를 전달받아 구매 목록 토글창 구현
+- location.state를 통해 넘어온 데이터에 map을 사용해 id값만 post함 (장바구니 데이터 삭제를 위해)
+- 구매자의 배송지 와 총 구매가격을 구매자에게 알려주는 UI구현.
 
 ## Reference
 
