@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import Footer from '../../Component/FooterComponent/Footer';
-import Header from '../../Component/HeaderComponent/Header';
+import Header from '../../Component/FooterComponent/Footer';
+import Footer from '../../Component/HeaderComponent/Header';
 import RecipeList from './RecipeList/RecipeList';
 import ProductList from './ProductList/ProductList';
 import { GET_RECIPE_INFO_API, LOGIN_TOKEN } from '../../Utill/config';

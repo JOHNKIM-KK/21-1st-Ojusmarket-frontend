@@ -1,16 +1,26 @@
-[
-  {
-    "id": 1,
-    "name": "유기농 김치",
-    "image": "https://cdn.crowdpic.net/detail-thumb/thumb_d_CDC14868821FF3F20C77BC8BC15E6355.jpg",
-    "count": 1,
-    "price": 3800
-  },
-  {
-    "id": 2,
-    "name": "코코넛 밀크",
-    "image": "https://file.mk.co.kr/meet/neds/2017/04/image_readtop_2017_233186_14914409822837535.jpg",
-    "count": 2,
-    "price": 2500
-  }
-]
+{
+  "cart_list": [
+    {
+      "id": 3,
+      "name": "광삼원 전통 된장",
+      "price": "16390.00",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/87/Doenjang.jpg",
+      "count": 5
+    },
+
+    {
+      "id": 15,
+      "name": "썰은김치(1.4kg)",
+      "price": "16900.00",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Gimchi.jpg/1920px-Gimchi.jpg",
+      "count": 5
+    },
+    {
+      "id": 15,
+      "name": "썰은김치(1.4kg)",
+      "price": "16900.00",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Gimchi.jpg/1920px-Gimchi.jpg",
+      "count": 5
+    }
+  ]
+}

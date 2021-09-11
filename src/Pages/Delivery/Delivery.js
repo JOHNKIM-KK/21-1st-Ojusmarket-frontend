@@ -2,7 +2,7 @@ import React from 'react';
 import { GET_DELIVERY_API, LOGIN_TOKEN } from '../../Utill/config';
 import Header from '../../Component/HeaderComponent/Header';
 import Footer from '../../Component/FooterComponent/Footer';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import BasicInfo from './BasicInfo';
 import './Delivery.scss';
 

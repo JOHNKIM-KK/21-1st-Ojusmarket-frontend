@@ -17,7 +17,7 @@ class Purchase extends React.Component {
       orderAddress: '',
       orderPrice: 0,
       isViewCart: false,
-      productId: [],
+      soldProduct: [],
     };
   }
 
@@ -59,9 +59,10 @@ class Purchase extends React.Component {
         });
       });
 
-    this.props.location.state.map(x =>
-      this.state.productId.push({
-        id: x.id,
+    this.props.location.state.map(product =>
+      this.state.soldProduct.push({
+        id: product.id,
+        count: product.count,
       })
     );
   }
@@ -75,7 +76,6 @@ class Purchase extends React.Component {
   };
 
   render() {
-    console.log(this.props.location.state);
     const { isViewCart, orderAddress, orderName } = this.state;
     return (
       <>

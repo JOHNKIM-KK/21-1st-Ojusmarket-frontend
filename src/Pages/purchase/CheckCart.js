@@ -2,15 +2,6 @@ import React from 'react';
 import './CheckCart.scss';
 
 class CheckCart extends React.Component {
-  // getTotalPrice = () => {
-  //   const { cartData } = this.props;
-  //   let totalPrice = 0;
-  //   cartData.forEach(cartItem => {
-  //     totalPrice += cartItem.price * cartItem.count;
-  //   });
-  //   return totalPrice;
-  // };
-
   render() {
     const { cartData, getTotalPrice } = this.props;
 
